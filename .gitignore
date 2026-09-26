@@ -1,0 +1,42 @@
+# Secrets and credentials — never commit these
+.env
+*.env
+config/secrets.py
+config/credentials.*
+
+# Session and local dev files
+session.txt
+*.session
+*.lock
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+venv/
+env/
+.venv/
+
+# Logs — keep structure, not content
+logs/*.log
+logs/*.csv
+logs/*.json
+
+# IDE and OS
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
