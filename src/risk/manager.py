@@ -14,8 +14,9 @@ class RiskConfig:
     max_position_pct: float = 0.15     # max 15% of portfolio per asset
     min_order_usd: float = 10.0        # minimum order value in USD
     max_drawdown_pct: float = 0.12     # halt trading if drawdown > 12%
-    commission_rate: float = 0.001     # 0.1% taker fee
-    reserve_pct: float = 0.05         # keep 5% of portfolio as cash reserve
+    commission_rate: float = 0.001     # 0.1% taker (MARKET) — matches real exchange
+    maker_rate: float = 0.0005         # 0.05% maker (LIMIT) — matches real exchange
+    reserve_pct: float = 0.05          # keep 5% cash reserve
 
 
 class RiskManager:
