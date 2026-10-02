@@ -1,15 +1,16 @@
 """
-Momentum Strategy
-EMA crossover + RSI with proper filters:
-  - Minimum hold time before allowing sell
-  - Only sell at profit OR if stop-loss triggered
-  - Stronger RSI thresholds
-  - Trend confirmation (fast EMA must be meaningfully above slow)
-  - No trading when market is broadly weak
+Momentum Strategy v2
+EMA crossover + RSI with hardened entry filters:
+
+  Changes from v1:
+  - 2-tick confirmation: fast EMA must be above slow for 2 consecutive ticks before BUY
+  - Tighter RSI buy zone: 45–58 (was 40–60)
+  - Stronger EMA separation: 0.05% (was 0.02%)
+  - Per-pair cooldown: 3-cycle lockout after a losing trade
+  - Max open positions: enforced by caller (main.py)
 """
 
 import logging
-import time
 from collections import deque
 from dataclasses import dataclass, field
 from typing import Literal
@@ -26,28 +27,38 @@ class MomentumConfig:
     rsi_period: int = 14
     min_history: int = 50
 
-    # Signal filters
-    rsi_buy_max: float  = 60.0   # only buy when RSI < 60 (not overbought)
-    rsi_buy_min: float  = 40.0   # only buy when RSI > 40 (not already oversold)
-    rsi_sell_min: float = 45.0   # only sell on EMA cross when RSI > 45
+    # Entry filters (tighter than v1)
+    rsi_buy_min: float  = 45.0    # was 40 — avoid weak/falling momentum
+    rsi_buy_max: float  = 58.0    # was 60 — avoid overbought entries
+    rsi_sell_min: float = 45.0    # don't sell on signal if RSI < 45
 
-    # EMA separation — how much fast must be above slow to count as a real crossover
-    ema_separation_pct: float = 0.02  # fast EMA must be 0.02% above slow to BUY
+    # EMA filters
+    ema_separation_pct: float = 0.05   # was 0.02 — crossover must be meaningful
+    confirm_ticks: int = 2              # NEW: fast must be above slow for N ticks
 
-    # Hold & profit filters
-    min_hold_cycles: int   = 3      # must hold at least 3 cycles before selling on signal
-    min_profit_pct: float  = 0.25   # must be +0.25% profit before selling on signal
-    stop_loss_pct: float   = 2.0    # hard stop-loss at -2% regardless of signal
-    take_profit_pct: float = 3.0    # take profit at +3% regardless of signal
+    # Hold & exit filters
+    min_hold_cycles: int   = 3
+    min_profit_pct: float  = 0.25
+    stop_loss_pct: float   = 2.0
+    take_profit_pct: float = 3.0
+
+    # Cooldown after a losing trade
+    loss_cooldown_cycles: int = 3       # NEW: lockout after stop-loss
 
 
 @dataclass
 class PairState:
     prices: deque = field(default_factory=lambda: deque(maxlen=200))
     last_signal: Signal = "HOLD"
-    entry_price: float  = 0.0   # price when BUY was last signalled
-    hold_cycles: int    = 0     # cycles since last BUY signal
-    just_restored: bool = False # skip first BUY signal after DB restore
+    entry_price: float  = 0.0
+    hold_cycles: int    = 0
+    just_restored: bool = False
+
+    # Confirmation tracking
+    ticks_above_slow: int = 0   # consecutive ticks where fast > slow
+
+    # Cooldown after loss
+    cooldown_cycles: int  = 0   # cycles remaining before next entry allowed
 
 
 def _ema(prices: list, period: int) -> float:
@@ -64,10 +75,10 @@ def _rsi(prices: list, period: int) -> float:
     if len(prices) < period + 1:
         return 50.0
     relevant = prices[-(period + 1):]
-    deltas = [relevant[i+1] - relevant[i] for i in range(len(relevant)-1)]
-    gains  = [d for d in deltas if d > 0]
-    losses = [-d for d in deltas if d < 0]
-    avg_gain = sum(gains) / period if gains else 0.0
+    deltas   = [relevant[i+1] - relevant[i] for i in range(len(relevant) - 1)]
+    gains    = [d for d in deltas if d > 0]
+    losses   = [-d for d in deltas if d < 0]
+    avg_gain = sum(gains)  / period if gains  else 0.0
     avg_loss = sum(losses) / period if losses else 0.0
     if avg_loss == 0:
         return 100.0
@@ -76,9 +87,9 @@ def _rsi(prices: list, period: int) -> float:
 
 class MomentumStrategy:
     def __init__(self, config: MomentumConfig = None):
-        self.config = config or MomentumConfig()
+        self.config     = config or MomentumConfig()
         self._states: dict[str, PairState] = {}
-        self._restoring: bool = False  # suppress stop-loss/take-profit during DB restore
+        self._restoring = False
 
     def _state(self, pair: str) -> PairState:
         if pair not in self._states:
@@ -97,8 +108,7 @@ class MomentumStrategy:
         if len(prices) < cfg.min_history:
             return "HOLD"
 
-        # On first live tick after restore, skip all signals but clear the flag
-        # so second tick onward behaves normally
+        # First live tick after restore — skip signals, clear flag
         if state.just_restored:
             state.just_restored = False
             return "HOLD"
@@ -110,58 +120,85 @@ class MomentumStrategy:
         prev_fast = _ema(prev, cfg.fast_ema)
         prev_slow = _ema(prev, cfg.slow_ema)
 
-        # EMA separation as % of price
         separation_pct = ((fast - slow) / slow * 100) if slow > 0 else 0
+
+        # Track consecutive ticks above slow EMA
+        if fast > slow:
+            state.ticks_above_slow += 1
+        else:
+            state.ticks_above_slow = 0
+
+        # Count down cooldown
+        if state.cooldown_cycles > 0:
+            state.cooldown_cycles -= 1
 
         signal: Signal = "HOLD"
 
-        # ── BUY conditions ────────────────────────────────────────────
-        # 1. EMA crossover (fast crossed above slow)
-        # 2. RSI in healthy buy zone (40–60)
-        # 3. EMA separation meaningful (not just noise)
-        # 4. Not already holding (caller checks coin_held)
+        # ── BUY ───────────────────────────────────────────────────────
+        # Entry requires a FRESH crossover event:
+        # fast EMA must have crossed above slow EMA within the last
+        # `confirm_ticks` live ticks (not stale DB-restored history).
+        # This prevents buying 6 coins at once on startup just because
+        # the DB shows they've been in uptrend for days.
         crossed_up = prev_fast <= prev_slow and fast > slow
-        if (
-            crossed_up
-            and fast > slow                              # confirm fast is above slow now
+
+        # trend_confirmed: crossover happened AND has been above for
+        # exactly confirm_ticks (not more) — ensures signal is recent
+        trend_confirmed = (
+            state.ticks_above_slow >= cfg.confirm_ticks
+            and state.ticks_above_slow <= cfg.confirm_ticks + 2  # only fires in narrow window
             and cfg.rsi_buy_min <= rsi <= cfg.rsi_buy_max
             and separation_pct >= cfg.ema_separation_pct
-            and not state.just_restored                  # skip phantom crossover on first live tick
+            and state.cooldown_cycles == 0
+            and not state.just_restored
+            and state.entry_price == 0
+            and state.last_signal != "BUY"
+        )
+
+        if trend_confirmed or (
+            crossed_up
+            and fast > slow
+            and cfg.rsi_buy_min <= rsi <= cfg.rsi_buy_max
+            and separation_pct >= cfg.ema_separation_pct
+            and state.cooldown_cycles == 0
+            and not state.just_restored
         ):
             signal = "BUY"
             state.entry_price = price
             state.hold_cycles = 0
 
-        # ── SELL conditions ───────────────────────────────────────────
+        # ── SELL ──────────────────────────────────────────────────────
         elif state.last_signal == "BUY" or state.hold_cycles > 0:
             state.hold_cycles += 1
             pnl_pct = ((price - state.entry_price) / state.entry_price * 100) if state.entry_price > 0 else 0
 
-            # 1. Hard stop-loss — sell immediately regardless of hold time
+            # 1. Hard stop-loss
             if not self._restoring and pnl_pct <= -cfg.stop_loss_pct:
                 signal = "SELL"
-                logger.warning("%s STOP-LOSS triggered: pnl=%.2f%%", pair, pnl_pct)
+                state.cooldown_cycles = cfg.loss_cooldown_cycles  # lockout
+                logger.warning("%s STOP-LOSS: pnl=%.2f%% — cooldown %d cycles",
+                               pair, pnl_pct, cfg.loss_cooldown_cycles)
 
-            # 2. Take profit — sell immediately at target
+            # 2. Take profit
             elif not self._restoring and pnl_pct >= cfg.take_profit_pct:
                 signal = "SELL"
-                logger.info("%s TAKE-PROFIT triggered: pnl=%.2f%%", pair, pnl_pct)
+                logger.info("%s TAKE-PROFIT: pnl=%.2f%%", pair, pnl_pct)
 
-            # 3. EMA cross down — but only sell if:
-            #    - held long enough AND in profit (don't sell at a loss on signal)
+            # 3. EMA cross down — only if profitable and held long enough
             elif (
-                prev_fast >= prev_slow and fast < slow   # crossed down
-                and rsi > cfg.rsi_sell_min               # not oversold (bounce possible)
+                prev_fast >= prev_slow and fast < slow
+                and rsi > cfg.rsi_sell_min
                 and state.hold_cycles >= cfg.min_hold_cycles
-                and pnl_pct >= cfg.min_profit_pct        # only sell if profitable
+                and pnl_pct >= cfg.min_profit_pct
             ):
                 signal = "SELL"
-                logger.info("%s EMA-cross SELL: pnl=%.2f%% rsi=%.1f cycles=%d",
-                            pair, pnl_pct, rsi, state.hold_cycles)
+                logger.info("%s EMA-SELL: pnl=%.2f%% cycles=%d",
+                            pair, pnl_pct, state.hold_cycles)
 
-        if signal != "HOLD":
-            logger.info("%s signal=%s | fast=%.6f slow=%.6f rsi=%.1f sep=%.4f%%",
-                        pair, signal, fast, slow, rsi, separation_pct)
+        if signal not in ("HOLD",):
+            logger.info("%s signal=%s | fast=%.6f slow=%.6f rsi=%.1f sep=%.4f%% cooldown=%d confirm=%d",
+                        pair, signal, fast, slow, rsi, separation_pct,
+                        state.cooldown_cycles, state.ticks_above_slow)
 
         if signal == "SELL":
             state.entry_price = 0.0
@@ -171,18 +208,18 @@ class MomentumStrategy:
         return signal
 
     def notify_bought(self, pair: str, price: float):
-        """Call this after a BUY order fills to record entry price."""
         state = self._state(pair)
-        state.entry_price  = price
-        state.hold_cycles  = 0
-        state.last_signal  = "BUY"
+        state.entry_price = price
+        state.hold_cycles = 0
+        state.last_signal = "BUY"
 
-    def notify_sold(self, pair: str):
-        """Call this after a SELL order fills to reset state."""
+    def notify_sold(self, pair: str, was_loss: bool = False):
         state = self._state(pair)
         state.entry_price = 0.0
         state.hold_cycles = 0
         state.last_signal = "HOLD"
+        if was_loss:
+            state.cooldown_cycles = self.config.loss_cooldown_cycles
 
     def indicators(self, pair: str) -> dict:
         state  = self._state(pair)
@@ -202,6 +239,8 @@ class MomentumStrategy:
             "rsi":              round(_rsi(prices, cfg.rsi_period), 2),
             "hold_cycles":      state.hold_cycles,
             "entry_price":      state.entry_price,
+            "ticks_above_slow": state.ticks_above_slow,
+            "cooldown_cycles":  state.cooldown_cycles,
             "prices_collected": len(prices),
         }
 

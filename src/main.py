@@ -60,6 +60,7 @@ PERF_INTERVAL      = 1800     # performance summary every 30 min
 
 PROFIT_TARGET_PCT  = None     # disabled — run until Ctrl+C
 STOP_LOSS_PCT      = None     # disabled — run until Ctrl+C
+MAX_POSITIONS      = 6        # max open positions at once
 # ═══════════════════════════════════════════════════════
 
 TRADE_PAIRS: list[str] = []
@@ -310,14 +311,16 @@ def run():
         slow_ema=21,
         rsi_period=14,
         min_history=50,
-        rsi_buy_min=40.0,      # only buy RSI 40–60 (healthy momentum zone)
-        rsi_buy_max=60.0,
-        rsi_sell_min=45.0,     # don't sell if RSI < 45 (could bounce)
-        ema_separation_pct=0.02,  # crossover must be meaningful
-        min_hold_cycles=3,     # hold at least 3 polls (15 min) before signal-sell
-        min_profit_pct=0.25,   # must be +0.25% profit to sell on signal
-        stop_loss_pct=2.0,     # hard stop at -2%
-        take_profit_pct=3.0,   # take profit at +3%
+        rsi_buy_min=45.0,          # tighter — avoid weak momentum (was 40)
+        rsi_buy_max=58.0,          # tighter — avoid overbought (was 60)
+        rsi_sell_min=45.0,
+        ema_separation_pct=0.05,   # stronger crossover required (was 0.02)
+        confirm_ticks=2,           # must be above slow EMA for 2 ticks before BUY
+        min_hold_cycles=3,
+        min_profit_pct=0.25,
+        stop_loss_pct=2.0,
+        take_profit_pct=3.0,
+        loss_cooldown_cycles=3,    # 3-cycle lockout after stop-loss
     ))
     risk      = RiskManager(initial_balance=STARTING_BALANCE)
     trade_log = TradeLogger()
@@ -341,6 +344,27 @@ def run():
             print(f"  ⏳  {remaining} pairs still need more ticks")
     else:
         print(f"  ⏱   No prior data — warmup needed (~{50*POLL_INTERVAL//3600}h {(50*POLL_INTERVAL%3600)//60}min)")
+
+    # ── Reconcile existing live/paper positions into strategy state ───
+    # If the account already holds coins (e.g. UNI from manual trade),
+    # register them so the strategy tracks stop-loss and take-profit correctly.
+    if not PAPER_MODE:
+        existing_wallet = client.balance().get("SpotWallet") or {}
+        reconciled = []
+        for coin, amounts in existing_wallet.items():
+            if coin == "USD":
+                continue
+            qty = amounts.get("Free", 0) + amounts.get("Lock", 0)
+            if qty <= 0:
+                continue
+            pair  = f"{coin}/USD"
+            price = initial_tickers.get(pair, {}).get("LastPrice", 0)
+            if price and pair in TRADE_PAIRS:
+                strategy.notify_bought(pair, price)
+                reconciled.append(f"{pair}@${price:.4f}")
+        if reconciled:
+            print(f"  📋  Reconciled {len(reconciled)} existing positions: {', '.join(reconciled)}")
+            print(f"      Stop-loss and take-profit now active on these holdings.")
 
     last_perf   = time.time()
     cycle       = 0
@@ -440,6 +464,75 @@ def run():
                 amt_prec = get_amount_precision(exchange_info, pair)
 
                 if signal == "BUY" and coin_held == 0:
+                    # Count open positions from actual in-memory state
+                    if PAPER_MODE:
+                        open_coins = {
+                            coin: paper.get_coin_balance(coin)
+                            for pair_ in TRADE_PAIRS
+                            for coin in [pair_.split("/")[0]]
+                            if paper.get_coin_balance(coin) > 0
+                        }
+                    else:
+                        bal_wallet = client.balance().get("SpotWallet") or {}
+                        open_coins = {
+                            c: a.get("Free", 0)
+                            for c, a in bal_wallet.items()
+                            if c != "USD" and a.get("Free", 0) > 0
+                        }
+                    open_positions = len(open_coins)
+
+                    # ── Rotation: if full, check if we should swap a loser ──
+                    if open_positions >= MAX_POSITIONS:
+                        # Score new signal strength: RSI closeness to 52 midpoint + sep
+                        new_ind = strategy.indicators(pair)
+                        new_rsi = new_ind.get("rsi", 50)
+                        new_sep = new_ind.get("ema_sep_pct", 0)
+                        new_score = new_sep * 10 + (1 - abs(new_rsi - 52) / 10)
+
+                        # Find worst current position
+                        worst_pair = None
+                        worst_pnl  = 0.0  # only consider negatives
+
+                        for held_coin, held_qty in open_coins.items():
+                            held_pair  = f"{held_coin}/USD"
+                            held_price = all_tickers.get(held_pair, {}).get("LastPrice", 0)
+                            held_ind   = strategy.indicators(held_pair)
+                            held_entry = held_ind.get("entry_price", 0)
+                            if held_entry <= 0 or held_price <= 0:
+                                continue
+                            held_pnl_pct = (held_price - held_entry) / held_entry * 100
+
+                            # Only rotate out if:
+                            # - Position is losing (negative PnL)
+                            # - Loss is between -0.5% and -1.8% (below -2% = stop-loss handles it)
+                            # - New signal is meaningfully stronger
+                            if -1.8 <= held_pnl_pct <= -0.5 and held_pnl_pct < worst_pnl:
+                                worst_pnl  = held_pnl_pct
+                                worst_pair = held_pair
+
+                        if worst_pair and new_score > 0.5:
+                            worst_coin = worst_pair.split("/")[0]
+                            worst_qty  = open_coins[worst_coin]
+                            worst_price= all_tickers.get(worst_pair, {}).get("LastPrice", 0)
+                            print(f"\n  🔄  ROTATE: selling {worst_pair} ({worst_pnl:+.2f}%) to buy {pair}")
+                            if PAPER_MODE:
+                                rot_result = paper.place_order(worst_pair, "SELL", worst_qty, price=worst_price)
+                            else:
+                                rot_result = client.place_order(worst_pair, "SELL", worst_qty, order_type="MARKET")
+
+                            if rot_result.get("Success"):
+                                trade_log.log_order(rot_result, note="rotation_sell")
+                                db.insert_trade_from_order(rot_result, mode="paper" if PAPER_MODE else "live")
+                                strategy.notify_sold(worst_pair, was_loss=(worst_pnl < 0))
+                                print_trade(rot_result, PAPER_MODE)
+                                usd_free += worst_qty * worst_price * 0.999  # approx proceeds
+                                open_positions -= 1
+                                total_sells += 1
+                        else:
+                            logger.info("SKIP %s: max positions %d/%d reached, no rotation candidate",
+                                        pair, open_positions, MAX_POSITIONS)
+                            continue
+
                     # Guard: keep at least 20% as cash reserve
                     MIN_CASH_RESERVE = STARTING_BALANCE * 0.20
                     if usd_free < MIN_CASH_RESERVE:
@@ -447,7 +540,8 @@ def run():
                         continue
 
                     size_usd = risk.position_size_usd(usd_free, portfolio_val)
-                    logger.info("BUY candidate %s: size_usd=%.2f usd_free=%.2f", pair, size_usd, usd_free)
+                    logger.info("BUY candidate %s: size_usd=%.2f usd_free=%.2f open=%d/%d",
+                                pair, size_usd, usd_free, open_positions, MAX_POSITIONS)
                     if size_usd <= 0:
                         logger.info("SKIP %s: size_usd <= 0", pair)
                         continue
@@ -457,7 +551,7 @@ def run():
                         logger.info("SKIP %s: order value %.2f < min_order %.2f", pair, qty*price, get_min_order(exchange_info, pair))
                         continue
 
-                    print(f"\n  🟢  BUY → {pair}  qty={qty}  ~${qty*price:.2f}")
+                    print(f"\n  🟢  BUY → {pair}  qty={qty}  ~${qty*price:.2f}  [{open_positions+1}/{MAX_POSITIONS}]")
                     if PAPER_MODE:
                         result = paper.place_order(pair, "BUY", qty, price=price)
                     else:
@@ -474,10 +568,11 @@ def run():
                         actions += 1
 
                 elif signal == "SELL" and coin_held > 0:
-                    ind = strategy.indicators(pair)
-                    entry = ind.get("entry_price", 0)
+                    ind     = strategy.indicators(pair)
+                    entry   = ind.get("entry_price", 0)
                     pnl_pct = ((price - entry) / entry * 100) if entry > 0 else 0
-                    reason = "STOP-LOSS" if pnl_pct <= -2.0 else "TAKE-PROFIT" if pnl_pct >= 3.0 else "SIGNAL"
+                    was_loss = pnl_pct <= -2.0
+                    reason  = "STOP-LOSS" if was_loss else "TAKE-PROFIT" if pnl_pct >= 3.0 else "SIGNAL"
                     print(f"\n  🔴  SELL [{reason}] → {pair}  qty={coin_held}  pnl={pnl_pct:+.2f}%  ~${coin_held*price:.2f}")
                     if PAPER_MODE:
                         result = paper.place_order(pair, "SELL", coin_held, price=price)
@@ -488,7 +583,7 @@ def run():
                     if result.get("Success"):
                         trade_log.log_order(result, note="paper_sell" if PAPER_MODE else "live_sell")
                         db.insert_trade_from_order(result, mode="paper" if PAPER_MODE else "live")
-                        strategy.notify_sold(pair)
+                        strategy.notify_sold(pair, was_loss=was_loss)
                         total_sells += 1
                         actions += 1
 

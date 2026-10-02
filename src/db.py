@@ -88,9 +88,11 @@ class BotDB:
     def __init__(self, db_path: str = None):
         self._path = str(db_path or DB_PATH)
         os.makedirs(os.path.dirname(self._path), exist_ok=True)
-        self._local = threading.local()  # one connection per thread
+        self._local = threading.local()
         self._init_schema()
-        logger.info("Database ready: %s", self._path)
+        # Generate a unique session ID for this run
+        self.session_id = str(int(time.time()))
+        logger.info("Database ready: %s (session=%s)", self._path, self.session_id)
 
     def _conn(self) -> sqlite3.Connection:
         """Return a thread-local connection, creating it if needed."""
@@ -174,7 +176,7 @@ class BotDB:
         quantity: float,
         price: float,
         fee: float,
-        mode: str,          # 'paper' or 'live'
+        mode: str,
         order_id: str = None,
         status: str = "FILLED",
         timestamp_ms: int = None,
@@ -184,10 +186,10 @@ class BotDB:
         self._conn().execute(
             """INSERT INTO trades
                (timestamp_ms, pair, side, quantity, price,
-                notional, fee, mode, order_id, status)
-               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                notional, fee, mode, order_id, status, session_id)
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
             (ts, pair, side.upper(), quantity, price,
-             notional, fee, mode, order_id, status),
+             notional, fee, mode, order_id, status, self.session_id),
         )
         self._conn().commit()
 
@@ -208,6 +210,14 @@ class BotDB:
     def get_trades(self, limit: int = 50) -> list[dict]:
         rows = self._conn().execute(
             "SELECT * FROM trades ORDER BY timestamp_ms DESC LIMIT ?", (limit,)
+        ).fetchall()
+        return [dict(r) for r in rows]
+
+    def get_session_trades(self, limit: int = 200) -> list[dict]:
+        """Return only trades from the current session."""
+        rows = self._conn().execute(
+            "SELECT * FROM trades WHERE session_id = ? ORDER BY timestamp_ms DESC LIMIT ?",
+            (self.session_id, limit),
         ).fetchall()
         return [dict(r) for r in rows]
 
