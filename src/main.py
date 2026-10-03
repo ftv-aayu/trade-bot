@@ -60,14 +60,14 @@ from src.db import BotDB
 #  CONFIGURATION -- edit these before running
 # ===============================================================
 PAPER_MODE         = False     # True = fake trades | False = real trades
-STARTING_BALANCE   = 50_000 # starting balance -- used for risk sizing in both modes
+STARTING_BALANCE   = 49_891.04 # starting balance -- used for risk sizing in both modes
                                # in live mode this is auto-set from real account on startup
 
 POLL_INTERVAL      = 300      # 5 minutes -- reduces noise and commission churn
 PERF_INTERVAL      = 900     # performance summary every 30 min
 
-PROFIT_TARGET_PCT  = None     # disabled -- run until Ctrl+C
-STOP_LOSS_PCT      = 5.57      # stop if portfolio drops to ~$46,500
+PROFIT_TARGET_PCT  = 1.7     # disabled -- run until Ctrl+C
+STOP_LOSS_PCT      = 4.57      # stop if portfolio drops to ~$46,500
 MAX_POSITIONS      = 6       # max open positions at once
 # ===============================================================
 
@@ -491,6 +491,69 @@ def run():
 
                 amt_prec = get_amount_precision(exchange_info, pair)
 
+                # -- Trailing stop: once up >1.5%, move stop to breakeven --
+                if coin_held > 0:
+                    held_ind   = strategy.indicators(pair)
+                    held_entry = held_ind.get("entry_price", 0)
+                    if held_entry > 0:
+                        current_pnl_pct = (price - held_entry) / held_entry * 100
+                        # If up >1.5%, update entry_price to breakeven (entry + fees)
+                        # This means the stop-loss now protects against any loss
+                        breakeven = held_entry * 1.002  # entry + 0.2% round-trip commission
+                        state = strategy._state(pair)
+                        if current_pnl_pct >= 1.5 and state.entry_price < breakeven:
+                            old_stop = state.entry_price * 0.98
+                            state.entry_price = breakeven
+                            new_stop = state.entry_price * 0.98
+                            logger.info("TRAILING STOP %s: pnl=%.2f%% -> entry moved from %.4f to %.4f (stop %.4f -> %.4f)",
+                                        pair, current_pnl_pct, held_entry, breakeven, old_stop, new_stop)
+
+                # -- Proactive rotation: even when slots are free, --
+                # sell a position that is consistently losing ground  --
+                # IF a stronger signal exists on another pair.
+                if coin_held > 0 and signal == "HOLD":
+                    held_ind   = strategy.indicators(pair)
+                    held_entry = held_ind.get("entry_price", 0)
+                    if held_entry > 0:
+                        held_pnl_pct = (price - held_entry) / held_entry * 100
+                        held_cycles  = held_ind.get("hold_cycles", 0)
+                        fast = held_ind.get("fast_ema", 0)
+                        slow = held_ind.get("slow_ema", 0)
+                        rsi  = held_ind.get("rsi", 50)
+                        # Proactively exit if: losing >0.8%, EMA turned down,
+                        # RSI < 40 (weakening), held for at least 3 cycles
+                        if (held_pnl_pct <= -0.8
+                                and fast < slow          # trend reversed
+                                and rsi < 40             # momentum weakening
+                                and held_cycles >= 3     # not a new position
+                                and held_pnl_pct > -2.0  # stop-loss hasn't caught it yet
+                        ):
+                            if PAPER_MODE:
+                                sell_qty_proactive = coin_held
+                            else:
+                                sell_qty_proactive = live_wallet.get(coin.upper(), {}).get("Free", 0)
+                            if sell_qty_proactive > 0:
+                                print(f"\n  [SELL]  PROACTIVE EXIT -> {pair}  pnl={held_pnl_pct:+.2f}%  EMA down  RSI={rsi:.0f}")
+                                if PAPER_MODE:
+                                    p_result = paper.place_order(pair, "SELL", sell_qty_proactive, price=price)
+                                else:
+                                    p_result = client.place_order(pair, "SELL", sell_qty_proactive, order_type="MARKET")
+                                print_trade(p_result, PAPER_MODE)
+                                if p_result.get("Success"):
+                                    trade_log.log_order(p_result, note="proactive_exit")
+                                    db.insert_trade_from_order(p_result, mode="paper" if PAPER_MODE else "live")
+                                    strategy.notify_sold(pair, was_loss=True)
+                                    if PAPER_MODE:
+                                        usd_free = paper.get_usd_balance()
+                                    else:
+                                        _pw = client.balance().get("SpotWallet") or {}
+                                        usd_free = _pw.get("USD", {}).get("Free", 0.0)
+                                    total_sells += 1
+                                    actions += 1
+                                    continue  # skip to next pair
+
+                amt_prec = get_amount_precision(exchange_info, pair)
+
                 if signal == "BUY" and coin_held == 0:
                     # Count open positions from actual in-memory state
                     if PAPER_MODE:
@@ -595,6 +658,18 @@ def run():
                     qty = int((size_usd / price) * factor) / factor
                     if qty * price < get_min_order(exchange_info, pair):
                         logger.info("SKIP %s: order value %.2f < min_order %.2f", pair, qty*price, get_min_order(exchange_info, pair))
+                        continue
+
+                    # Commission filter: skip if $7.50 fee > 0.15% of position value
+                    # This blocks low-price meme coins (BONK, SHIB, FLOKI) where fee eats profit
+                    TAKER_FEE_USD = qty * price * 0.001  # 0.1% taker fee
+                    FEE_THRESHOLD = qty * price * 0.0015  # fee should be < 0.15% of position
+                    if TAKER_FEE_USD > FEE_THRESHOLD:
+                        logger.info("SKIP %s: fee $%.2f > 0.15%% of position $%.2f", pair, TAKER_FEE_USD, qty*price)
+                        continue
+                    # Also skip if position value < $1000 (commission drag too high)
+                    if qty * price < 1000:
+                        logger.info("SKIP %s: position value $%.2f too small for commission efficiency", pair, qty*price)
                         continue
 
                     print(f"\n  [BUY]  BUY -> {pair}  qty={qty}  ~${qty*price:.2f}  [{open_positions+1}/{MAX_POSITIONS}]")
