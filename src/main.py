@@ -180,53 +180,41 @@ def shutdown(reason: str, paper: PaperTrader | None, client: RoostooClient,
              trade_log: TradeLogger, tickers: dict,
              total_buys: int, total_sells: int, db=None):
     print(f"\n{'='*62}")
-    print(f"  STOP  {reason}")
+    print(f"  {reason}")
     print(f"  {now()}")
     print(f"{'='*62}")
 
+    # Get current portfolio value without touching positions
     if PAPER_MODE and paper:
-        # Close all paper positions
+        final_val = paper.portfolio_value(tickers)
         positions = paper.positions_summary(tickers)
         if positions:
-            print("\n  Closing all paper positions...")
+            print(f"\n  Positions left open ({len(positions)}) -- will resume on next start:")
             for p in positions:
-                pair  = f"{p['coin']}/USD"
-                qty   = p["qty"]
-                price = p["current_price"]
-                result = paper.place_order(pair, "SELL", qty, price=price)
-                print_trade(result, paper=True)
-                if result.get("Success"):
-                    trade_log.log_order(result, note="shutdown_sell")
-        final_val = paper.portfolio_value(tickers)
+                pct = p.get("unrealized_pct", 0)
+                print(f"    {p['coin']:<12} qty={p['qty']:.4f}  entry=${p['avg_entry']:.4f}  now=${p['current_price']:.4f}  {pct:+.2f}%")
     else:
-        # Close all real positions -- use ONE wallet snapshot for sell loop
-        # AND final_val so there is no race between two separate balance calls.
-        wallet = client.balance().get("SpotWallet") or {}
+        wallet      = client.balance().get("SpotWallet") or {}
         tickers_now = client.get_all_tickers()
-        for coin, amounts in wallet.items():
-            if coin == "USD": continue
-            # Sell Free qty; locked qty may be in a pending order and can't be market-sold
-            qty = amounts.get("Free", 0.0)
-            if qty <= 0: continue
-            pair  = f"{coin}/USD"
-            price = tickers_now.get(pair, {}).get("LastPrice", 0)
-            print(f"  Selling {qty} {coin} @ ${price}")
-            result = client.place_order(pair, "SELL", qty, order_type="MARKET")
-            print_trade(result, paper=False)
-            if result.get("Success"):
-                trade_log.log_order(result, note="shutdown_sell")
-                if db is not None:
-                    db.insert_trade_from_order(result, mode="live")
-        # Reuse the SAME wallet snapshot; no second API call needed here
-        final_val = sum(
-            (amounts.get("Free", 0) + amounts.get("Lock", 0)) *
-            tickers_now.get(f"{c}/USD", {}).get("LastPrice", 0) if c != "USD" else
-            amounts.get("Free", 0) + amounts.get("Lock", 0)
-            for c, amounts in wallet.items()
+        final_val   = sum(
+            (amt.get("Free", 0) + amt.get("Lock", 0)) *
+            (tickers_now.get(f"{c}/USD", {}).get("LastPrice", 0) if c != "USD" else 1)
+            for c, amt in wallet.items()
         )
+        open_coins = {c: amt for c, amt in wallet.items()
+                      if c != "USD" and amt.get("Free", 0) + amt.get("Lock", 0) > 0}
+        if open_coins:
+            print(f"\n  Positions left open ({len(open_coins)}) -- NOT sold:")
+            for coin, amt in open_coins.items():
+                qty   = amt.get("Free", 0) + amt.get("Lock", 0)
+                price = tickers_now.get(f"{coin}/USD", {}).get("LastPrice", 0)
+                print(f"    {coin:<12} qty={qty:.6f}  value=${qty*price:,.2f}")
 
     summary = trade_log.performance_summary(STARTING_BALANCE, final_val)
     print_performance(summary, final_val)
+    print(f"  Total trades:  {total_buys} buys / {total_sells} sells")
+    print(f"  Logs saved to: logs/")
+    print(f"{'='*62}\n")
     print(f"  Total trades:  {total_buys} buys / {total_sells} sells")
     print(f"  Logs saved to: logs/")
     print(f"{'='*62}\n")
@@ -648,7 +636,12 @@ def run():
                         logger.info("SKIP %s: usd_free=%.2f below reserve %.2f", pair, usd_free, MIN_CASH_RESERVE)
                         continue
 
-                    size_usd = risk.position_size_usd(usd_free, portfolio_val)
+                    size_usd = risk.position_size_usd(
+                        usd_free,
+                        portfolio_val,
+                        signal_strength=min(1.0, ind.get("ema_sep_pct", 0) * 10 + (1 - abs(ind.get("rsi", 52) - 52) / 15)),
+                        volatility_pct=abs(all_tickers.get(pair, {}).get("Change", 0) * 100),
+                    )
                     logger.info("BUY candidate %s: size_usd=%.2f usd_free=%.2f open=%d/%d",
                                 pair, size_usd, usd_free, open_positions, MAX_POSITIONS)
                     if size_usd <= 0:

@@ -57,26 +57,58 @@ class RiskManager:
     # Position sizing
     # ------------------------------------------------------------------
 
-    def position_size_usd(self, available_usd: float, portfolio_value: float) -> float:
+    def position_size_usd(
+        self,
+        available_usd: float,
+        portfolio_value: float,
+        signal_strength: float = 0.5,   # 0.0 weak .. 1.0 strong (EMA sep + RSI score)
+        volatility_pct: float = 1.0,     # recent price volatility as % (higher = smaller size)
+    ) -> float:
         """
-        Return how many USD to allocate to a single trade.
-        Respects max_position_pct and keeps a cash reserve.
+        Dynamic position sizing using half-Kelly with volatility adjustment.
+
+        Base allocation: half-Kelly from observed 35% win rate, 2.3x ratio
+          Kelly% = 0.35 - 0.65/2.3 = 6.8%  ->  half-Kelly = 3.4%
+          On $50k that is ~$1,700 base size
+
+        Adjustments:
+          - Signal strength 0-1 scales size from 75% to 125% of base
+          - Higher volatility reduces size (volatile coins = smaller bet)
+          - Hard cap: never more than 10% of portfolio per trade
+          - Hard floor: never less than $500 (commission becomes too large a %)
         """
         if self._halted:
             return 0.0
 
-        # How much of the portfolio we are allowed to allocate
-        max_alloc = portfolio_value * self.config.max_position_pct
+        # Base size: half-Kelly
+        BASE_PCT  = 0.034                           # 3.4% of portfolio
+        base_size = portfolio_value * BASE_PCT      # ~$1,700 on $50k
 
-        # Leave a reserve
+        # Scale by signal strength (0.75x to 1.25x)
+        signal_mult = 0.75 + signal_strength * 0.5
+
+        # Scale down for volatility (1% vol = 1x, 3% vol = 0.6x, 5% vol = 0.4x)
+        vol_mult = max(0.4, 1.0 / (1.0 + volatility_pct * 0.3))
+
+        size = base_size * signal_mult * vol_mult
+
+        # Hard cap: never more than 10% of portfolio
+        MAX_SINGLE_PCT = 0.10
+        size = min(size, portfolio_value * MAX_SINGLE_PCT)
+
+        # Must have cash available
         spendable = available_usd * (1 - self.config.reserve_pct)
+        size = min(size, spendable)
 
-        size = min(max_alloc, spendable)
-
+        # Floor
         if size < self.config.min_order_usd:
             logger.debug("Position size %.2f below minimum %.2f -- skipping", size, self.config.min_order_usd)
             return 0.0
 
+        logger.debug(
+            "Position size: base=%.0f signal_mult=%.2f vol_mult=%.2f final=%.0f",
+            base_size, signal_mult, vol_mult, size,
+        )
         return size
 
     def quantity_for_usd(self, usd_amount: float, price: float, amount_precision: int = 6) -> float:
