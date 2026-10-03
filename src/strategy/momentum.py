@@ -4,7 +4,7 @@ EMA crossover + RSI with hardened entry filters:
 
   Changes from v1:
   - 2-tick confirmation: fast EMA must be above slow for 2 consecutive ticks before BUY
-  - Tighter RSI buy zone: 45–58 (was 40–60)
+  - Tighter RSI buy zone: 45-58 (was 40-60)
   - Stronger EMA separation: 0.05% (was 0.02%)
   - Per-pair cooldown: 3-cycle lockout after a losing trade
   - Max open positions: enforced by caller (main.py)
@@ -28,12 +28,12 @@ class MomentumConfig:
     min_history: int = 50
 
     # Entry filters (tighter than v1)
-    rsi_buy_min: float  = 45.0    # was 40 — avoid weak/falling momentum
-    rsi_buy_max: float  = 58.0    # was 60 — avoid overbought entries
+    rsi_buy_min: float  = 45.0    # was 40 -- avoid weak/falling momentum
+    rsi_buy_max: float  = 58.0    # was 60 -- avoid overbought entries
     rsi_sell_min: float = 45.0    # don't sell on signal if RSI < 45
 
     # EMA filters
-    ema_separation_pct: float = 0.05   # was 0.02 — crossover must be meaningful
+    ema_separation_pct: float = 0.05   # was 0.02 -- crossover must be meaningful
     confirm_ticks: int = 2              # NEW: fast must be above slow for N ticks
 
     # Hold & exit filters
@@ -108,7 +108,7 @@ class MomentumStrategy:
         if len(prices) < cfg.min_history:
             return "HOLD"
 
-        # First live tick after restore — skip signals, clear flag
+        # First live tick after restore -- skip signals, clear flag
         if state.just_restored:
             state.just_restored = False
             return "HOLD"
@@ -134,7 +134,7 @@ class MomentumStrategy:
 
         signal: Signal = "HOLD"
 
-        # ── BUY ───────────────────────────────────────────────────────
+        # -- BUY -------------------------------------------------------
         # Entry requires a FRESH crossover event:
         # fast EMA must have crossed above slow EMA within the last
         # `confirm_ticks` live ticks (not stale DB-restored history).
@@ -143,7 +143,7 @@ class MomentumStrategy:
         crossed_up = prev_fast <= prev_slow and fast > slow
 
         # trend_confirmed: crossover happened AND has been above for
-        # exactly confirm_ticks (not more) — ensures signal is recent
+        # exactly confirm_ticks (not more) -- ensures signal is recent
         trend_confirmed = (
             state.ticks_above_slow >= cfg.confirm_ticks
             and state.ticks_above_slow <= cfg.confirm_ticks + 2  # only fires in narrow window
@@ -162,12 +162,14 @@ class MomentumStrategy:
             and separation_pct >= cfg.ema_separation_pct
             and state.cooldown_cycles == 0
             and not state.just_restored
+            and state.entry_price == 0      # BUG FIX: don't overwrite an open position's entry
+            and state.last_signal != "BUY"  # BUG FIX: don't re-fire if already in BUY state
         ):
             signal = "BUY"
             state.entry_price = price
             state.hold_cycles = 0
 
-        # ── SELL ──────────────────────────────────────────────────────
+        # -- SELL ------------------------------------------------------
         elif state.last_signal == "BUY" or state.hold_cycles > 0:
             state.hold_cycles += 1
             pnl_pct = ((price - state.entry_price) / state.entry_price * 100) if state.entry_price > 0 else 0
@@ -176,7 +178,7 @@ class MomentumStrategy:
             if not self._restoring and pnl_pct <= -cfg.stop_loss_pct:
                 signal = "SELL"
                 state.cooldown_cycles = cfg.loss_cooldown_cycles  # lockout
-                logger.warning("%s STOP-LOSS: pnl=%.2f%% — cooldown %d cycles",
+                logger.warning("%s STOP-LOSS: pnl=%.2f%% -- cooldown %d cycles",
                                pair, pnl_pct, cfg.loss_cooldown_cycles)
 
             # 2. Take profit
@@ -184,7 +186,7 @@ class MomentumStrategy:
                 signal = "SELL"
                 logger.info("%s TAKE-PROFIT: pnl=%.2f%%", pair, pnl_pct)
 
-            # 3. EMA cross down — only if profitable and held long enough
+            # 3. EMA cross down -- only if profitable and held long enough
             elif (
                 prev_fast >= prev_slow and fast < slow
                 and rsi > cfg.rsi_sell_min

@@ -1,7 +1,7 @@
 """
 src/db.py
 SQLite database for storing prices, trades, equity, and API events.
-Thread-safe — uses a single connection with WAL mode.
+Thread-safe -- uses a single connection with WAL mode.
 """
 
 import sqlite3
@@ -43,7 +43,8 @@ SCHEMA = """
         fee REAL NOT NULL,
         mode TEXT NOT NULL,
         order_id TEXT,
-        status TEXT NOT NULL
+        status TEXT NOT NULL,
+        session_id TEXT
     );
     CREATE INDEX IF NOT EXISTS idx_trades_ts ON trades(timestamp_ms);
     CREATE TABLE IF NOT EXISTS equity (
@@ -108,8 +109,15 @@ class BotDB:
         conn = self._conn()
         conn.executescript(SCHEMA)
         conn.commit()
+        # Migration: add session_id column to trades if it doesn't exist yet
+        # (handles DBs created before this column was added to the schema)
+        cols = {row[1] for row in conn.execute("PRAGMA table_info(trades)").fetchall()}
+        if "session_id" not in cols:
+            conn.execute("ALTER TABLE trades ADD COLUMN session_id TEXT")
+            conn.commit()
+            logger.info("Migration: added session_id column to trades table")
 
-    # ── state ─────────────────────────────────────────────────────────
+    # -- state ---------------------------------------------------------
 
     def set_state(self, key: str, value: str):
         self._conn().execute(
@@ -124,7 +132,7 @@ class BotDB:
         ).fetchone()
         return row["value"] if row else default
 
-    # ── prices ────────────────────────────────────────────────────────
+    # -- prices --------------------------------------------------------
 
     def insert_prices(self, tickers: dict, timestamp_ms: int = None):
         """
@@ -167,7 +175,7 @@ class BotDB:
         ).fetchall()
         return [dict(r) for r in rows]
 
-    # ── trades ────────────────────────────────────────────────────────
+    # -- trades --------------------------------------------------------
 
     def insert_trade(
         self,
@@ -221,7 +229,7 @@ class BotDB:
         ).fetchall()
         return [dict(r) for r in rows]
 
-    # ── equity ────────────────────────────────────────────────────────
+    # -- equity --------------------------------------------------------
 
     def insert_equity(self, equity: float, timestamp_ms: int = None):
         ts = timestamp_ms or _ts()
@@ -237,7 +245,7 @@ class BotDB:
         ).fetchall()
         return [dict(r) for r in rows]
 
-    # ── api_events ────────────────────────────────────────────────────
+    # -- api_events ----------------------------------------------------
 
     def log_api_event(
         self,
@@ -254,7 +262,7 @@ class BotDB:
         )
         self._conn().commit()
 
-    # ── quick stats ───────────────────────────────────────────────────
+    # -- quick stats ---------------------------------------------------
 
     def stats(self) -> dict:
         conn = self._conn()

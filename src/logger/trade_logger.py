@@ -8,9 +8,12 @@ import json
 import logging
 import os
 from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
 from pathlib import Path
 
 logger = logging.getLogger(__name__)
+
+IST = ZoneInfo("Asia/Kolkata")
 
 LOGS_DIR = Path(__file__).resolve().parents[2] / "logs"
 LOGS_DIR.mkdir(exist_ok=True)
@@ -20,7 +23,7 @@ PERF_LOG = LOGS_DIR / "performance.jsonl"
 
 
 def _now_iso() -> str:
-    return datetime.now(timezone.utc).isoformat()
+    return datetime.now(IST).isoformat()
 
 
 class TradeLogger:

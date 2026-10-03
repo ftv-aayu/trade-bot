@@ -14,8 +14,8 @@ class RiskConfig:
     max_position_pct: float = 0.15     # max 15% of portfolio per asset
     min_order_usd: float = 10.0        # minimum order value in USD
     max_drawdown_pct: float = 0.12     # halt trading if drawdown > 12%
-    commission_rate: float = 0.001     # 0.1% taker (MARKET) — matches real exchange
-    maker_rate: float = 0.0005         # 0.05% maker (LIMIT) — matches real exchange
+    commission_rate: float = 0.001     # 0.1% taker (MARKET) -- matches real exchange
+    maker_rate: float = 0.0005         # 0.05% maker (LIMIT) -- matches real exchange
     reserve_pct: float = 0.05          # keep 5% cash reserve
 
 
@@ -47,7 +47,7 @@ class RiskManager:
             self._halted = True
         else:
             if self._halted:
-                logger.info("Drawdown recovered — resuming trading.")
+                logger.info("Drawdown recovered -- resuming trading.")
             self._halted = False
 
     def is_halted(self) -> bool:
@@ -74,7 +74,7 @@ class RiskManager:
         size = min(max_alloc, spendable)
 
         if size < self.config.min_order_usd:
-            logger.debug("Position size %.2f below minimum %.2f — skipping", size, self.config.min_order_usd)
+            logger.debug("Position size %.2f below minimum %.2f -- skipping", size, self.config.min_order_usd)
             return 0.0
 
         return size
@@ -95,7 +95,7 @@ class RiskManager:
         """Return True if an order meets minimum size requirements."""
         order_value = qty * price
         if order_value < self.config.min_order_usd:
-            logger.debug("Order value %.2f USD below minimum — skipped", order_value)
+            logger.debug("Order value %.2f USD below minimum -- skipped", order_value)
             return False
         return True
 

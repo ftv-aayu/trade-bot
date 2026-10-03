@@ -106,15 +106,15 @@ class RoostooClient:
     # ------------------------------------------------------------------
 
     def server_time(self) -> dict:
-        """GET /v3/serverTime — no auth required."""
+        """GET /v3/serverTime -- no auth required."""
         return self._get("/v3/serverTime")
 
     def exchange_info(self) -> dict:
-        """GET /v3/exchangeInfo — no auth required."""
+        """GET /v3/exchangeInfo -- no auth required."""
         return self._get("/v3/exchangeInfo")
 
     def ticker(self, pair: Optional[str] = None) -> dict:
-        """GET /v3/ticker — timestamp required (RCL_TSCheck)."""
+        """GET /v3/ticker -- timestamp required (RCL_TSCheck)."""
         params = {"timestamp": self._timestamp()}
         if pair:
             params["pair"] = pair

@@ -11,8 +11,8 @@ from typing import Optional
 
 logger = logging.getLogger(__name__)
 
-TAKER_FEE = 0.001   # 0.1%  — MARKET orders (same as real exchange)
-MAKER_FEE = 0.0005  # 0.05% — LIMIT orders  (same as real exchange)
+TAKER_FEE = 0.001   # 0.1%  -- MARKET orders (same as real exchange)
+MAKER_FEE = 0.0005  # 0.05% -- LIMIT orders  (same as real exchange)
 
 
 @dataclass
@@ -26,7 +26,7 @@ class PaperTrader:
     def __init__(self, starting_usd: float = 50_000.0):
         self.starting_usd = starting_usd
         self.usd_balance: float = starting_usd
-        self._positions: dict[str, Position] = {}  # coin → Position
+        self._positions: dict[str, Position] = {}  # coin -> Position
         self._orders: list[dict] = []
         self._order_id_counter = 1
 
@@ -52,7 +52,7 @@ class PaperTrader:
         return {"Success": True, "ErrMsg": "", "SpotWallet": wallet}
 
     # ------------------------------------------------------------------
-    # Order execution (fake — uses the price you pass in)
+    # Order execution (fake -- uses the price you pass in)
     # ------------------------------------------------------------------
 
     def place_order(
@@ -65,7 +65,7 @@ class PaperTrader:
     ) -> dict:
         """
         Simulate a market order fill at `price`.
-        price must be provided — caller should pass the live ticker price.
+        price must be provided -- caller should pass the live ticker price.
         """
         if price is None or price <= 0:
             return {"Success": False, "ErrMsg": "price required for paper trading"}
