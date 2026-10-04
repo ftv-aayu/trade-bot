@@ -60,7 +60,7 @@ from src.db import BotDB
 #  CONFIGURATION -- edit these before running
 # ===============================================================
 PAPER_MODE         = False     # True = fake trades | False = real trades
-STARTING_BALANCE   = 49_891.04 # starting balance -- used for risk sizing in both modes
+STARTING_BALANCE   = 49_891.03 # starting balance -- used for risk sizing in both modes
                                # in live mode this is auto-set from real account on startup
 
 POLL_INTERVAL      = 300      # 5 minutes -- reduces noise and commission churn
@@ -218,6 +218,113 @@ def shutdown(reason: str, paper: PaperTrader | None, client: RoostooClient,
     print(f"  Total trades:  {total_buys} buys / {total_sells} sells")
     print(f"  Logs saved to: logs/")
     print(f"{'='*62}\n")
+
+
+def _detect_market_state(tickers: dict, strategy: MomentumStrategy, pairs: list) -> dict:
+    """
+    Classify current market and return appropriate strategy parameters.
+
+    States:
+      RECOVERY  -- market sold off, RSI low, now bouncing upward
+      TRENDING  -- steady uptrend, RSI healthy, EMA aligned
+      RANGING   -- choppy, no clear direction, low momentum
+      OVERBOUGHT -- RSI high across board, rally extended, risk of reversal
+      DOWNTURN  -- majority falling, avoid buying
+
+    Returns a dict of MomentumConfig overrides for the detected state.
+    """
+    warmed_pairs = [p for p in pairs if not strategy.indicators(p).get("warming_up", False)]
+    if not warmed_pairs:
+        return {}
+
+    # Collect indicators across all warmed pairs
+    rsi_vals   = [strategy.indicators(p).get("rsi", 50) for p in warmed_pairs]
+    avg_rsi    = sum(rsi_vals) / len(rsi_vals)
+    ema_up     = sum(1 for p in warmed_pairs if strategy.indicators(p).get("fast_ema", 0) > strategy.indicators(p).get("slow_ema", 1))
+    ema_up_pct = ema_up / len(warmed_pairs)
+
+    # 24h change breadth
+    changes    = [tickers.get(p, {}).get("Change", 0) * 100 for p in warmed_pairs]
+    rising_pct = sum(1 for c in changes if c > 0) / len(changes)
+    avg_change = sum(changes) / len(changes)
+
+    # RSI distribution
+    rsi_below35 = sum(1 for r in rsi_vals if r < 35) / len(rsi_vals)
+    rsi_above65 = sum(1 for r in rsi_vals if r > 65) / len(rsi_vals)
+
+    # Classify
+    if avg_rsi < 38 and rising_pct > 0.4:
+        state = "RECOVERY"          # was oversold, now bouncing
+    elif avg_rsi < 42 and rising_pct < 0.4:
+        state = "DOWNTURN"          # broadly falling
+    elif avg_rsi > 65 and ema_up_pct > 0.6:
+        state = "OVERBOUGHT"        # too much rally, cooling expected
+    elif 42 <= avg_rsi <= 62 and ema_up_pct > 0.45:
+        state = "TRENDING"          # healthy uptrend
+    else:
+        state = "RANGING"           # choppy, no clear direction
+
+    # Parameter sets per state
+    params = {
+        "RECOVERY": {
+            # Looser buy zone — catch the bounce early
+            "rsi_buy_min": 38.0,
+            "rsi_buy_max": 62.0,
+            "ema_separation_pct": 0.02,   # weaker crossover ok in recovery
+            "confirm_ticks": 2,
+            "stop_loss_pct": 1.5,         # tighter stop — recovery can reverse fast
+            "take_profit_pct": 2.5,       # take gains quicker
+            "min_profit_pct": 0.20,
+        },
+        "TRENDING": {
+            # Normal zone — balanced
+            "rsi_buy_min": 44.0,
+            "rsi_buy_max": 60.0,
+            "ema_separation_pct": 0.04,
+            "confirm_ticks": 2,
+            "stop_loss_pct": 2.0,
+            "take_profit_pct": 3.5,       # let winners run in a trend
+            "min_profit_pct": 0.25,
+        },
+        "RANGING": {
+            # Stricter — lots of false signals in choppy market
+            "rsi_buy_min": 45.0,
+            "rsi_buy_max": 56.0,
+            "ema_separation_pct": 0.06,   # demand clearer crossover
+            "confirm_ticks": 3,           # need 3 ticks confirmation
+            "stop_loss_pct": 1.5,
+            "take_profit_pct": 2.0,       # exit quickly, don't overstay
+            "min_profit_pct": 0.20,
+        },
+        "OVERBOUGHT": {
+            # Very tight — market overextended, mostly HOLD/SELL mode
+            "rsi_buy_min": 48.0,
+            "rsi_buy_max": 56.0,
+            "ema_separation_pct": 0.08,
+            "confirm_ticks": 3,
+            "stop_loss_pct": 1.5,
+            "take_profit_pct": 2.0,       # lock in gains fast before reversal
+            "min_profit_pct": 0.15,
+        },
+        "DOWNTURN": {
+            # Very restrictive — don't buy into a falling market
+            "rsi_buy_min": 50.0,          # only buy the very strongest signals
+            "rsi_buy_max": 58.0,
+            "ema_separation_pct": 0.08,
+            "confirm_ticks": 3,
+            "stop_loss_pct": 1.5,         # cut losses fast
+            "take_profit_pct": 2.0,
+            "min_profit_pct": 0.15,
+        },
+    }
+
+    return {
+        "state": state,
+        "avg_rsi": round(avg_rsi, 1),
+        "ema_up_pct": round(ema_up_pct * 100, 0),
+        "rising_pct": round(rising_pct * 100, 0),
+        "params": params[state],
+    }
 
 
 def _restore_warmup(strategy: MomentumStrategy, db: "BotDB", pairs: list,
@@ -432,16 +539,42 @@ def run():
 
             # -- Header -----------------------------------------------
             warmed   = sum(1 for p in TRADE_PAIRS if not strategy.indicators(p).get("warming_up", False))
-            # pairs that have at least 1 tick collected (warming up or done)
             have_data = sum(1 for p in TRADE_PAIRS if strategy.indicators(p).get("prices_collected", 0) > 0)
             total_needed = 50  # min_history
-            # average ticks collected across all pairs
             avg_ticks = sum(
                 strategy.indicators(p).get("prices_collected", 0) for p in TRADE_PAIRS
             ) / max(len(TRADE_PAIRS), 1)
             logger.info("Cycle %d: warmed=%d/%d avg_ticks=%.1f portfolio=%.2f usd_free=%.2f",
                         cycle, warmed, len(TRADE_PAIRS), avg_ticks, portfolio_val, usd_free)
             print_header(cycle, portfolio_val, usd_free, warmed, len(TRADE_PAIRS), PAPER_MODE, avg_ticks, total_needed)
+
+            # -- Adaptive parameters ----------------------------------
+            # Detect market state each cycle and update strategy thresholds
+            if warmed >= len(TRADE_PAIRS) * 0.8:  # only adapt when most pairs are warmed
+                market = _detect_market_state(all_tickers, strategy, TRADE_PAIRS)
+                if market:
+                    p = market["params"]
+                    prev_state = getattr(strategy, "_last_market_state", None)
+                    strategy.config.rsi_buy_min       = p["rsi_buy_min"]
+                    strategy.config.rsi_buy_max       = p["rsi_buy_max"]
+                    strategy.config.ema_separation_pct= p["ema_separation_pct"]
+                    strategy.config.confirm_ticks     = p["confirm_ticks"]
+                    strategy.config.stop_loss_pct     = p["stop_loss_pct"]
+                    strategy.config.take_profit_pct   = p["take_profit_pct"]
+                    strategy.config.min_profit_pct    = p["min_profit_pct"]
+                    strategy._last_market_state = market["state"]
+
+                    if market["state"] != prev_state:
+                        print(f"\n  Market state: {market['state']}  "
+                              f"(RSI={market['avg_rsi']}  "
+                              f"EMA_up={market['ema_up_pct']:.0f}%  "
+                              f"Rising={market['rising_pct']:.0f}%)")
+                        print(f"  Adapted: RSI zone {p['rsi_buy_min']:.0f}-{p['rsi_buy_max']:.0f}  "
+                              f"sep={p['ema_separation_pct']}%  "
+                              f"stop={p['stop_loss_pct']}%  "
+                              f"target={p['take_profit_pct']}%")
+                        logger.info("Market state changed: %s -> %s  params=%s",
+                                    prev_state, market['state'], p)
 
             if risk.is_halted():
                 print(f"  STOP  HALTED -- drawdown {risk.drawdown(portfolio_val)*100:.2f}% exceeds limit.")
