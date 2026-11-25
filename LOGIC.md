@@ -20,26 +20,34 @@ This document explains the technical logic of each layer of the bot. It is updat
 
 ## 1. Data pipeline
 
-**Source:** Binance public REST API via `https://data-api.binance.vision`  
-**Endpoint used:** `GET /api/v3/klines` (candlestick data) and `GET /api/v3/ticker/24hr` (live prices)  
-**Auth:** None required.
+### Crypto — Binance
+**Source:** `https://data-api.binance.vision`  
+**Endpoints:** `GET /api/v3/klines` (history), `GET /api/v3/ticker/24hr` (live prices)  
+**Auth:** None. Poll interval: 60 seconds (default).
+
+### Stocks — Yahoo Finance
+**Source:** Yahoo Finance via the `yfinance` library  
+**Endpoints:** Internal Yahoo Finance API (no key required)  
+**Interval:** 5-minute bars (up to 60 days of history available)  
+**Auth:** None. Poll interval: 300 seconds (5 min). Skipped automatically outside US market hours (Mon–Fri 9:30–16:00 ET).
+
+The two universes run **independent strategy and predictor instances** — crypto and stock price series are never mixed in the same training matrix. Predictions and accuracy are tracked separately per `asset_type` in the DB.
 
 ### Startup prefetch
 
-On first launch, `main.py` calls `prefetch_history()` for each watched symbol. It paginates backwards through Binance klines (1000 bars per request, 3 requests per symbol) to fetch **3000 bars of 1-minute OHLCV data per symbol** — roughly 50 hours of history. This seeds the ML model so predictions are available from the first poll cycle, ~1 minute after launch.
-
-Bars are stored in the `prices` table in SQLite with columns:  
-`(timestamp_ms, symbol, price, bid, ask, change_pct_24h, quote_volume_24h)`
+| Source | Bars fetched | Method |
+|--------|-------------|--------|
+| Binance (crypto) | 3000 × 1m per symbol | 3 paginated REST requests per symbol |
+| Yahoo Finance (stocks) | ~4680 × 5m per ticker (60 days) | Single `yf.download()` call per ticker |
 
 ### Polling loop
 
-Every `POLL_SECONDS` (default: 60s), `main.py`:
-1. Fetches `ticker/24hr` for all watched symbols (one request for all, no auth).
-2. Stores the latest price snapshot in the DB.
-3. Loads full price histories from the DB.
-4. Calls `strategy.analyze()` to run signal scoring + ML predictions.
-5. Writes new predictions to the DB.
-6. Settles predictions whose target time has passed.
+Every `POLL_SECONDS` (default: 60s):
+1. Fetch `ticker/24hr` from Binance for all crypto symbols.
+2. Store price snapshot with `asset_type='crypto'`.
+3. Run `crypto_strategy.analyze()` → store predictions.
+4. If `stock_poll_seconds` has elapsed and market is open: fetch latest stock prices, store with `asset_type='stock'`, run `stock_strategy.analyze()`.
+5. Settle predictions whose target time has passed (both asset types).
 
 ---
 
@@ -267,6 +275,7 @@ After running for one full prediction horizon (60 minutes), accuracy numbers app
 |------|--------|
 | 2026-11-25 | Initial build. Binance public data, 18-feature ridge ensemble, Rich dashboard, SQLite persistence. Prefetch fetches 3000 bars per symbol (3 paginated requests) on startup. Predictions available ~1 minute after launch. |
 | 2026-11-25 | Loosened validation gate thresholds for small 20-symbol universe. Rank IC with 20 observations is too noisy to gate on positive values — thresholds now reject clearly broken models (large negative) rather than requiring demonstrated positive edge. Model now passes gate and produces predictions. |
+| 2026-11-25 | Added US stock market support via Yahoo Finance (yfinance). Separate StockClient with market-hours guard. Independent strategy+predictor instance per asset class. DB tables gain `asset_type` column (crypto/stock) with backwards-compatible migration. Dashboard shows crypto and stock predictions in side-by-side panels with per-class accuracy. 20 large-cap US stocks added as default watch list. |
 
 ---
 

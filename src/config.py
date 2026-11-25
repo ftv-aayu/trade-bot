@@ -49,13 +49,21 @@ class Config:
     prediction_log_interval_seconds: int = _int("PREDICTION_LOG_INTERVAL_SECONDS", 300)
     api_min_request_interval_seconds: float = _float("API_MIN_REQUEST_INTERVAL_SECONDS", 0.10)
 
-    # Symbols
+    # Symbols — crypto (Binance USDT pairs)
     watch_symbols: tuple[str, ...] = _csv("WATCH_SYMBOLS",
         "BTCUSDT,ETHUSDT,BNBUSDT,SOLUSDT,ADAUSDT,XRPUSDT,DOGEUSDT,AVAXUSDT,DOTUSDT,MATICUSDT,"
         "LINKUSDT,LTCUSDT,UNIUSDT,ATOMUSDT,ETCUSDT,XLMUSDT,TRXUSDT,NEARUSDT,ALGOUSDT,VETUSDT")
     min_quote_volume: float = _float("MIN_QUOTE_VOLUME", 5_000_000.0)
     top_n: int = _int("TOP_N", 20)
     diagnostic_top_n: int = _int("DIAGNOSTIC_TOP_N", 50)
+
+    # Symbols — stocks (Yahoo Finance tickers)
+    watch_stocks: tuple[str, ...] = _csv("WATCH_STOCKS",
+        "AAPL,MSFT,GOOGL,AMZN,NVDA,META,TSLA,JPM,V,UNH,"
+        "XOM,JNJ,WMT,PG,MA,HD,CVX,ABBV,MRK,COST")
+    stock_interval: str = os.getenv("STOCK_INTERVAL", "5m")  # 5m = up to 60d history
+    stocks_enabled: bool = _bool("STOCKS_ENABLED", True)
+    stock_poll_seconds: int = _int("STOCK_POLL_SECONDS", 300)  # poll stocks every 5 min
 
     # Strategy windows (in minutes)
     fast_window: int = _int("FAST_WINDOW", 60)
@@ -140,7 +148,7 @@ class Config:
     predictor_min_rank_ic: float = _float("PREDICTOR_MIN_RANK_IC", -0.10)
     predictor_min_balanced_accuracy: float = _float("PREDICTOR_MIN_BALANCED_ACCURACY", 0.33)
     predictor_min_top_decile_edge: float = _float("PREDICTOR_MIN_TOP_DECILE_EDGE", -0.001)
-    predictor_min_top_decile_net_return: float = _float("PREDICTOR_MIN_TOP_DECILE_NET_RETURN", -0.005)
+    predictor_min_top_decile_net_return: float = _float("PREDICTOR_MIN_TOP_DECILE_NET_RETURN", -0.006)
     slippage_bps: float = _float("SLIPPAGE_BPS", 10.0)
     predictor_max_brier: float = _float("PREDICTOR_MAX_BRIER", 0.245)
     predictor_class_threshold: float = _float("PREDICTOR_CLASS_THRESHOLD", 0.0015)

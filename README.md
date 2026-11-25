@@ -6,13 +6,14 @@ A prediction-only crypto market bot that fetches public Binance data, runs an ML
 
 ## What it does
 
-- **Fetches public market data** from `data-api.binance.vision` — Binance's dedicated no-auth market data endpoint. 1-minute OHLCV candles, no account or API key needed.
-- **Prefetches 3000 bars of history** per symbol on startup (~50 hours of 1m data), so the ML model is ready to predict within ~1 minute of launch.
-- **Runs ML predictions** on each configured symbol using a walk-forward gated ridge regression model and a 3-class softmax classifier (UP / FLAT / DOWN).
-- **Scores signals** through a regime-aware strategy layer that weighs 18 technical features against detected market conditions (risk-on / balanced / risk-off / defensive).
+- **Fetches public market data** from `data-api.binance.vision` (crypto, no auth) and Yahoo Finance via `yfinance` (stocks, no auth).
+- **Prefetches 3000 bars of crypto history** per symbol on startup (~50 hours of 1m data) and **60 days of 5m stock history**.
+- **Runs ML predictions** on each universe independently using a walk-forward gated ridge regression model and a 3-class softmax classifier (UP / FLAT / DOWN).
+- **Scores signals** through a regime-aware strategy layer that weighs 18 technical features against detected market conditions.
+- **Respects market hours** — stock polling is skipped automatically when US markets are closed (nights, weekends).
 - **Persists everything** to a local SQLite database (auto-created under `data/`).
-- **Settles predictions** after the forecast horizon passes and tracks directional accuracy over time.
-- **Displays a live terminal dashboard** powered by [Rich](https://github.com/Textualize/rich) that reads directly from the database.
+- **Settles predictions** after the forecast horizon passes and tracks directional accuracy separately for crypto and stocks.
+- **Displays a live terminal dashboard** powered by [Rich](https://github.com/Textualize/rich) with separate panels for crypto and stocks.
 
 ---
 
@@ -98,13 +99,14 @@ python dashboard.py
 | Time | What happens |
 |------|--------------|
 | 0:00 | Bot starts, begins prefetching klines |
-| ~0:07 | Prefetch complete — 3000 bars × 20 symbols stored (60 HTTP requests) |
-| ~1:00 | First poll cycle finishes, model trains on ~51,000 samples |
-| **~1:00** | **First predictions appear on dashboard** |
-| Every 30 min | Model retrains on accumulated live data |
-| Every 60 min | Predictions from 1 hour ago are settled and accuracy is updated |
+| ~0:07 | Crypto prefetch done — 3000 bars × 20 symbols (60 Binance requests) |
+| ~2:00 | Stock prefetch done — 60 days × 5m bars × 20 tickers (Yahoo Finance) |
+| ~2:30 | First poll, both models train |
+| **~2:30** | **Crypto + stock predictions appear on dashboard** |
+| Every 30 min | Both models retrain on accumulated live data |
+| Every 60 min | Predictions settle and accuracy updates |
 
-There is no long waiting period. The bot starts predicting within ~1 minute of launch.
+Crypto alone starts in ~1 min. Set `STOCKS_ENABLED=false` to skip the stock prefetch.
 
 ---
 
@@ -116,20 +118,16 @@ Short version: a **walk-forward gated ridge regression** predicts the expected r
 
 ---
 
-## Extending to stocks
+## Extending further
 
-The bot is designed for this. When ready:
+Stocks are already supported out of the box. For other asset classes (futures, forex, ETFs):
 
-- Replace `src/api/client.py` with a client for a stock data provider (e.g. `yfinance`, Alpha Vantage, or a broker API) that returns the same OHLCV structure.
-- Update `WATCH_SYMBOLS` in `.env` to stock tickers (`AAPL`, `SPY`, etc.).
-- Lower `PREDICTOR_MIN_SAMPLES` for daily candles (252 is one year; 5000 daily bars would be ~20 years).
-- Add a market-hours guard in `src/main.py` to skip polling when the exchange is closed.
-- The strategy, predictor, database, and dashboard layers need no changes.
-
----
+- Replace or extend `src/api/stock_client.py` with a client for the new data provider.
+- Add the new symbols to a new `WATCH_<CLASS>` env var and wire it into `main.py`.
+- The strategy, predictor, database, and dashboard panels require no changes.
 
 ## Requirements
 
 - Python 3.11+
-- Internet access for Binance public API (bot only; dashboard works fully offline)
-- No Binance account or API key
+- Internet access (Binance public API for crypto; Yahoo Finance for stocks)
+- No API keys required for either data source

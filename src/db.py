@@ -18,9 +18,11 @@ CREATE TABLE IF NOT EXISTS prices (
     ask REAL NOT NULL,
     change_pct_24h REAL NOT NULL,
     quote_volume_24h REAL NOT NULL,
+    asset_type TEXT NOT NULL DEFAULT 'crypto',
     PRIMARY KEY(timestamp_ms, symbol)
 );
 CREATE INDEX IF NOT EXISTS idx_prices_symbol_ts ON prices(symbol, timestamp_ms);
+CREATE INDEX IF NOT EXISTS idx_prices_asset_type ON prices(asset_type, timestamp_ms);
 CREATE TABLE IF NOT EXISTS predictions (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     timestamp_ms INTEGER NOT NULL,
@@ -33,12 +35,14 @@ CREATE TABLE IF NOT EXISTS predictions (
     probability_down REAL NOT NULL,
     confidence REAL NOT NULL,
     model_enabled INTEGER NOT NULL,
+    asset_type TEXT NOT NULL DEFAULT 'crypto',
     realized_return REAL,
     realized_state INTEGER,
     settled INTEGER NOT NULL DEFAULT 0
 );
 CREATE INDEX IF NOT EXISTS idx_pred_target ON predictions(target_time_ms, settled);
 CREATE INDEX IF NOT EXISTS idx_pred_sym_ts ON predictions(symbol, timestamp_ms);
+CREATE INDEX IF NOT EXISTS idx_pred_asset_type ON predictions(asset_type, timestamp_ms);
 CREATE TABLE IF NOT EXISTS api_events (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     timestamp_ms INTEGER NOT NULL,
@@ -74,6 +78,18 @@ class BotDB:
         return conn
 
     def _init_schema(self) -> None:
+        # Migrate first so the SCHEMA CREATE statements see the updated columns
+        for table, col, definition in [
+            ("prices",      "asset_type", "TEXT NOT NULL DEFAULT 'crypto'"),
+            ("predictions", "asset_type", "TEXT NOT NULL DEFAULT 'crypto'"),
+        ]:
+            try:
+                cols = {r[1] for r in self._conn().execute(f"PRAGMA table_info({table})").fetchall()}
+                if cols and col not in cols:
+                    self._conn().execute(f"ALTER TABLE {table} ADD COLUMN {col} {definition}")
+                    self._conn().commit()
+            except Exception:
+                pass  # table doesn't exist yet — SCHEMA will create it correctly
         self._conn().executescript(SCHEMA)
         self._conn().commit()
 
@@ -99,8 +115,9 @@ class BotDB:
         )
         self._conn().commit()
 
-    def add_price_snapshots(self, timestamp_ms: int, snapshots: list[dict]) -> None:
-        """snapshots: list of Binance ticker dicts with symbol, lastPrice, bidPrice, askPrice, etc."""
+    def add_price_snapshots(self, timestamp_ms: int, snapshots: list[dict],
+                            asset_type: str = "crypto") -> None:
+        """snapshots: list of ticker dicts with symbol, lastPrice, bidPrice, askPrice, etc."""
         rows = []
         for t in snapshots:
             sym = str(t.get("symbol", ""))
@@ -111,23 +128,25 @@ class BotDB:
             ask = float(t.get("askPrice", price) or price)
             change = float(t.get("priceChangePercent", 0) or 0) / 100.0
             vol = float(t.get("quoteVolume", 0) or 0)
-            rows.append((int(timestamp_ms), sym, price, bid, ask, change, vol))
+            atype = str(t.get("asset_type", asset_type))
+            rows.append((int(timestamp_ms), sym, price, bid, ask, change, vol, atype))
         if rows:
             self._conn().executemany(
-                "INSERT OR IGNORE INTO prices(timestamp_ms,symbol,price,bid,ask,change_pct_24h,quote_volume_24h) VALUES(?,?,?,?,?,?,?)",
+                "INSERT OR IGNORE INTO prices(timestamp_ms,symbol,price,bid,ask,change_pct_24h,quote_volume_24h,asset_type) VALUES(?,?,?,?,?,?,?,?)",
                 rows,
             )
             self._conn().commit()
 
-    def add_kline_prices(self, symbol: str, klines: list[tuple[int, float]]) -> None:
+    def add_kline_prices(self, symbol: str, klines: list[tuple[int, float]],
+                         asset_type: str = "crypto") -> None:
         """klines: list of (timestamp_ms, close_price) tuples."""
         rows = [
-            (int(ts), str(symbol), float(price), float(price), float(price), 0.0, 0.0)
+            (int(ts), str(symbol), float(price), float(price), float(price), 0.0, 0.0, asset_type)
             for ts, price in klines if float(price) > 0
         ]
         if rows:
             self._conn().executemany(
-                "INSERT OR IGNORE INTO prices(timestamp_ms,symbol,price,bid,ask,change_pct_24h,quote_volume_24h) VALUES(?,?,?,?,?,?,?)",
+                "INSERT OR IGNORE INTO prices(timestamp_ms,symbol,price,bid,ask,change_pct_24h,quote_volume_24h,asset_type) VALUES(?,?,?,?,?,?,?,?)",
                 rows,
             )
             self._conn().commit()
@@ -174,14 +193,15 @@ class BotDB:
 
     def record_prediction(self, timestamp_ms: int, symbol: str, price: float, target_time_ms: int,
                           predicted_return: float, probability_up: float, probability_flat: float,
-                          probability_down: float, confidence: float, model_enabled: bool) -> None:
+                          probability_down: float, confidence: float, model_enabled: bool,
+                          asset_type: str = "crypto") -> None:
         self._conn().execute(
             """INSERT INTO predictions(timestamp_ms,symbol,price,target_time_ms,predicted_return,
-               probability_up,probability_flat,probability_down,confidence,model_enabled)
-               VALUES(?,?,?,?,?,?,?,?,?,?)""",
+               probability_up,probability_flat,probability_down,confidence,model_enabled,asset_type)
+               VALUES(?,?,?,?,?,?,?,?,?,?,?)""",
             (int(timestamp_ms), symbol, float(price), int(target_time_ms), float(predicted_return),
              float(probability_up), float(probability_flat), float(probability_down), float(confidence),
-             int(bool(model_enabled))),
+             int(bool(model_enabled)), asset_type),
         )
         self._conn().commit()
 
@@ -205,18 +225,31 @@ class BotDB:
             self._conn().commit()
         return len(updates)
 
-    def recent_predictions(self, limit: int = 50) -> list[dict]:
-        rows = self._conn().execute(
-            "SELECT symbol,timestamp_ms,predicted_return,probability_up,probability_flat,probability_down,"
-            "confidence,model_enabled FROM predictions ORDER BY timestamp_ms DESC LIMIT ?",
-            (limit,),
-        ).fetchall()
+    def recent_predictions(self, limit: int = 50, asset_type: str | None = None) -> list[dict]:
+        if asset_type:
+            rows = self._conn().execute(
+                "SELECT symbol,timestamp_ms,predicted_return,probability_up,probability_flat,probability_down,"
+                "confidence,model_enabled,asset_type FROM predictions WHERE asset_type=? ORDER BY timestamp_ms DESC LIMIT ?",
+                (asset_type, limit),
+            ).fetchall()
+        else:
+            rows = self._conn().execute(
+                "SELECT symbol,timestamp_ms,predicted_return,probability_up,probability_flat,probability_down,"
+                "confidence,model_enabled,asset_type FROM predictions ORDER BY timestamp_ms DESC LIMIT ?",
+                (limit,),
+            ).fetchall()
         return [dict(r) for r in rows]
 
-    def prediction_accuracy(self) -> dict:
-        rows = self._conn().execute(
-            "SELECT predicted_return,realized_return FROM predictions WHERE settled=1"
-        ).fetchall()
+    def prediction_accuracy(self, asset_type: str | None = None) -> dict:
+        if asset_type:
+            rows = self._conn().execute(
+                "SELECT predicted_return,realized_return FROM predictions WHERE settled=1 AND asset_type=?",
+                (asset_type,),
+            ).fetchall()
+        else:
+            rows = self._conn().execute(
+                "SELECT predicted_return,realized_return FROM predictions WHERE settled=1"
+            ).fetchall()
         if not rows:
             return {"n": 0, "directional_accuracy": 0.0}
         import numpy as np
