@@ -25,3 +25,46 @@
 2026-11-25 13:56:56,612 [INFO] trade_bot: Entering main polling loop. Press Ctrl+C to stop.
 2026-11-25 13:56:58,395 [INFO] trade_bot: --- 2026-11-25 13:56:58 IST | regime=defensive model=False gate: rank gated: correlation -0.0083<0.0100; rank_ic -0.0619<0.0100; top_decile_edge 0.00008<0.00025; top_decile_net -0.00481<0.00025; classifier gated: balanced_acc 0.357<0.360; directional_acc 0.483<0.515
 2026-11-25 14:01:57,684 [INFO] trade_bot: --- 2026-11-25 14:01:57 IST | regime=defensive model=False gate: rank gated: correlation -0.0083<0.0100; rank_ic -0.0619<0.0100; top_decile_edge 0.00008<0.00025; top_decile_net -0.00481<0.00025; classifier gated: balanced_acc 0.357<0.360; directional_acc 0.483<0.515
+2026-11-25 14:05:58,509 [INFO] trade_bot: Poll #10 | prices=60200 preds=0 stored=0 settled=0 | acc=0.0% (n=0)
+2026-11-25 14:06:58,339 [INFO] trade_bot: --- 2026-11-25 14:06:58 IST | regime=defensive model=False gate: rank gated: correlation -0.0083<0.0100; rank_ic -0.0619<0.0100; top_decile_edge 0.00008<0.00025; top_decile_net -0.00481<0.00025; classifier gated: balanced_acc 0.357<0.360; directional_acc 0.483<0.515
+2026-11-25 14:11:58,479 [INFO] trade_bot: --- 2026-11-25 14:11:58 IST | regime=defensive model=False gate: rank gated: correlation -0.0083<0.0100; rank_ic -0.0619<0.0100; top_decile_edge 0.00008<0.00025; top_decile_net -0.00481<0.00025; classifier gated: balanced_acc 0.357<0.360; directional_acc 0.483<0.515
+2026-11-25 14:15:58,256 [INFO] trade_bot: Poll #20 | prices=60400 preds=0 stored=0 settled=0 | acc=0.0% (n=0)
+2026-11-25 14:16:58,260 [INFO] trade_bot: --- 2026-11-25 14:16:58 IST | regime=defensive model=False gate: rank gated: correlation -0.0083<0.0100; rank_ic -0.0619<0.0100; top_decile_edge 0.00008<0.00025; top_decile_net -0.00481<0.00025; classifier gated: balanced_acc 0.357<0.360; directional_acc 0.483<0.515
+2026-11-25 14:21:58,252 [INFO] trade_bot: --- 2026-11-25 14:21:58 IST | regime=defensive model=False gate: rank gated: correlation -0.0083<0.0100; rank_ic -0.0619<0.0100; top_decile_edge 0.00008<0.00025; top_decile_net -0.00481<0.00025; classifier gated: balanced_acc 0.357<0.360; directional_acc 0.483<0.515
+2026-11-25 14:25:58,320 [INFO] trade_bot: Poll #30 | prices=60600 preds=0 stored=0 settled=0 | acc=0.0% (n=0)
+2026-11-25 14:26:58,840 [INFO] trade_bot: --- 2026-11-25 14:26:58 IST | regime=defensive model=False gate: rank gated: correlation -0.0538<0.0100; rank_ic -0.0642<0.0100; top_decile_edge 0.00014<0.00025; top_decile_net -0.00451<0.00025; classifier gated: directional_acc 0.474<0.515
+2026-11-25 14:31:19,138 [INFO] trade_bot: === trade-bot starting ===
+2026-11-25 14:31:19,138 [INFO] trade_bot: DB: data/trade_bot.sqlite3 | Poll: 60s | Kline interval: 1m
+2026-11-25 14:31:19,140 [INFO] trade_bot: Watching 20 symbols: ['BTCUSDT', 'ETHUSDT', 'BNBUSDT', 'SOLUSDT', 'ADAUSDT'] ...
+2026-11-25 14:31:19,140 [INFO] trade_bot: Pre-fetching up to 3000 bars per symbol × 20 symbols (1m interval)...
+2026-11-25 14:31:19,155 [INFO] trade_bot: Entering main polling loop. Press Ctrl+C to stop.
+2026-11-25 14:31:22,557 [INFO] trade_bot: --- 2026-11-25 14:31:22 IST | regime=defensive model=False gate: rank gated: correlation -0.0622<-0.0500; classifier passed
+2026-11-25 14:36:20,445 [INFO] trade_bot: --- 2026-11-25 14:36:20 IST | regime=defensive model=False gate: rank gated: correlation -0.0622<-0.0500; classifier passed
+2026-11-25 14:40:20,238 [INFO] trade_bot: Poll #10 | prices=60860 preds=0 stored=0 settled=0 | acc=0.0% (n=0)
+2026-11-25 14:41:20,000 [INFO] trade_bot: --- 2026-11-25 14:41:20 IST | regime=defensive model=False gate: rank gated: correlation -0.0622<-0.0500; classifier passed
+2026-11-25 14:46:20,146 [INFO] trade_bot: --- 2026-11-25 14:46:20 IST | regime=defensive model=False gate: rank gated: correlation -0.0622<-0.0500; classifier passed
+2026-11-25 14:46:26,660 [INFO] trade_bot: === trade-bot starting ===
+2026-11-25 14:46:26,660 [INFO] trade_bot: DB: data/trade_bot.sqlite3 | Poll: 60s | Kline interval: 1m
+2026-11-25 14:46:26,662 [INFO] trade_bot: Watching 20 symbols: ['BTCUSDT', 'ETHUSDT', 'BNBUSDT', 'SOLUSDT', 'ADAUSDT'] ...
+2026-11-25 14:46:26,662 [INFO] trade_bot: Pre-fetching up to 3000 bars per symbol × 20 symbols (1m interval)...
+2026-11-25 14:46:26,678 [INFO] trade_bot: Entering main polling loop. Press Ctrl+C to stop.
+2026-11-25 14:46:35,186 [INFO] trade_bot: --- 2026-11-25 14:46:35 IST | regime=defensive model=True gate: rank gate passed; classifier gated: directional_acc 0.467<0.470
+2026-11-25 14:51:27,597 [INFO] trade_bot: --- 2026-11-25 14:51:27 IST | regime=defensive model=True gate: rank gate passed; classifier gated: directional_acc 0.467<0.470
+2026-11-25 15:08:58,972 [INFO] trade_bot: === trade-bot starting ===
+2026-11-25 15:08:58,972 [INFO] trade_bot: DB: data/trade_bot.sqlite3 | Poll: 60s | Kline interval: 1m
+2026-11-25 15:08:58,978 [INFO] trade_bot: Watching 20 symbols: ['BTCUSDT', 'ETHUSDT', 'BNBUSDT', 'SOLUSDT', 'ADAUSDT'] ...
+2026-11-25 15:08:58,978 [INFO] trade_bot: Pre-fetching up to 3000 bars per symbol × 20 symbols (1m interval)...
+2026-11-25 15:08:58,992 [INFO] trade_bot: Entering main polling loop. Press Ctrl+C to stop.
+2026-11-25 15:09:02,121 [INFO] trade_bot: --- 2026-11-25 15:09:02 IST | regime=defensive model=True gate: rank gate passed; classifier gated: directional_acc 0.467<0.470
+2026-11-25 15:14:07,439 [INFO] trade_bot: --- 2026-11-25 15:14:07 IST | regime=defensive model=True gate: rank gate passed; classifier gated: directional_acc 0.467<0.470
+2026-11-25 15:18:12,546 [INFO] trade_bot: Poll #10 | prices=61360 preds=380 stored=20 settled=0 | acc=0.0% (n=0)
+2026-11-25 15:19:06,739 [INFO] trade_bot: --- 2026-11-25 15:19:06 IST | regime=defensive model=True gate: rank gate passed; classifier gated: directional_acc 0.467<0.470
+2026-11-25 15:24:00,962 [INFO] trade_bot: --- 2026-11-25 15:24:00 IST | regime=defensive model=True gate: rank gate passed; classifier gated: directional_acc 0.467<0.470
+2026-11-25 15:28:00,152 [INFO] trade_bot: Poll #20 | prices=61560 preds=580 stored=20 settled=0 | acc=0.0% (n=0)
+2026-11-25 15:29:00,242 [INFO] trade_bot: --- 2026-11-25 15:29:00 IST | regime=defensive model=True gate: rank gate passed; classifier gated: directional_acc 0.467<0.470
+2026-11-25 15:34:00,002 [INFO] trade_bot: --- 2026-11-25 15:34:00 IST | regime=defensive model=True gate: rank gate passed; classifier gated: directional_acc 0.467<0.470
+2026-11-25 15:37:59,999 [INFO] trade_bot: Poll #30 | prices=61760 preds=780 stored=20 settled=0 | acc=0.0% (n=0)
+2026-11-25 15:39:01,008 [INFO] trade_bot: --- 2026-11-25 15:39:01 IST | regime=defensive model=True gate: rank gate passed; classifier gated: directional_acc 0.457<0.470
+2026-11-25 15:43:59,975 [INFO] trade_bot: --- 2026-11-25 15:43:59 IST | regime=defensive model=True gate: rank gate passed; classifier gated: directional_acc 0.457<0.470
+2026-11-25 15:48:00,135 [INFO] trade_bot: Poll #40 | prices=61960 preds=980 stored=20 settled=20 | acc=80.0% (n=40)
+2026-11-25 15:49:00,024 [INFO] trade_bot: --- 2026-11-25 15:49:00 IST | regime=defensive model=True gate: rank gate passed; classifier gated: directional_acc 0.457<0.470
