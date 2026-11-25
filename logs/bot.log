@@ -1,0 +1,27 @@
+2026-11-25 13:56:26,923 [INFO] trade_bot: === trade-bot starting ===
+2026-11-25 13:56:26,923 [INFO] trade_bot: DB: data/trade_bot.sqlite3 | Poll: 60s | Kline interval: 1m
+2026-11-25 13:56:26,939 [INFO] trade_bot: Watching 20 symbols: ['BTCUSDT', 'ETHUSDT', 'BNBUSDT', 'SOLUSDT', 'ADAUSDT'] ...
+2026-11-25 13:56:26,940 [INFO] trade_bot: Pre-fetching up to 3000 bars per symbol × 20 symbols (1m interval)...
+2026-11-25 13:56:29,787 [INFO] trade_bot: [1/20] BTCUSDT: stored 3000 bars (3 requests)
+2026-11-25 13:56:31,224 [INFO] trade_bot: [2/20] ETHUSDT: stored 3000 bars (3 requests)
+2026-11-25 13:56:32,566 [INFO] trade_bot: [3/20] BNBUSDT: stored 3000 bars (3 requests)
+2026-11-25 13:56:34,124 [INFO] trade_bot: [4/20] SOLUSDT: stored 3000 bars (3 requests)
+2026-11-25 13:56:35,451 [INFO] trade_bot: [5/20] ADAUSDT: stored 3000 bars (3 requests)
+2026-11-25 13:56:36,907 [INFO] trade_bot: [6/20] XRPUSDT: stored 3000 bars (3 requests)
+2026-11-25 13:56:38,675 [INFO] trade_bot: [7/20] DOGEUSDT: stored 3000 bars (3 requests)
+2026-11-25 13:56:39,993 [INFO] trade_bot: [8/20] AVAXUSDT: stored 3000 bars (3 requests)
+2026-11-25 13:56:41,335 [INFO] trade_bot: [9/20] DOTUSDT: stored 3000 bars (3 requests)
+2026-11-25 13:56:42,665 [INFO] trade_bot: [10/20] MATICUSDT: stored 3000 bars (3 requests)
+2026-11-25 13:56:44,007 [INFO] trade_bot: [11/20] LINKUSDT: stored 3000 bars (3 requests)
+2026-11-25 13:56:45,488 [INFO] trade_bot: [12/20] LTCUSDT: stored 3000 bars (3 requests)
+2026-11-25 13:56:46,781 [INFO] trade_bot: [13/20] UNIUSDT: stored 3000 bars (3 requests)
+2026-11-25 13:56:48,138 [INFO] trade_bot: [14/20] ATOMUSDT: stored 3000 bars (3 requests)
+2026-11-25 13:56:49,475 [INFO] trade_bot: [15/20] ETCUSDT: stored 3000 bars (3 requests)
+2026-11-25 13:56:50,847 [INFO] trade_bot: [16/20] XLMUSDT: stored 3000 bars (3 requests)
+2026-11-25 13:56:52,267 [INFO] trade_bot: [17/20] TRXUSDT: stored 3000 bars (3 requests)
+2026-11-25 13:56:53,705 [INFO] trade_bot: [18/20] NEARUSDT: stored 3000 bars (3 requests)
+2026-11-25 13:56:55,077 [INFO] trade_bot: [19/20] ALGOUSDT: stored 3000 bars (3 requests)
+2026-11-25 13:56:56,490 [INFO] trade_bot: [20/20] VETUSDT: stored 3000 bars (3 requests)
+2026-11-25 13:56:56,612 [INFO] trade_bot: Entering main polling loop. Press Ctrl+C to stop.
+2026-11-25 13:56:58,395 [INFO] trade_bot: --- 2026-11-25 13:56:58 IST | regime=defensive model=False gate: rank gated: correlation -0.0083<0.0100; rank_ic -0.0619<0.0100; top_decile_edge 0.00008<0.00025; top_decile_net -0.00481<0.00025; classifier gated: balanced_acc 0.357<0.360; directional_acc 0.483<0.515
+2026-11-25 14:01:57,684 [INFO] trade_bot: --- 2026-11-25 14:01:57 IST | regime=defensive model=False gate: rank gated: correlation -0.0083<0.0100; rank_ic -0.0619<0.0100; top_decile_edge 0.00008<0.00025; top_decile_net -0.00481<0.00025; classifier gated: balanced_acc 0.357<0.360; directional_acc 0.483<0.515
