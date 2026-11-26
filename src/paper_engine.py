@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import json
 import sqlite3
+import threading
 import time
 from dataclasses import dataclass, field
 from datetime import datetime
@@ -105,12 +106,41 @@ class PaperEngine:
     def __init__(self, db_path: str):
         self.db_path = str(db_path)
         Path(self.db_path).parent.mkdir(parents=True, exist_ok=True)
-        self._conn = sqlite3.connect(self.db_path, check_same_thread=False, timeout=30)
-        self._conn.execute("PRAGMA journal_mode=WAL")
-        self._conn.execute("PRAGMA synchronous=NORMAL")
-        self._conn.row_factory = sqlite3.Row
-        self._conn.executescript(PAPER_SCHEMA)
-        self._conn.commit()
+        self._local = threading.local()
+        self._write_lock = threading.Lock()   # serialize all writes
+        self._init_schema()
+
+    def _conn(self) -> sqlite3.Connection:
+        """Return a thread-local SQLite connection."""
+        conn = getattr(self._local, "conn", None)
+        if conn is None:
+            conn = sqlite3.connect(self.db_path, check_same_thread=False, timeout=60)
+            conn.execute("PRAGMA journal_mode=WAL")
+            conn.execute("PRAGMA synchronous=NORMAL")
+            conn.execute("PRAGMA busy_timeout=60000")
+            conn.execute("PRAGMA wal_autocheckpoint=1000")
+            conn.row_factory = sqlite3.Row
+            self._local.conn = conn
+        return conn
+
+    def _write(self, sql: str, params=()) -> None:
+        """Execute a single write statement under the write lock."""
+        with self._write_lock:
+            self._conn().execute(sql, params)
+            self._conn().commit()
+
+    def _writemany(self, sql: str, rows: list) -> None:
+        """Execute a batch write under the write lock."""
+        if not rows:
+            return
+        with self._write_lock:
+            self._conn().executemany(sql, rows)
+            self._conn().commit()
+
+    def _init_schema(self) -> None:
+        with self._write_lock:
+            self._conn().executescript(PAPER_SCHEMA)
+            self._conn().commit()
 
     # ------------------------------------------------------------------
     # Trader registration
@@ -118,26 +148,31 @@ class PaperEngine:
 
     def register(self, trader_id: str, starting_cash: float = STARTING_CASH) -> bool:
         """Create a new trader wallet. Returns False if already exists."""
-        exists = self._conn.execute(
+        trader_id = str(trader_id).strip() if trader_id else ""
+        if not trader_id:
+            return False
+        exists = self._conn().execute(
             "SELECT 1 FROM paper_cash WHERE trader_id=?", (trader_id,)
         ).fetchone()
         if exists:
             return False
-        self._conn.execute(
-            "INSERT INTO paper_cash(trader_id,cash,created_ms) VALUES(?,?,?)",
-            (trader_id, float(starting_cash), _now_ms()),
-        )
-        self._conn.commit()
+        with self._write_lock:
+            self._conn().execute(
+                "INSERT INTO paper_cash(trader_id,cash,created_ms) VALUES(?,?,?)",
+                (trader_id, float(starting_cash), _now_ms()),
+            )
+            self._conn().commit()
         return True
 
     def reset(self, trader_id: str, starting_cash: float = STARTING_CASH) -> None:
         """Reset a trader back to starting cash, wiping all positions and orders."""
-        self._conn.execute("DELETE FROM paper_wallets WHERE trader_id=?", (trader_id,))
-        self._conn.execute(
-            "INSERT OR REPLACE INTO paper_cash(trader_id,cash,created_ms) VALUES(?,?,?)",
-            (trader_id, float(starting_cash), _now_ms()),
-        )
-        self._conn.commit()
+        with self._write_lock:
+            self._conn().execute("DELETE FROM paper_wallets WHERE trader_id=?", (trader_id,))
+            self._conn().execute(
+                "INSERT OR REPLACE INTO paper_cash(trader_id,cash,created_ms) VALUES(?,?,?)",
+                (trader_id, float(starting_cash), _now_ms()),
+            )
+            self._conn().commit()
 
     # ------------------------------------------------------------------
     # Trading operations
@@ -147,85 +182,83 @@ class PaperEngine:
             current_price: float, note: str = "") -> dict:
         """Buy `usdt_amount` worth of `symbol` at `current_price`."""
         self.register(trader_id)
-        cash = self._get_cash(trader_id)
-        usdt_amount = min(float(usdt_amount), cash)
-        if usdt_amount <= 0 or current_price <= 0:
-            return {"ok": False, "error": "Invalid amount or price"}
-        fee = usdt_amount * FEE_RATE
-        spend = usdt_amount - fee
-        qty = spend / current_price
+        with self._write_lock:
+            cash = self._get_cash(trader_id)
+            usdt_amount = min(float(usdt_amount), cash)
+            if usdt_amount <= 0 or current_price <= 0:
+                return {"ok": False, "error": "Invalid amount or price"}
+            fee   = usdt_amount * FEE_RATE
+            qty   = (usdt_amount - fee) / current_price
 
-        # Update cash
-        self._conn.execute(
-            "UPDATE paper_cash SET cash=cash-? WHERE trader_id=?",
-            (usdt_amount, trader_id),
-        )
-        # Update position (avg cost averaging in)
-        existing = self._conn.execute(
-            "SELECT qty, avg_cost FROM paper_wallets WHERE trader_id=? AND symbol=?",
-            (trader_id, symbol),
-        ).fetchone()
-        if existing:
-            old_qty = float(existing["qty"])
-            old_cost = float(existing["avg_cost"])
-            new_qty = old_qty + qty
-            new_cost = (old_qty * old_cost + qty * current_price) / new_qty
-            self._conn.execute(
-                "UPDATE paper_wallets SET qty=?, avg_cost=? WHERE trader_id=? AND symbol=?",
-                (new_qty, new_cost, trader_id, symbol),
+            self._conn().execute(
+                "UPDATE paper_cash SET cash=cash-? WHERE trader_id=?",
+                (usdt_amount, trader_id),
             )
-        else:
-            self._conn.execute(
-                "INSERT INTO paper_wallets(trader_id,symbol,qty,avg_cost) VALUES(?,?,?,?)",
-                (trader_id, symbol, qty, current_price),
+            existing = self._conn().execute(
+                "SELECT qty, avg_cost FROM paper_wallets WHERE trader_id=? AND symbol=?",
+                (trader_id, symbol),
+            ).fetchone()
+            if existing:
+                old_qty  = float(existing["qty"])
+                old_cost = float(existing["avg_cost"])
+                new_qty  = old_qty + qty
+                new_cost = (old_qty * old_cost + qty * current_price) / new_qty
+                self._conn().execute(
+                    "UPDATE paper_wallets SET qty=?, avg_cost=? WHERE trader_id=? AND symbol=?",
+                    (new_qty, new_cost, trader_id, symbol),
+                )
+            else:
+                self._conn().execute(
+                    "INSERT INTO paper_wallets(trader_id,symbol,qty,avg_cost) VALUES(?,?,?,?)",
+                    (trader_id, symbol, qty, current_price),
+                )
+            self._conn().execute(
+                "INSERT INTO paper_orders(trader_id,timestamp_ms,symbol,side,qty,price,notional,fee,note)"
+                " VALUES(?,?,?,?,?,?,?,?,?)",
+                (trader_id, _now_ms(), symbol, "BUY", qty, current_price, usdt_amount, fee, note),
             )
-        # Record order
-        self._conn.execute(
-            "INSERT INTO paper_orders(trader_id,timestamp_ms,symbol,side,qty,price,notional,fee,note) VALUES(?,?,?,?,?,?,?,?,?)",
-            (trader_id, _now_ms(), symbol, "BUY", qty, current_price, usdt_amount, fee, note),
-        )
-        self._conn.commit()
+            self._conn().commit()
         return {"ok": True, "symbol": symbol, "qty": qty, "price": current_price,
                 "spent": usdt_amount, "fee": fee}
 
     def sell(self, trader_id: str, symbol: str, qty_or_pct: float,
              current_price: float, is_pct: bool = False, note: str = "") -> dict:
         """Sell `qty_or_pct` of `symbol`. If is_pct=True, treats as fraction of holding (0–1)."""
-        pos = self._conn.execute(
-            "SELECT qty, avg_cost FROM paper_wallets WHERE trader_id=? AND symbol=?",
-            (trader_id, symbol),
-        ).fetchone()
-        if not pos or float(pos["qty"]) <= 0:
-            return {"ok": False, "error": f"No position in {symbol}"}
-        held = float(pos["qty"])
-        qty = held * min(1.0, float(qty_or_pct)) if is_pct else min(float(qty_or_pct), held)
-        if qty <= 0 or current_price <= 0:
-            return {"ok": False, "error": "Invalid qty or price"}
+        with self._write_lock:
+            pos = self._conn().execute(
+                "SELECT qty, avg_cost FROM paper_wallets WHERE trader_id=? AND symbol=?",
+                (trader_id, symbol),
+            ).fetchone()
+            if not pos or float(pos["qty"]) <= 0:
+                return {"ok": False, "error": f"No position in {symbol}"}
+            held     = float(pos["qty"])
+            qty      = held * min(1.0, float(qty_or_pct)) if is_pct else min(float(qty_or_pct), held)
+            if qty <= 0 or current_price <= 0:
+                return {"ok": False, "error": "Invalid qty or price"}
+            notional     = qty * current_price
+            fee          = notional * FEE_RATE
+            proceeds     = notional - fee
+            realized_pnl = qty * (current_price - float(pos["avg_cost"])) - fee
+            new_qty      = held - qty
 
-        notional = qty * current_price
-        fee = notional * FEE_RATE
-        proceeds = notional - fee
-        avg_cost = float(pos["avg_cost"])
-        realized_pnl = qty * (current_price - avg_cost) - fee
-
-        new_qty = held - qty
-        if new_qty < 1e-9:
-            self._conn.execute(
-                "DELETE FROM paper_wallets WHERE trader_id=? AND symbol=?", (trader_id, symbol)
+            if new_qty < 1e-9:
+                self._conn().execute(
+                    "DELETE FROM paper_wallets WHERE trader_id=? AND symbol=?", (trader_id, symbol)
+                )
+            else:
+                self._conn().execute(
+                    "UPDATE paper_wallets SET qty=? WHERE trader_id=? AND symbol=?",
+                    (new_qty, trader_id, symbol),
+                )
+            self._conn().execute(
+                "UPDATE paper_cash SET cash=cash+? WHERE trader_id=?", (proceeds, trader_id)
             )
-        else:
-            self._conn.execute(
-                "UPDATE paper_wallets SET qty=? WHERE trader_id=? AND symbol=?",
-                (new_qty, trader_id, symbol),
+            self._conn().execute(
+                "INSERT INTO paper_orders(trader_id,timestamp_ms,symbol,side,qty,price,notional,fee,note)"
+                " VALUES(?,?,?,?,?,?,?,?,?)",
+                (trader_id, _now_ms(), symbol, "SELL", qty, current_price, notional, fee, note),
             )
-        self._conn.execute(
-            "UPDATE paper_cash SET cash=cash+? WHERE trader_id=?", (proceeds, trader_id)
-        )
-        self._conn.execute(
-            "INSERT INTO paper_orders(trader_id,timestamp_ms,symbol,side,qty,price,notional,fee,note) VALUES(?,?,?,?,?,?,?,?,?)",
-            (trader_id, _now_ms(), symbol, "SELL", qty, current_price, notional, fee, note),
-        )
-        self._conn.commit()
+            self._conn().commit()
         return {"ok": True, "symbol": symbol, "qty": qty, "price": current_price,
                 "proceeds": proceeds, "fee": fee, "realized_pnl": realized_pnl}
 
@@ -236,7 +269,7 @@ class PaperEngine:
     def snapshot(self, trader_id: str, current_prices: dict[str, float]) -> WalletSnapshot:
         self.register(trader_id)
         cash = self._get_cash(trader_id)
-        rows = self._conn.execute(
+        rows = self._conn().execute(
             "SELECT symbol, qty, avg_cost FROM paper_wallets WHERE trader_id=? AND qty>0",
             (trader_id,),
         ).fetchall()
@@ -251,15 +284,15 @@ class PaperEngine:
         return WalletSnapshot(trader_id, cash, positions, total, upnl, pnl_pct)
 
     def order_history(self, trader_id: str, limit: int = 50) -> list[dict]:
-        rows = self._conn.execute(
+        rows = self._conn().execute(
             "SELECT * FROM paper_orders WHERE trader_id=? ORDER BY timestamp_ms DESC LIMIT ?",
             (trader_id, limit),
         ).fetchall()
         return [dict(r) for r in rows]
 
     def all_traders(self) -> list[str]:
-        rows = self._conn.execute(
-            "SELECT trader_id FROM paper_cash ORDER BY trader_id"
+        rows = self._conn().execute(
+            "SELECT trader_id FROM paper_cash WHERE trader_id IS NOT NULL AND trader_id != '' ORDER BY trader_id"
         ).fetchall()
         return [r["trader_id"] for r in rows]
 
@@ -326,7 +359,7 @@ class PaperEngine:
         }
 
     def _get_cash(self, trader_id: str) -> float:
-        row = self._conn.execute(
+        row = self._conn().execute(
             "SELECT cash FROM paper_cash WHERE trader_id=?", (trader_id,)
         ).fetchone()
         return float(row["cash"]) if row else STARTING_CASH

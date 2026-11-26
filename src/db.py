@@ -69,13 +69,44 @@ class BotDB:
     def _conn(self) -> sqlite3.Connection:
         conn = getattr(self._local, "conn", None)
         if conn is None:
-            conn = sqlite3.connect(self.path, check_same_thread=False, timeout=30)
+            conn = sqlite3.connect(self.path, check_same_thread=False, timeout=60)
             conn.execute("PRAGMA journal_mode=WAL")
             conn.execute("PRAGMA synchronous=NORMAL")
-            conn.execute("PRAGMA busy_timeout=30000")
+            conn.execute("PRAGMA busy_timeout=60000")
+            conn.execute("PRAGMA wal_autocheckpoint=1000")
             conn.row_factory = sqlite3.Row
             self._local.conn = conn
         return conn
+
+    def _execute_write(self, sql: str, params=()) -> None:
+        """Execute a single write statement, retrying up to 5× on lock."""
+        import time as _time
+        for attempt in range(5):
+            try:
+                self._conn().execute(sql, params)
+                self._conn().commit()
+                return
+            except sqlite3.OperationalError as e:
+                if "locked" in str(e) and attempt < 4:
+                    _time.sleep(0.1 * (attempt + 1))
+                else:
+                    raise
+
+    def _executemany_write(self, sql: str, rows: list) -> None:
+        """Execute a batch write, retrying up to 5× on lock."""
+        import time as _time
+        if not rows:
+            return
+        for attempt in range(5):
+            try:
+                self._conn().executemany(sql, rows)
+                self._conn().commit()
+                return
+            except sqlite3.OperationalError as e:
+                if "locked" in str(e) and attempt < 4:
+                    _time.sleep(0.1 * (attempt + 1))
+                else:
+                    raise
 
     def _init_schema(self) -> None:
         # Migrate first so the SCHEMA CREATE statements see the updated columns
@@ -131,11 +162,10 @@ class BotDB:
             atype = str(t.get("asset_type", asset_type))
             rows.append((int(timestamp_ms), sym, price, bid, ask, change, vol, atype))
         if rows:
-            self._conn().executemany(
+            self._executemany_write(
                 "INSERT OR IGNORE INTO prices(timestamp_ms,symbol,price,bid,ask,change_pct_24h,quote_volume_24h,asset_type) VALUES(?,?,?,?,?,?,?,?)",
                 rows,
             )
-            self._conn().commit()
 
     def add_kline_prices(self, symbol: str, klines: list[tuple[int, float]],
                          asset_type: str = "crypto") -> None:
@@ -145,11 +175,10 @@ class BotDB:
             for ts, price in klines if float(price) > 0
         ]
         if rows:
-            self._conn().executemany(
+            self._executemany_write(
                 "INSERT OR IGNORE INTO prices(timestamp_ms,symbol,price,bid,ask,change_pct_24h,quote_volume_24h,asset_type) VALUES(?,?,?,?,?,?,?,?)",
                 rows,
             )
-            self._conn().commit()
 
     def histories(self, symbols: list[str], limit: int | None = None) -> dict[str, list[float]]:
         if not symbols:
@@ -203,7 +232,10 @@ class BotDB:
              float(probability_up), float(probability_flat), float(probability_down), float(confidence),
              int(bool(model_enabled)), asset_type),
         )
-        self._conn().commit()
+        try:
+            self._conn().commit()
+        except sqlite3.OperationalError:
+            import time as _t; _t.sleep(0.2); self._conn().commit()
 
     def settle_predictions(self, now_ms: int, current_prices: Mapping[str, float], class_threshold: float) -> int:
         rows = self._conn().execute(
@@ -219,10 +251,9 @@ class BotDB:
             state = 1 if realized > class_threshold else -1 if realized < -class_threshold else 0
             updates.append((realized, state, row["id"]))
         if updates:
-            self._conn().executemany(
+            self._executemany_write(
                 "UPDATE predictions SET realized_return=?,realized_state=?,settled=1 WHERE id=?", updates
             )
-            self._conn().commit()
         return len(updates)
 
     def recent_predictions(self, limit: int = 50, asset_type: str | None = None) -> list[dict]:

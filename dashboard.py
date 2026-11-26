@@ -59,10 +59,24 @@ def make_header(stats: dict) -> Panel:
 
 
 def predictions_table(db: BotDB, asset_type: str, title: str) -> Table:
+    import time as _time
     rows = db.recent_predictions(limit=60, asset_type=asset_type)
     color = "cyan" if asset_type == "crypto" else "yellow"
+
+    # Work out how stale the newest prediction is
+    stale_note = ""
+    if rows:
+        newest_ms = max(int(r.get("timestamp_ms", 0)) for r in rows)
+        age_min = (_time.time()*1000 - newest_ms) / 60000
+        if age_min > 60:
+            stale_note = f"  [red](last updated {age_min:.0f}m ago — model gated)[/]"
+        elif age_min > 10:
+            stale_note = f"  [yellow](last updated {age_min:.0f}m ago)[/]"
+    if asset_type == "stock" and not is_market_open():
+        stale_note = f"  [dim](market closed · opens in ~{minutes_until_open()}m · showing last session)[/]"
+
     table = Table(
-        title=title,
+        title=title + stale_note,
         box=box.SIMPLE_HEAVY,
         header_style=f"bold {color}",
         expand=True,
@@ -74,9 +88,10 @@ def predictions_table(db: BotDB, asset_type: str, title: str) -> Table:
     table.add_column("Conf",       justify="right",    width=7)
     table.add_column("P(Up)",      justify="right",    width=7, style="green")
     table.add_column("P(Dn)",      justify="right",    width=7, style="red")
-    table.add_column("At",         style="dim",        width=9)
+    table.add_column("Age",        style="dim",        width=7)
 
     seen: set[str] = set()
+    now_ms = int(_time.time() * 1000)
     for r in rows:
         sym = str(r.get("symbol", ""))
         if sym in seen:
@@ -87,14 +102,27 @@ def predictions_table(db: BotDB, asset_type: str, title: str) -> Table:
         p_up  = float(r.get("probability_up", 0))
         p_dn  = float(r.get("probability_down", 0))
         ts    = int(r.get("timestamp_ms", 0))
+        age_m = (now_ms - ts) / 60000 if ts else 0
 
-        direction = Text("▲ UP",   style="green") if pred > 0 else Text("▼ DN", style="red")
+        # Colour the age: fresh=dim, >30m=yellow, >2h=red
+        if age_m > 120:
+            age_str = Text(f"{age_m:.0f}m", style="red")
+        elif age_m > 30:
+            age_str = Text(f"{age_m:.0f}m", style="yellow")
+        else:
+            age_str = Text(f"{age_m:.0f}m", style="dim")
+
+        direction = Text("▲ UP", style="green") if pred > 0 else Text("▼ DN", style="red")
         pred_text = Text(f"{pred:+.4%}", style="green" if pred > 0 else "red")
         table.add_row(sym, direction, pred_text,
-                      f"{conf:.0%}", f"{p_up:.0%}", f"{p_dn:.0%}", _ts(ts))
+                      f"{conf:.0%}", f"{p_up:.0%}", f"{p_dn:.0%}", age_str)
 
     if not seen:
-        table.add_row("[dim]No predictions yet[/]", "", "", "", "", "", "")
+        if asset_type == "stock" and not is_market_open():
+            table.add_row(f"[dim]Market closed. Opens in ~{minutes_until_open()} min.[/]",
+                          "", "", "", "", "", "")
+        else:
+            table.add_row("[dim]No predictions yet[/]", "", "", "", "", "", "")
     return table
 
 
@@ -111,7 +139,6 @@ def accuracy_panel(db: BotDB, asset_type: str, label: str) -> Panel:
         t.append("Dir acc:  ", style="dim")
         clr = "green" if da > 0.55 else "yellow" if da > 0.50 else "red"
         t.append(f"{da:.1%}\n", style=f"bold {clr}")
-        t.append("Baseline: 50.0% (random)\n", style="dim")
     return Panel(t, title=label, border_style="green" if da > 0.50 or n == 0 else "red")
 
 

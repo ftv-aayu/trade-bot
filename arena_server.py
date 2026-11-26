@@ -25,6 +25,16 @@ from pathlib import Path
 from typing import Optional
 from zoneinfo import ZoneInfo
 
+import warnings
+warnings.filterwarnings("ignore", category=FutureWarning, module="yfinance")
+warnings.filterwarnings("ignore", message=".*inplace.*deprecated.*", category=FutureWarning)
+warnings.filterwarnings("ignore", message=".*Pandas4Warning.*")
+try:
+    import pandas as pd
+    pd.set_option("mode.warnings", "ignore")
+except Exception:
+    pass
+
 from dotenv import load_dotenv
 load_dotenv(override=False)
 
@@ -32,7 +42,8 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 from fastapi import FastAPI, HTTPException, Header, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, RedirectResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from src.config import Config
@@ -98,23 +109,33 @@ def get_engine() -> PaperEngine:
 
 
 # ---------------------------------------------------------------------------
-# Live price helper (same as paper_arena.py — API first, DB fallback)
+# Live price helper — cached to avoid hammering APIs on every request
 # ---------------------------------------------------------------------------
 
 _binance_client = None
 _stock_client = None
+_price_cache: dict[str, float] = {}
+_price_cache_ts: float = 0.0
+_PRICE_CACHE_TTL = 10.0   # seconds — all UI requests within 10s share one fetch
 
 
 def _live_prices() -> dict[str, float]:
-    global _binance_client, _stock_client
+    global _binance_client, _stock_client, _price_cache, _price_cache_ts
+    import time as _time
+
+    # Return cached prices if fresh
+    if _time.monotonic() - _price_cache_ts < _PRICE_CACHE_TTL and _price_cache:
+        return _price_cache
+
     cfg = get_cfg()
     db  = get_db()
     prices: dict[str, float] = {}
 
+    # --- Crypto via Binance (always available 24/7) ---
     try:
         from src.api.client import BinanceClient
         if _binance_client is None:
-            _binance_client = BinanceClient(timeout_seconds=10.0, min_request_interval=0.0)
+            _binance_client = BinanceClient(timeout_seconds=5.0, min_request_interval=0.0)
         tickers = _binance_client.get_all_tickers_map()
         for sym in cfg.watch_symbols:
             t = tickers.get(sym)
@@ -125,26 +146,38 @@ def _live_prices() -> dict[str, float]:
     except Exception as exc:
         logger.warning("Binance price fetch failed: %s", exc)
 
-    if cfg.stocks_enabled and cfg.watch_stocks:
+    # --- Stocks via yfinance — ONLY when market is open ---
+    if cfg.stocks_enabled and cfg.watch_stocks and is_market_open():
         try:
             from src.api.stock_client import StockClient
             if _stock_client is None:
-                _stock_client = StockClient(min_request_interval=0.1)
-            prices.update(_stock_client.fetch_latest_prices(list(cfg.watch_stocks)))
+                _stock_client = StockClient(min_request_interval=0.0)
+            stock_prices = _stock_client.fetch_latest_prices(list(cfg.watch_stocks))
+            prices.update(stock_prices)
         except Exception as exc:
             logger.warning("Yahoo price fetch failed: %s", exc)
 
-    missing = [s for s in list(cfg.watch_symbols) + list(cfg.watch_stocks) if s not in prices]
+    # --- DB fallback for anything missing ---
+    all_syms = list(cfg.watch_symbols) + (list(cfg.watch_stocks) if cfg.stocks_enabled else [])
+    missing = [s for s in all_syms if s not in prices]
     if missing:
         prices.update(db.latest_prices(missing))
 
-    # Catch any held symbol not in the standard watch list
-    all_held = [r[0] for r in db._conn().execute(
-        "SELECT DISTINCT symbol FROM paper_wallets WHERE qty > 0"
-    ).fetchall()]
-    still_missing = [s for s in all_held if s not in prices]
-    if still_missing:
-        prices.update(db.latest_prices(still_missing))
+    # Catch any held symbol not in watch lists
+    try:
+        held = [r[0] for r in db._conn().execute(
+            "SELECT DISTINCT symbol FROM paper_wallets WHERE qty > 0"
+        ).fetchall()]
+        still_missing = [s for s in held if s not in prices]
+        if still_missing:
+            prices.update(db.latest_prices(still_missing))
+    except Exception:
+        pass
+
+    # Update cache
+    if prices:
+        _price_cache = prices
+        _price_cache_ts = _time.monotonic()
 
     return prices
 
@@ -443,14 +476,14 @@ def get_orders(trader_id: str, limit: int = 50):
         "orders": [
             {
                 "id":          o["id"],
-                "side":        o["side"],
-                "symbol":      o["symbol"],
-                "qty":         round(float(o["qty"]), 6),
-                "price":       round(float(o["price"]), 6),
-                "notional":    round(float(o["notional"]), 2),
-                "fee":         round(float(o["fee"]), 4),
-                "timestamp":   datetime.fromtimestamp(o["timestamp_ms"]/1000, tz=IST).isoformat(),
-                "note":        o.get("note", ""),
+                "side":        o["side"] or "",
+                "symbol":      o["symbol"] or "",
+                "qty":         round(float(o["qty"] or 0), 6),
+                "price":       round(float(o["price"] or 0), 6),
+                "notional":    round(float(o["notional"] or 0), 2),
+                "fee":         round(float(o["fee"] or 0), 4),
+                "timestamp":   datetime.fromtimestamp(o["timestamp_ms"]/1000, tz=IST).isoformat() if o["timestamp_ms"] else "",
+                "note":        o.get("note", "") or "",
             }
             for o in orders
         ],
@@ -591,6 +624,22 @@ def webhook_log(limit: int = 20):
 
 
 # ---------------------------------------------------------------------------
+# Web dashboard (static UI in ./web, calls the endpoints above)
+# ---------------------------------------------------------------------------
+
+_WEB_DIR = Path(__file__).parent / "web"
+
+
+@app.get("/dashboard", include_in_schema=False)
+def dashboard_redirect():
+    return RedirectResponse("/ui/")
+
+
+if _WEB_DIR.is_dir():
+    app.mount("/ui", StaticFiles(directory=str(_WEB_DIR), html=True), name="ui")
+
+
+# ---------------------------------------------------------------------------
 # Entry point
 # ---------------------------------------------------------------------------
 
@@ -604,6 +653,7 @@ def main() -> None:
 
     print(f"\n  Paper Trading Practice Arena")
     print(f"  API:   http://{args.host}:{args.port}")
+    print(f"  UI:    http://localhost:{args.port}/ui/")
     print(f"  Docs:  http://localhost:{args.port}/docs")
     print(f"  Press Ctrl+C to stop\n")
 

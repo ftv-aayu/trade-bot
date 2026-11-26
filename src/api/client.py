@@ -24,6 +24,10 @@ class BinanceClient:
         self.min_request_interval = max(0.0, float(min_request_interval))
         self._last_request = 0.0
         self.session = requests.Session()
+        # Increase pool size to handle concurrent access from bot + arena server
+        adapter = requests.adapters.HTTPAdapter(pool_connections=20, pool_maxsize=20)
+        self.session.mount("https://", adapter)
+        self.session.mount("http://", adapter)
         self.session.headers.update({"User-Agent": "trade-bot/1.0"})
 
     def _pace(self) -> None:

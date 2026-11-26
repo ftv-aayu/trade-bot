@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trade Bot Dashboard</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header>
+ <div class="wrap">
+  <div class="top">
+   <div><h1>Paper Trading Dashboard</h1><div class="muted" id="updated" aria-live="polite">Loading…</div></div>
+   <div class="status">
+    <span id="mkt" class="pill"><span class="dot" aria-hidden="true"></span><span id="mktText">Checking…</span></span>
+    <label class="muted" for="trader">Trader name</label>
+    <input id="trader" value="demo" maxlength="40" autocomplete="off">
+    <button id="load" type="button">Load</button>
+   </div>
+  </div>
+  <div class="a11y" role="group" aria-label="Accessibility settings">
+   <div class="grp" role="group" aria-label="Text size"><span>Text size</span>
+    <button type="button" data-size="md" aria-pressed="true">A</button>
+    <button type="button" data-size="lg" aria-pressed="false" style="font-size:1.15em">A</button>
+    <button type="button" data-size="xl" aria-pressed="false" style="font-size:1.35em">A</button>
+   </div>
+   <div class="grp" role="group" aria-label="Colour theme"><span>Theme</span>
+    <button type="button" data-theme="auto" aria-pressed="true">Auto</button>
+    <button type="button" data-theme="light" aria-pressed="false">Light</button>
+    <button type="button" data-theme="dark" aria-pressed="false">Dark</button>
+    <button type="button" data-theme="contrast" aria-pressed="false">High contrast</button>
+   </div>
+  </div>
+ </div>
+</header>
+
+<main id="main" class="wrap">
+ <div id="error" class="err" role="alert" hidden></div>
+ <div class="cards" id="cards" aria-label="Account summary"></div>
+
+ <section aria-labelledby="h-trade">
+  <h2 id="h-trade">Place a practice trade</h2>
+  <p class="muted">Practice money only. A 0.1% fee is charged on every trade.</p>
+  <div class="form">
+   <div><label for="sym">Stock or coin</label><select id="sym"></select></div>
+   <div><label for="amt">Amount to spend ($)</label><input id="amt" type="number" min="1" step="1" value="1000" inputmode="decimal"></div>
+   <button id="buy" type="button" class="buy">▲ Buy</button>
+  </div>
+  <div class="form" style="margin-top:.75rem">
+   <div><label for="ssym">Holding to sell</label><select id="ssym"></select></div>
+   <div><label for="pct">Portion to sell (%)</label><select id="pct"><option>25</option><option>50</option><option selected>100</option></select></div>
+   <button id="sell" type="button" class="sell">▼ Sell</button>
+  </div>
+  <p id="msg" role="status" aria-live="polite" class="msg"></p>
+ </section>
+
+ <section aria-labelledby="h-pos">
+  <h2 id="h-pos">Your holdings</h2>
+  <div class="scroll"><table>
+   <thead><tr><th scope="col">Name</th><th scope="col">Qty</th><th scope="col">Avg cost</th><th scope="col">Current</th><th scope="col">Value</th><th scope="col">Profit / Loss</th></tr></thead>
+   <tbody id="positions"></tbody>
+  </table></div>
+ </section>
+
+ <section aria-labelledby="h-sig">
+  <h2 id="h-sig">Bot suggestions</h2>
+  <p class="muted" id="acc"></p>
+  <div class="scroll"><table>
+   <thead><tr><th scope="col">Name</th><th scope="col">Suggestion</th><th scope="col">Expected move (1 hr)</th><th scope="col">Confidence</th></tr></thead>
+   <tbody id="preds"></tbody>
+  </table></div>
+ </section>
+
+ <section aria-labelledby="h-ord">
+  <h2 id="h-ord">Recent trades</h2>
+  <div class="scroll"><table>
+   <thead><tr><th scope="col">Time</th><th scope="col">Name</th><th scope="col">Action</th><th scope="col">Qty</th><th scope="col">Price</th><th scope="col">Total</th></tr></thead>
+   <tbody id="orders"></tbody>
+  </table></div>
+ </section>
+
+ <section aria-labelledby="h-lb">
+  <h2 id="h-lb">Leaderboard</h2>
+  <div class="scroll"><table>
+   <thead><tr><th scope="col">Rank</th><th scope="col">Trader</th><th scope="col">Total value</th><th scope="col">Change</th></tr></thead>
+   <tbody id="board"></tbody>
+  </table></div>
+ </section>
+ <p class="muted">Practice trading only. No real money is used. Suggestions are not financial advice.</p>
+</main>
+<script src="app.js"></script>
+</body>
+</html>

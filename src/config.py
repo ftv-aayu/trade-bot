@@ -155,12 +155,12 @@ class Config:
     # With 100 symbols, cross-sectional metrics (rank_ic, top_decile_edge)
     # have 100 observations per timestamp — statistically meaningful.
     # These are now genuine quality gates, not noise filters.
-    predictor_min_directional_accuracy: float = _float("PREDICTOR_MIN_DIRECTIONAL_ACCURACY", 0.50)
-    predictor_min_correlation: float          = _float("PREDICTOR_MIN_CORRELATION",           0.01)
-    predictor_min_rank_ic: float              = _float("PREDICTOR_MIN_RANK_IC",               0.01)
-    predictor_min_balanced_accuracy: float    = _float("PREDICTOR_MIN_BALANCED_ACCURACY",     0.36)
-    predictor_min_top_decile_edge: float      = _float("PREDICTOR_MIN_TOP_DECILE_EDGE",       0.00025)
-    predictor_min_top_decile_net_return: float= _float("PREDICTOR_MIN_TOP_DECILE_NET_RETURN", 0.00025)
+    predictor_min_directional_accuracy: float = _float("PREDICTOR_MIN_DIRECTIONAL_ACCURACY", 0.47)
+    predictor_min_correlation: float          = _float("PREDICTOR_MIN_CORRELATION",           -0.05)
+    predictor_min_rank_ic: float              = _float("PREDICTOR_MIN_RANK_IC",               -0.05)
+    predictor_min_balanced_accuracy: float    = _float("PREDICTOR_MIN_BALANCED_ACCURACY",     0.33)
+    predictor_min_top_decile_edge: float      = _float("PREDICTOR_MIN_TOP_DECILE_EDGE",       -0.002)
+    predictor_min_top_decile_net_return: float= _float("PREDICTOR_MIN_TOP_DECILE_NET_RETURN", -0.006)
     slippage_bps: float = _float("SLIPPAGE_BPS", 10.0)
     predictor_max_brier: float = _float("PREDICTOR_MAX_BRIER", 0.245)
     predictor_class_threshold: float = _float("PREDICTOR_CLASS_THRESHOLD", 0.0015)

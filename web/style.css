@@ -1,0 +1,54 @@
+:root{--bg:#f5f6f8;--card:#fff;--text:#14181f;--muted:#4a5563;--line:#d5dae1;--accent:#1853c9;--accent-t:#fff;--gain:#0b6b3a;--loss:#b3261e;--gain-bg:#e3f4ea;--loss-bg:#fbe7e5;--focus:#ff9f0a;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10141a;--card:#1a2029;--text:#f1f3f6;--muted:#b4bdc9;--line:#323b48;--accent:#6c9bff;--accent-t:#08111f;--gain:#4fd68b;--loss:#ff8a80;--gain-bg:#12301f;--loss-bg:#3a1a18;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#10141a;--card:#1a2029;--text:#f1f3f6;--muted:#b4bdc9;--line:#323b48;--accent:#6c9bff;--accent-t:#08111f;--gain:#4fd68b;--loss:#ff8a80;--gain-bg:#12301f;--loss-bg:#3a1a18;color-scheme:dark}
+:root[data-theme="contrast"]{--bg:#000;--card:#000;--text:#fff;--muted:#fff;--line:#fff;--accent:#ffd400;--accent-t:#000;--gain:#3dff8a;--loss:#ff7b7b;--gain-bg:#000;--loss-bg:#000;--focus:#00e5ff;color-scheme:dark}
+html{font-size:100%}
+html[data-size="lg"]{font-size:125%}
+html[data-size="xl"]{font-size:150%}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:1rem/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.skip{position:absolute;left:-999px;top:0;background:var(--accent);color:var(--accent-t);padding:.75rem 1rem;z-index:10}
+.skip:focus{left:0}
+header{background:var(--card);border-bottom:1px solid var(--line)}
+.wrap{max-width:1100px;margin:0 auto;padding:1rem}
+.top{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between}
+h1{font-size:1.4rem;margin:0}
+h2{font-size:1.2rem;margin:0 0 .5rem}
+.muted{color:var(--muted)}
+button,select,input{font:inherit;color:var(--text);background:var(--card);border:2px solid var(--line);border-radius:8px;min-height:44px;padding:.4rem .9rem}
+button{cursor:pointer}
+button[aria-pressed="true"]{background:var(--accent);color:var(--accent-t);border-color:var(--accent)}
+button:disabled{opacity:.55;cursor:wait}
+input{max-width:11rem}
+label{display:block;font-weight:600;margin-bottom:.25rem}
+.status{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center}
+.status label{margin:0;font-weight:400}
+.a11y{display:flex;flex-wrap:wrap;gap:1rem;padding-top:.75rem;border-top:1px solid var(--line);margin-top:1rem}
+.grp{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap}
+.grp>span{font-weight:600;margin-right:.25rem}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin:1.25rem 0}
+.card,section{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1.1rem}
+section{margin-bottom:1.25rem}
+.label{color:var(--muted);font-size:.95rem}
+.big{font-size:1.9rem;font-weight:700;line-height:1.2;margin-top:.25rem;font-variant-numeric:tabular-nums}
+.gain{color:var(--gain)}.loss{color:var(--loss)}
+.pill{display:inline-flex;align-items:center;gap:.4rem;padding:.25rem .7rem;border-radius:999px;font-weight:600;border:2px solid currentColor}
+.pill.gain{background:var(--gain-bg)}.pill.loss{background:var(--loss-bg)}
+.dot{width:.7rem;height:.7rem;border-radius:50%;background:currentColor}
+.scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+th,td{padding:.75rem .6rem;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+th{font-size:.95rem;color:var(--muted);font-weight:600}
+tbody tr:last-child td{border-bottom:0}
+tbody th{color:var(--text);font-weight:700}
+.form{display:flex;flex-wrap:wrap;gap:1rem;align-items:flex-end}
+.form select{min-width:10rem}
+button.buy,button.sell{font-weight:700;min-width:7rem;border-color:currentColor}
+button.buy{color:var(--gain)}button.sell{color:var(--loss)}
+.msg{min-height:1.5rem;font-weight:600;margin:.75rem 0 0}
+.err{background:var(--loss-bg);color:var(--loss);border:2px solid var(--loss);border-radius:8px;padding:.75rem 1rem;margin-top:1rem;font-weight:600}
+.empty{padding:1rem;text-align:center;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+@media (max-width:560px){.big{font-size:1.6rem}}
