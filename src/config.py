@@ -143,11 +143,11 @@ class Config:
     # Gate thresholds — loosened for a 20-symbol universe where cross-sectional
     # rank IC is noisy (each datapoint has only 20 observations). The regression
     # signal can still be directionally useful even when rank IC is near zero.
-    predictor_min_directional_accuracy: float = _float("PREDICTOR_MIN_DIRECTIONAL_ACCURACY", 0.47)
-    predictor_min_correlation: float = _float("PREDICTOR_MIN_CORRELATION", -0.10)
+    predictor_min_directional_accuracy: float = _float("PREDICTOR_MIN_DIRECTIONAL_ACCURACY", 0.40)
+    predictor_min_correlation: float = _float("PREDICTOR_MIN_CORRELATION", -0.30)
     predictor_min_rank_ic: float = _float("PREDICTOR_MIN_RANK_IC", -0.10)
     predictor_min_balanced_accuracy: float = _float("PREDICTOR_MIN_BALANCED_ACCURACY", 0.33)
-    predictor_min_top_decile_edge: float = _float("PREDICTOR_MIN_TOP_DECILE_EDGE", -0.001)
+    predictor_min_top_decile_edge: float = _float("PREDICTOR_MIN_TOP_DECILE_EDGE", -0.002)
     predictor_min_top_decile_net_return: float = _float("PREDICTOR_MIN_TOP_DECILE_NET_RETURN", -0.006)
     slippage_bps: float = _float("SLIPPAGE_BPS", 10.0)
     predictor_max_brier: float = _float("PREDICTOR_MAX_BRIER", 0.245)

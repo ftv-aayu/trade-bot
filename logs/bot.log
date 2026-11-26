@@ -344,3 +344,493 @@
 2026-11-25 22:37:20,286 [INFO] trade_bot: CRYPTO | regime=defensive model=False | rank gated: correlation -0.1639<-0.1000; classifier gated: directional_acc 0.458<0.470
 2026-11-25 22:37:20,286 [INFO] trade_bot:   LTCUSDT      score=0.615 pred=-0.0008 conf=0.21
 2026-11-25 22:37:20,287 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-25 22:41:18,600 [INFO] trade_bot: Poll #140 | prices=163900 | crypto acc=45.0% (n=6960) | stock acc=49.2% (n=400)
+2026-11-25 22:42:21,355 [INFO] trade_bot: CRYPTO | regime=defensive model=False | rank gated: correlation -0.1639<-0.1000; classifier gated: directional_acc 0.458<0.470
+2026-11-25 22:42:21,355 [INFO] trade_bot:   LTCUSDT      score=0.595 pred=-0.0000 conf=0.18
+2026-11-25 22:42:21,355 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-25 22:47:20,191 [INFO] trade_bot: CRYPTO | regime=defensive model=False | rank gated: correlation -0.1639<-0.1000; classifier gated: directional_acc 0.458<0.470
+2026-11-25 22:47:20,191 [INFO] trade_bot:   LINKUSDT     score=0.595 pred=+0.0006 conf=0.20
+2026-11-25 22:47:20,191 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-25 22:51:16,472 [INFO] trade_bot: Poll #150 | prices=164140 | crypto acc=44.3% (n=7160) | stock acc=48.9% (n=440)
+2026-11-25 22:52:20,654 [INFO] trade_bot: CRYPTO | regime=defensive model=False | rank gated: correlation -0.2102<-0.1000; classifier gated: directional_acc 0.448<0.470
+2026-11-25 22:52:20,654 [INFO] trade_bot:   LTCUSDT      score=0.603 pred=-0.0010 conf=0.21
+2026-11-25 22:52:20,654 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-25 22:57:22,759 [INFO] trade_bot: CRYPTO | regime=defensive model=False | rank gated: correlation -0.2102<-0.1000; classifier gated: directional_acc 0.448<0.470
+2026-11-25 22:57:22,760 [INFO] trade_bot:   LTCUSDT      score=0.611 pred=-0.0020 conf=0.24
+2026-11-25 22:57:22,760 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-25 23:01:15,274 [INFO] trade_bot: Poll #160 | prices=164380 | crypto acc=44.3% (n=7160) | stock acc=48.3% (n=480)
+2026-11-25 23:02:17,740 [INFO] trade_bot: CRYPTO | regime=defensive model=False | rank gated: correlation -0.2102<-0.1000; classifier gated: directional_acc 0.448<0.470
+2026-11-25 23:02:17,740 [INFO] trade_bot:   LTCUSDT      score=0.566 pred=-0.0018 conf=0.23
+2026-11-25 23:02:17,740 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-25 23:02:56,479 [INFO] trade_bot: === trade-bot starting === mode=both
+2026-11-25 23:02:56,480 [INFO] trade_bot: DB: data/trade_bot.sqlite3 | Crypto: True | Stocks: True
+2026-11-25 23:02:56,483 [INFO] trade_bot: Crypto: 20 symbols | Stocks: 20 tickers
+2026-11-25 23:02:56,484 [INFO] trade_bot: Crypto prefetch: up to 3000 bars × 20 symbols (1m)...
+2026-11-25 23:02:56,501 [INFO] trade_bot: Stock prefetch: 60d × 5m history for 20 tickers...
+2026-11-25 23:02:56,521 [INFO] trade_bot: Entering main polling loop (mode=both). Ctrl+C to stop.
+2026-11-25 23:03:08,410 [INFO] trade_bot: CRYPTO | regime=defensive model=False | rank gated: correlation -0.2111<-0.1000; classifier gated: directional_acc 0.438<0.470
+2026-11-25 23:03:08,410 [INFO] trade_bot:   LTCUSDT      score=0.594 pred=-0.0024 conf=0.25
+2026-11-25 23:03:08,410 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-25 23:08:02,961 [INFO] trade_bot: CRYPTO | regime=defensive model=False | rank gated: correlation -0.2111<-0.1000; classifier gated: directional_acc 0.438<0.470
+2026-11-25 23:08:02,961 [INFO] trade_bot:   LTCUSDT      score=0.600 pred=-0.0021 conf=0.24
+2026-11-25 23:08:02,962 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-25 23:12:01,110 [INFO] trade_bot: Poll #10 | prices=164660 | crypto acc=44.3% (n=7160) | stock acc=47.9% (n=520)
+2026-11-25 23:13:04,456 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: correlation -0.2111<-0.1000; classifier gated: directional_acc 0.438<0.470
+2026-11-25 23:13:04,456 [INFO] trade_bot:   LTCUSDT      score=0.589 pred=-0.0010 conf=0.21
+2026-11-25 23:13:04,456 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-25 23:17:23,666 [INFO] trade_bot: === trade-bot starting === mode=both
+2026-11-25 23:17:23,666 [INFO] trade_bot: DB: data/trade_bot.sqlite3 | Crypto: True | Stocks: True
+2026-11-25 23:17:23,669 [INFO] trade_bot: Crypto: 20 symbols | Stocks: 20 tickers
+2026-11-25 23:17:23,669 [INFO] trade_bot: Crypto prefetch: up to 3000 bars × 20 symbols (1m)...
+2026-11-25 23:17:23,686 [INFO] trade_bot: Stock prefetch: 60d × 5m history for 20 tickers...
+2026-11-25 23:17:23,706 [INFO] trade_bot: Entering main polling loop (mode=both). Ctrl+C to stop.
+2026-11-25 23:17:33,637 [INFO] trade_bot: CRYPTO | regime=defensive model=False | rank gated: correlation -0.2815<-0.1000; classifier gated: directional_acc 0.429<0.470
+2026-11-25 23:17:33,638 [INFO] trade_bot:   LTCUSDT      score=0.615 pred=-0.0019 conf=0.23
+2026-11-25 23:17:33,638 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-25 23:22:32,016 [INFO] trade_bot: CRYPTO | regime=defensive model=False | rank gated: correlation -0.2815<-0.1000; classifier gated: directional_acc 0.429<0.470
+2026-11-25 23:22:32,017 [INFO] trade_bot:   LTCUSDT      score=0.647 pred=-0.0022 conf=0.24
+2026-11-25 23:22:32,017 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-25 23:26:27,866 [INFO] trade_bot: Poll #10 | prices=165020 | crypto acc=44.3% (n=7160) | stock acc=47.1% (n=580)
+2026-11-25 23:27:30,789 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: correlation -0.2815<-0.1000; classifier gated: directional_acc 0.429<0.470
+2026-11-25 23:27:30,789 [INFO] trade_bot:   LTCUSDT      score=0.684 pred=-0.0033 conf=0.27
+2026-11-25 23:27:30,789 [INFO] trade_bot:   SOLUSDT      score=0.575 pred=-0.0022 conf=0.24
+2026-11-25 23:27:30,790 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-25 23:32:28,363 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: correlation -0.2815<-0.1000; classifier gated: directional_acc 0.429<0.470
+2026-11-25 23:32:28,363 [INFO] trade_bot:   LTCUSDT      score=0.681 pred=-0.0030 conf=0.26
+2026-11-25 23:32:28,363 [INFO] trade_bot:   SOLUSDT      score=0.571 pred=-0.0016 conf=0.22
+2026-11-25 23:32:28,363 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-25 23:36:27,772 [INFO] trade_bot: Poll #20 | prices=165260 | crypto acc=44.3% (n=7160) | stock acc=46.5% (n=620)
+2026-11-25 23:37:31,031 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: correlation -0.2815<-0.1000; classifier gated: directional_acc 0.429<0.470
+2026-11-25 23:37:31,031 [INFO] trade_bot:   LTCUSDT      score=0.680 pred=-0.0035 conf=0.27
+2026-11-25 23:37:31,031 [INFO] trade_bot:   SOLUSDT      score=0.611 pred=-0.0020 conf=0.23
+2026-11-25 23:37:31,031 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-25 23:42:28,616 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: correlation -0.2815<-0.1000; classifier gated: directional_acc 0.429<0.470
+2026-11-25 23:42:28,616 [INFO] trade_bot:   LTCUSDT      score=0.729 pred=-0.0038 conf=0.28
+2026-11-25 23:42:28,616 [INFO] trade_bot:   SOLUSDT      score=0.616 pred=-0.0025 conf=0.25
+2026-11-25 23:42:28,616 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-25 23:46:26,249 [INFO] trade_bot: Poll #30 | prices=165500 | crypto acc=44.3% (n=7160) | stock acc=45.9% (n=660)
+2026-11-25 23:47:29,637 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: correlation -0.2881<-0.1000; classifier gated: directional_acc 0.429<0.470
+2026-11-25 23:47:29,638 [INFO] trade_bot:   LTCUSDT      score=0.719 pred=-0.0038 conf=0.27
+2026-11-25 23:47:29,638 [INFO] trade_bot:   SOLUSDT      score=0.615 pred=-0.0029 conf=0.25
+2026-11-25 23:47:29,638 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-25 23:52:28,448 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: correlation -0.2881<-0.1000; classifier gated: directional_acc 0.429<0.470
+2026-11-25 23:52:28,448 [INFO] trade_bot:   LTCUSDT      score=0.725 pred=-0.0032 conf=0.26
+2026-11-25 23:52:28,448 [INFO] trade_bot:   SOLUSDT      score=0.563 pred=-0.0027 conf=0.25
+2026-11-25 23:52:28,448 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-25 23:56:26,395 [INFO] trade_bot: Poll #40 | prices=165740 | crypto acc=44.3% (n=7160) | stock acc=45.4% (n=700)
+2026-11-25 23:57:27,891 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: correlation -0.2881<-0.1000; classifier gated: directional_acc 0.429<0.470
+2026-11-25 23:57:27,892 [INFO] trade_bot:   LTCUSDT      score=0.676 pred=-0.0038 conf=0.27
+2026-11-25 23:57:27,892 [INFO] trade_bot:   SOLUSDT      score=0.548 pred=-0.0035 conf=0.26
+2026-11-25 23:57:27,892 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-26 00:02:30,439 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: correlation -0.2881<-0.1000; classifier gated: directional_acc 0.429<0.470
+2026-11-26 00:02:30,439 [INFO] trade_bot:   LINKUSDT     score=0.681 pred=-0.0045 conf=0.29
+2026-11-26 00:02:30,439 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-26 00:06:24,816 [INFO] trade_bot: Poll #50 | prices=165980 | crypto acc=44.3% (n=7160) | stock acc=45.1% (n=740)
+2026-11-26 00:07:26,323 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: correlation -0.2881<-0.1000; classifier gated: directional_acc 0.429<0.470
+2026-11-26 00:07:26,323 [INFO] trade_bot:   LINKUSDT     score=0.700 pred=-0.0039 conf=0.27
+2026-11-26 00:07:26,323 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-26 00:12:27,006 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: correlation -0.2881<-0.1000; classifier gated: directional_acc 0.429<0.470
+2026-11-26 00:12:27,006 [INFO] trade_bot:   LTCUSDT      score=0.681 pred=-0.0034 conf=0.26
+2026-11-26 00:12:27,006 [INFO] trade_bot:   XLMUSDT      score=0.535 pred=-0.0034 conf=0.26
+2026-11-26 00:12:27,006 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-26 00:16:25,293 [INFO] trade_bot: Poll #60 | prices=166220 | crypto acc=44.3% (n=7160) | stock acc=44.6% (n=780)
+2026-11-26 00:17:27,084 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: correlation -0.2902<-0.1000; top_decile_edge -0.00121<-0.00100; classifier gated: directional_acc 0.421<0.470
+2026-11-26 00:17:27,084 [INFO] trade_bot:   LTCUSDT      score=0.712 pred=-0.0037 conf=0.27
+2026-11-26 00:17:27,084 [INFO] trade_bot:   SOLUSDT      score=0.638 pred=-0.0042 conf=0.28
+2026-11-26 00:17:27,084 [INFO] trade_bot:   XLMUSDT      score=0.570 pred=-0.0036 conf=0.26
+2026-11-26 00:17:27,084 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-26 00:22:26,083 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: correlation -0.2902<-0.1000; top_decile_edge -0.00121<-0.00100; classifier gated: directional_acc 0.421<0.470
+2026-11-26 00:22:26,083 [INFO] trade_bot:   LINKUSDT     score=0.712 pred=-0.0036 conf=0.26
+2026-11-26 00:22:26,083 [INFO] trade_bot:   LTCUSDT      score=0.644 pred=-0.0038 conf=0.27
+2026-11-26 00:22:26,083 [INFO] trade_bot:   XLMUSDT      score=0.555 pred=-0.0035 conf=0.26
+2026-11-26 00:22:26,083 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-26 00:26:24,457 [INFO] trade_bot: Poll #70 | prices=166460 | crypto acc=44.3% (n=7160) | stock acc=44.0% (n=840)
+2026-11-26 00:27:25,930 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: correlation -0.2902<-0.1000; top_decile_edge -0.00121<-0.00100; classifier gated: directional_acc 0.421<0.470
+2026-11-26 00:27:25,930 [INFO] trade_bot:   LTCUSDT      score=0.729 pred=-0.0039 conf=0.27
+2026-11-26 00:27:25,930 [INFO] trade_bot:   LINKUSDT     score=0.627 pred=-0.0033 conf=0.26
+2026-11-26 00:27:25,930 [INFO] trade_bot:   XLMUSDT      score=0.576 pred=-0.0038 conf=0.27
+2026-11-26 00:27:25,930 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-26 00:32:25,924 [INFO] trade_bot: CRYPTO | regime=balanced model=False | rank gated: correlation -0.2902<-0.1000; top_decile_edge -0.00121<-0.00100; classifier gated: directional_acc 0.421<0.470
+2026-11-26 00:32:25,924 [INFO] trade_bot:   LTCUSDT      score=0.772 pred=-0.0038 conf=0.27
+2026-11-26 00:32:25,924 [INFO] trade_bot:   SOLUSDT      score=0.612 pred=-0.0037 conf=0.27
+2026-11-26 00:32:25,924 [INFO] trade_bot:   XLMUSDT      score=0.574 pred=-0.0037 conf=0.27
+2026-11-26 00:32:25,924 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-26 00:36:24,370 [INFO] trade_bot: Poll #80 | prices=166700 | crypto acc=44.3% (n=7160) | stock acc=43.4% (n=880)
+2026-11-26 00:37:26,367 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: correlation -0.2902<-0.1000; top_decile_edge -0.00121<-0.00100; classifier gated: directional_acc 0.421<0.470
+2026-11-26 00:37:26,367 [INFO] trade_bot:   LTCUSDT      score=0.771 pred=-0.0037 conf=0.27
+2026-11-26 00:37:26,367 [INFO] trade_bot:   LINKUSDT     score=0.664 pred=-0.0046 conf=0.29
+2026-11-26 00:37:26,367 [INFO] trade_bot:   SOLUSDT      score=0.591 pred=-0.0035 conf=0.26
+2026-11-26 00:37:26,367 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-26 00:42:26,546 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: correlation -0.2902<-0.1000; top_decile_edge -0.00121<-0.00100; classifier gated: directional_acc 0.421<0.470
+2026-11-26 00:42:26,546 [INFO] trade_bot:   LTCUSDT      score=0.753 pred=-0.0034 conf=0.26
+2026-11-26 00:42:26,546 [INFO] trade_bot:   XLMUSDT      score=0.663 pred=-0.0034 conf=0.26
+2026-11-26 00:42:26,546 [INFO] trade_bot:   SOLUSDT      score=0.578 pred=-0.0031 conf=0.25
+2026-11-26 00:42:26,546 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-26 00:46:24,408 [INFO] trade_bot: Poll #90 | prices=166940 | crypto acc=44.3% (n=7160) | stock acc=42.9% (n=920)
+2026-11-26 00:47:26,940 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: correlation -0.3097<-0.1000; top_decile_edge -0.00144<-0.00100; classifier gated: directional_acc 0.407<0.470
+2026-11-26 00:47:26,940 [INFO] trade_bot:   SOLUSDT      score=0.730 pred=-0.0029 conf=0.25
+2026-11-26 00:47:26,940 [INFO] trade_bot:   LTCUSDT      score=0.631 pred=-0.0029 conf=0.25
+2026-11-26 00:47:26,940 [INFO] trade_bot:   XLMUSDT      score=0.574 pred=-0.0027 conf=0.24
+2026-11-26 00:47:26,940 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-26 00:52:25,859 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: correlation -0.3097<-0.1000; top_decile_edge -0.00144<-0.00100; classifier gated: directional_acc 0.407<0.470
+2026-11-26 00:52:25,859 [INFO] trade_bot:   UNIUSDT      score=0.753 pred=-0.0029 conf=0.25
+2026-11-26 00:52:25,860 [INFO] trade_bot:   XLMUSDT      score=0.651 pred=-0.0026 conf=0.24
+2026-11-26 00:52:25,860 [INFO] trade_bot:   LTCUSDT      score=0.639 pred=-0.0028 conf=0.24
+2026-11-26 00:52:25,860 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-26 00:56:24,625 [INFO] trade_bot: Poll #100 | prices=167180 | crypto acc=44.3% (n=7160) | stock acc=42.7% (n=960)
+2026-11-26 00:57:26,509 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: correlation -0.3097<-0.1000; top_decile_edge -0.00144<-0.00100; classifier gated: directional_acc 0.407<0.470
+2026-11-26 00:57:26,510 [INFO] trade_bot:   LTCUSDT      score=0.778 pred=-0.0027 conf=0.24
+2026-11-26 00:57:26,510 [INFO] trade_bot:   LINKUSDT     score=0.680 pred=-0.0038 conf=0.27
+2026-11-26 00:57:26,510 [INFO] trade_bot:   NEARUSDT     score=0.673 pred=-0.0037 conf=0.27
+2026-11-26 00:57:26,510 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-26 01:02:26,703 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: correlation -0.3097<-0.1000; top_decile_edge -0.00144<-0.00100; classifier gated: directional_acc 0.407<0.470
+2026-11-26 01:02:26,703 [INFO] trade_bot:   NEARUSDT     score=0.792 pred=-0.0036 conf=0.26
+2026-11-26 01:02:26,703 [INFO] trade_bot:   LTCUSDT      score=0.664 pred=-0.0028 conf=0.24
+2026-11-26 01:02:26,703 [INFO] trade_bot:   ADAUSDT      score=0.612 pred=-0.0023 conf=0.23
+2026-11-26 01:02:26,703 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-26 01:06:24,855 [INFO] trade_bot: Poll #110 | prices=167420 | crypto acc=44.3% (n=7160) | stock acc=42.6% (n=1000)
+2026-11-26 01:07:26,452 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: correlation -0.3097<-0.1000; top_decile_edge -0.00144<-0.00100; classifier gated: directional_acc 0.407<0.470
+2026-11-26 01:07:26,452 [INFO] trade_bot:   NEARUSDT     score=0.803 pred=-0.0043 conf=0.28
+2026-11-26 01:07:26,452 [INFO] trade_bot:   LTCUSDT      score=0.750 pred=-0.0041 conf=0.27
+2026-11-26 01:07:26,452 [INFO] trade_bot:   LINKUSDT     score=0.618 pred=-0.0051 conf=0.30
+2026-11-26 01:07:26,452 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-26 01:12:27,249 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: correlation -0.3097<-0.1000; top_decile_edge -0.00144<-0.00100; classifier gated: directional_acc 0.407<0.470
+2026-11-26 01:12:27,249 [INFO] trade_bot:   NEARUSDT     score=0.763 pred=-0.0040 conf=0.27
+2026-11-26 01:12:27,249 [INFO] trade_bot:   LINKUSDT     score=0.647 pred=-0.0049 conf=0.29
+2026-11-26 01:12:27,249 [INFO] trade_bot:   LTCUSDT      score=0.635 pred=-0.0038 conf=0.27
+2026-11-26 01:12:27,249 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-26 01:16:25,204 [INFO] trade_bot: Poll #120 | prices=167660 | crypto acc=44.3% (n=7160) | stock acc=42.7% (n=1040)
+2026-11-26 01:17:26,851 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: correlation -0.3970<-0.1000; top_decile_edge -0.00188<-0.00100; classifier gated: directional_acc 0.387<0.470
+2026-11-26 01:17:26,851 [INFO] trade_bot:   LTCUSDT      score=0.719 pred=-0.0044 conf=0.28
+2026-11-26 01:17:26,851 [INFO] trade_bot:   NEARUSDT     score=0.626 pred=-0.0050 conf=0.29
+2026-11-26 01:17:26,851 [INFO] trade_bot:   LINKUSDT     score=0.601 pred=-0.0055 conf=0.30
+2026-11-26 01:17:26,851 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-26 01:22:26,099 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: correlation -0.3970<-0.1000; top_decile_edge -0.00188<-0.00100; classifier gated: directional_acc 0.387<0.470
+2026-11-26 01:22:26,099 [INFO] trade_bot:   LTCUSDT      score=0.749 pred=-0.0049 conf=0.29
+2026-11-26 01:22:26,099 [INFO] trade_bot:   LINKUSDT     score=0.667 pred=-0.0052 conf=0.30
+2026-11-26 01:22:26,099 [INFO] trade_bot:   NEARUSDT     score=0.660 pred=-0.0058 conf=0.31
+2026-11-26 01:22:26,099 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-26 01:26:24,441 [INFO] trade_bot: Poll #130 | prices=167900 | crypto acc=44.3% (n=7160) | stock acc=43.7% (n=1080)
+2026-11-26 01:27:25,866 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: correlation -0.3970<-0.1000; top_decile_edge -0.00188<-0.00100; classifier gated: directional_acc 0.387<0.470
+2026-11-26 01:27:25,866 [INFO] trade_bot:   LINKUSDT     score=0.724 pred=-0.0047 conf=0.28
+2026-11-26 01:27:25,866 [INFO] trade_bot:   LTCUSDT      score=0.683 pred=-0.0042 conf=0.27
+2026-11-26 01:27:25,866 [INFO] trade_bot:   NEARUSDT     score=0.679 pred=-0.0049 conf=0.29
+2026-11-26 01:27:25,866 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-26 01:32:25,809 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: correlation -0.3970<-0.1000; top_decile_edge -0.00188<-0.00100; classifier gated: directional_acc 0.387<0.470
+2026-11-26 01:32:25,809 [INFO] trade_bot:   NEARUSDT     score=0.742 pred=-0.0041 conf=0.27
+2026-11-26 01:32:25,809 [INFO] trade_bot:   LTCUSDT      score=0.675 pred=-0.0036 conf=0.26
+2026-11-26 01:32:25,809 [INFO] trade_bot:   LINKUSDT     score=0.674 pred=-0.0041 conf=0.27
+2026-11-26 01:32:25,809 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-26 01:36:24,212 [INFO] trade_bot: Poll #140 | prices=168140 | crypto acc=44.3% (n=7160) | stock acc=44.3% (n=1120)
+2026-11-26 01:37:25,658 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: correlation -0.3970<-0.1000; top_decile_edge -0.00188<-0.00100; classifier gated: directional_acc 0.387<0.470
+2026-11-26 01:37:25,658 [INFO] trade_bot:   NEARUSDT     score=0.781 pred=-0.0047 conf=0.28
+2026-11-26 01:37:25,658 [INFO] trade_bot:   UNIUSDT      score=0.664 pred=-0.0045 conf=0.28
+2026-11-26 01:37:25,658 [INFO] trade_bot:   LTCUSDT      score=0.663 pred=-0.0043 conf=0.28
+2026-11-26 01:37:25,658 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-26 01:42:25,633 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: correlation -0.3970<-0.1000; top_decile_edge -0.00188<-0.00100; classifier gated: directional_acc 0.387<0.470
+2026-11-26 01:42:25,633 [INFO] trade_bot:   NEARUSDT     score=0.783 pred=-0.0048 conf=0.29
+2026-11-26 01:42:25,633 [INFO] trade_bot:   LTCUSDT      score=0.692 pred=-0.0040 conf=0.27
+2026-11-26 01:42:25,633 [INFO] trade_bot:   UNIUSDT      score=0.674 pred=-0.0050 conf=0.29
+2026-11-26 01:42:25,633 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-26 01:46:24,324 [INFO] trade_bot: Poll #150 | prices=168380 | crypto acc=44.3% (n=7160) | stock acc=45.1% (n=1160)
+2026-11-26 01:47:26,448 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: correlation -0.3823<-0.1000; top_decile_edge -0.00204<-0.00100; classifier gated: directional_acc 0.381<0.470
+2026-11-26 01:47:26,448 [INFO] trade_bot:   NEARUSDT     score=0.817 pred=-0.0038 conf=0.26
+2026-11-26 01:47:26,448 [INFO] trade_bot:   LTCUSDT      score=0.714 pred=-0.0032 conf=0.25
+2026-11-26 01:47:26,448 [INFO] trade_bot:   UNIUSDT      score=0.689 pred=-0.0037 conf=0.26
+2026-11-26 01:47:26,448 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-26 01:52:25,558 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: correlation -0.3823<-0.1000; top_decile_edge -0.00204<-0.00100; classifier gated: directional_acc 0.381<0.470
+2026-11-26 01:52:25,558 [INFO] trade_bot:   LTCUSDT      score=0.756 pred=-0.0029 conf=0.24
+2026-11-26 01:52:25,558 [INFO] trade_bot:   LINKUSDT     score=0.668 pred=-0.0035 conf=0.26
+2026-11-26 01:52:25,558 [INFO] trade_bot:   UNIUSDT      score=0.654 pred=-0.0032 conf=0.25
+2026-11-26 01:52:25,558 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-26 01:56:24,288 [INFO] trade_bot: Poll #160 | prices=168620 | crypto acc=44.3% (n=7160) | stock acc=45.9% (n=1200)
+2026-11-26 01:57:25,828 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: correlation -0.3823<-0.1000; top_decile_edge -0.00204<-0.00100; classifier gated: directional_acc 0.381<0.470
+2026-11-26 01:57:25,828 [INFO] trade_bot:   NEARUSDT     score=0.805 pred=-0.0030 conf=0.25
+2026-11-26 01:57:25,828 [INFO] trade_bot:   LTCUSDT      score=0.705 pred=-0.0027 conf=0.24
+2026-11-26 01:57:25,828 [INFO] trade_bot:   LINKUSDT     score=0.670 pred=-0.0034 conf=0.26
+2026-11-26 01:57:25,828 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-26 02:02:25,712 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: correlation -0.3823<-0.1000; top_decile_edge -0.00204<-0.00100; classifier gated: directional_acc 0.381<0.470
+2026-11-26 02:02:25,712 [INFO] trade_bot:   LTCUSDT      score=0.753 pred=-0.0028 conf=0.24
+2026-11-26 02:02:25,712 [INFO] trade_bot:   LINKUSDT     score=0.690 pred=-0.0034 conf=0.26
+2026-11-26 02:02:25,712 [INFO] trade_bot:   NEARUSDT     score=0.643 pred=-0.0033 conf=0.25
+2026-11-26 02:02:25,712 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-26 02:06:24,286 [INFO] trade_bot: Poll #170 | prices=168860 | crypto acc=44.3% (n=7160) | stock acc=46.0% (n=1240)
+2026-11-26 02:07:25,740 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: correlation -0.3823<-0.1000; top_decile_edge -0.00204<-0.00100; classifier gated: directional_acc 0.381<0.470
+2026-11-26 02:07:25,741 [INFO] trade_bot:   LTCUSDT      score=0.738 pred=-0.0028 conf=0.24
+2026-11-26 02:07:25,741 [INFO] trade_bot:   LINKUSDT     score=0.675 pred=-0.0033 conf=0.25
+2026-11-26 02:07:25,741 [INFO] trade_bot:   NEARUSDT     score=0.652 pred=-0.0061 conf=0.31
+2026-11-26 02:07:25,741 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-26 02:12:25,647 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: correlation -0.3823<-0.1000; top_decile_edge -0.00204<-0.00100; classifier gated: directional_acc 0.381<0.470
+2026-11-26 02:12:25,647 [INFO] trade_bot:   NEARUSDT     score=0.732 pred=-0.0064 conf=0.32
+2026-11-26 02:12:25,647 [INFO] trade_bot:   LINKUSDT     score=0.682 pred=-0.0030 conf=0.25
+2026-11-26 02:12:25,647 [INFO] trade_bot:   LTCUSDT      score=0.654 pred=-0.0026 conf=0.24
+2026-11-26 02:12:25,647 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-26 02:16:24,248 [INFO] trade_bot: Poll #180 | prices=169100 | crypto acc=44.3% (n=7160) | stock acc=45.6% (n=1280)
+2026-11-26 02:17:25,895 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: correlation -0.3472<-0.1000; top_decile_edge -0.00205<-0.00100; classifier gated: directional_acc 0.391<0.470
+2026-11-26 02:17:25,895 [INFO] trade_bot:   NEARUSDT     score=0.811 pred=-0.0079 conf=0.34
+2026-11-26 02:17:25,895 [INFO] trade_bot:   UNIUSDT      score=0.639 pred=-0.0034 conf=0.26
+2026-11-26 02:17:25,895 [INFO] trade_bot:   ADAUSDT      score=0.626 pred=-0.0028 conf=0.24
+2026-11-26 02:17:25,895 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-26 02:22:25,947 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: correlation -0.3472<-0.1000; top_decile_edge -0.00205<-0.00100; classifier gated: directional_acc 0.391<0.470
+2026-11-26 02:22:25,947 [INFO] trade_bot:   XLMUSDT      score=0.707 pred=-0.0027 conf=0.24
+2026-11-26 02:22:25,947 [INFO] trade_bot:   NEARUSDT     score=0.686 pred=-0.0075 conf=0.34
+2026-11-26 02:22:25,947 [INFO] trade_bot:   LINKUSDT     score=0.668 pred=-0.0028 conf=0.24
+2026-11-26 02:22:25,947 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-26 02:26:24,296 [INFO] trade_bot: Poll #190 | prices=169340 | crypto acc=44.3% (n=7160) | stock acc=46.1% (n=1320)
+2026-11-26 02:27:25,892 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: correlation -0.3472<-0.1000; top_decile_edge -0.00205<-0.00100; classifier gated: directional_acc 0.391<0.470
+2026-11-26 02:27:25,892 [INFO] trade_bot:   NEARUSDT     score=0.840 pred=-0.0082 conf=0.35
+2026-11-26 02:27:25,892 [INFO] trade_bot:   UNIUSDT      score=0.679 pred=-0.0028 conf=0.24
+2026-11-26 02:27:25,892 [INFO] trade_bot:   LINKUSDT     score=0.671 pred=-0.0028 conf=0.24
+2026-11-26 02:27:25,892 [INFO] trade_bot: STOCKS | regime=defensive model=True | rank+directional gates passed
+2026-11-26 02:32:24,252 [INFO] trade_bot: Stock market closed. Next open in ~1048 min.
+2026-11-26 02:32:24,253 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: correlation -0.3472<-0.1000; top_decile_edge -0.00205<-0.00100; classifier gated: directional_acc 0.391<0.470
+2026-11-26 02:32:24,253 [INFO] trade_bot:   UNIUSDT      score=0.783 pred=-0.0026 conf=0.24
+2026-11-26 02:32:24,253 [INFO] trade_bot:   LINKUSDT     score=0.676 pred=-0.0026 conf=0.24
+2026-11-26 02:32:24,253 [INFO] trade_bot:   NEARUSDT     score=0.691 pred=-0.0070 conf=0.33
+2026-11-26 02:32:24,253 [INFO] trade_bot: STOCKS | market closed | next open in ~1048 min
+2026-11-26 02:36:24,209 [INFO] trade_bot: Poll #200 | prices=169560 | crypto acc=44.3% (n=7160) | stock acc=46.4% (n=1340)
+2026-11-26 02:37:24,310 [INFO] trade_bot: Stock market closed. Next open in ~1043 min.
+2026-11-26 02:37:24,310 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: correlation -0.3472<-0.1000; top_decile_edge -0.00205<-0.00100; classifier gated: directional_acc 0.391<0.470
+2026-11-26 02:37:24,310 [INFO] trade_bot:   NEARUSDT     score=0.711 pred=-0.0078 conf=0.34
+2026-11-26 02:37:24,310 [INFO] trade_bot:   ADAUSDT      score=0.657 pred=-0.0025 conf=0.23
+2026-11-26 02:37:24,310 [INFO] trade_bot:   XRPUSDT      score=0.645 pred=-0.0014 conf=0.21
+2026-11-26 02:37:24,310 [INFO] trade_bot: STOCKS | market closed | next open in ~1043 min
+2026-11-26 02:42:24,274 [INFO] trade_bot: Stock market closed. Next open in ~1038 min.
+2026-11-26 02:42:24,274 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: correlation -0.3472<-0.1000; top_decile_edge -0.00205<-0.00100; classifier gated: directional_acc 0.391<0.470
+2026-11-26 02:42:24,274 [INFO] trade_bot:   NEARUSDT     score=0.700 pred=-0.0097 conf=0.38
+2026-11-26 02:42:24,275 [INFO] trade_bot:   XLMUSDT      score=0.651 pred=-0.0024 conf=0.23
+2026-11-26 02:42:24,275 [INFO] trade_bot:   UNIUSDT      score=0.615 pred=-0.0027 conf=0.24
+2026-11-26 02:42:24,275 [INFO] trade_bot: STOCKS | market closed | next open in ~1038 min
+2026-11-26 02:46:24,255 [INFO] trade_bot: Poll #210 | prices=169760 | crypto acc=44.3% (n=7160) | stock acc=46.4% (n=1340)
+2026-11-26 02:47:24,530 [INFO] trade_bot: Stock market closed. Next open in ~1033 min.
+2026-11-26 02:47:24,530 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: correlation -0.3370<-0.1000; top_decile_edge -0.00217<-0.00100; classifier gated: balanced_acc 0.325<0.330; directional_acc 0.381<0.470
+2026-11-26 02:47:24,530 [INFO] trade_bot:   XLMUSDT      score=0.723 pred=-0.0024 conf=0.23
+2026-11-26 02:47:24,530 [INFO] trade_bot:   NEARUSDT     score=0.697 pred=-0.0094 conf=0.37
+2026-11-26 02:47:24,530 [INFO] trade_bot:   XRPUSDT      score=0.620 pred=-0.0017 conf=0.22
+2026-11-26 02:47:24,530 [INFO] trade_bot: STOCKS | market closed | next open in ~1033 min
+2026-11-26 02:52:24,223 [INFO] trade_bot: Stock market closed. Next open in ~1028 min.
+2026-11-26 02:52:24,223 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: correlation -0.3370<-0.1000; top_decile_edge -0.00217<-0.00100; classifier gated: balanced_acc 0.325<0.330; directional_acc 0.381<0.470
+2026-11-26 02:52:24,223 [INFO] trade_bot:   XLMUSDT      score=0.711 pred=-0.0029 conf=0.24
+2026-11-26 02:52:24,223 [INFO] trade_bot:   NEARUSDT     score=0.683 pred=-0.0078 conf=0.34
+2026-11-26 02:52:24,223 [INFO] trade_bot:   LINKUSDT     score=0.611 pred=-0.0027 conf=0.24
+2026-11-26 02:52:24,223 [INFO] trade_bot: STOCKS | market closed | next open in ~1028 min
+2026-11-26 02:56:24,299 [INFO] trade_bot: Poll #220 | prices=169960 | crypto acc=44.3% (n=7160) | stock acc=46.4% (n=1340)
+2026-11-26 02:57:24,387 [INFO] trade_bot: Stock market closed. Next open in ~1023 min.
+2026-11-26 02:57:24,387 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: correlation -0.3370<-0.1000; top_decile_edge -0.00217<-0.00100; classifier gated: balanced_acc 0.325<0.330; directional_acc 0.381<0.470
+2026-11-26 02:57:24,387 [INFO] trade_bot:   XLMUSDT      score=0.721 pred=-0.0028 conf=0.24
+2026-11-26 02:57:24,387 [INFO] trade_bot:   NEARUSDT     score=0.690 pred=-0.0078 conf=0.34
+2026-11-26 02:57:24,387 [INFO] trade_bot:   SOLUSDT      score=0.612 pred=-0.0021 conf=0.22
+2026-11-26 02:57:24,387 [INFO] trade_bot: STOCKS | market closed | next open in ~1023 min
+2026-11-26 03:02:24,399 [INFO] trade_bot: Stock market closed. Next open in ~1018 min.
+2026-11-26 03:02:24,399 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: correlation -0.3370<-0.1000; top_decile_edge -0.00217<-0.00100; classifier gated: balanced_acc 0.325<0.330; directional_acc 0.381<0.470
+2026-11-26 03:02:24,399 [INFO] trade_bot:   NEARUSDT     score=0.696 pred=-0.0062 conf=0.31
+2026-11-26 03:02:24,399 [INFO] trade_bot:   LTCUSDT      score=0.651 pred=-0.0021 conf=0.22
+2026-11-26 03:02:24,399 [INFO] trade_bot:   LINKUSDT     score=0.634 pred=-0.0023 conf=0.23
+2026-11-26 03:02:24,399 [INFO] trade_bot: STOCKS | market closed | next open in ~1018 min
+2026-11-26 03:06:24,283 [INFO] trade_bot: Poll #230 | prices=170160 | crypto acc=44.3% (n=7160) | stock acc=46.4% (n=1340)
+2026-11-26 03:07:24,281 [INFO] trade_bot: Stock market closed. Next open in ~1013 min.
+2026-11-26 03:07:24,281 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: correlation -0.3370<-0.1000; top_decile_edge -0.00217<-0.00100; classifier gated: balanced_acc 0.325<0.330; directional_acc 0.381<0.470
+2026-11-26 03:07:24,281 [INFO] trade_bot:   SOLUSDT      score=0.769 pred=-0.0020 conf=0.22
+2026-11-26 03:07:24,281 [INFO] trade_bot:   NEARUSDT     score=0.740 pred=-0.0060 conf=0.31
+2026-11-26 03:07:24,281 [INFO] trade_bot:   UNIUSDT      score=0.644 pred=-0.0030 conf=0.25
+2026-11-26 03:07:24,281 [INFO] trade_bot: STOCKS | market closed | next open in ~1013 min
+2026-11-26 03:12:24,258 [INFO] trade_bot: Stock market closed. Next open in ~1008 min.
+2026-11-26 03:12:24,258 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: correlation -0.3370<-0.1000; top_decile_edge -0.00217<-0.00100; classifier gated: balanced_acc 0.325<0.330; directional_acc 0.381<0.470
+2026-11-26 03:12:24,258 [INFO] trade_bot:   NEARUSDT     score=0.830 pred=-0.0049 conf=0.29
+2026-11-26 03:12:24,258 [INFO] trade_bot:   SOLUSDT      score=0.738 pred=-0.0014 conf=0.21
+2026-11-26 03:12:24,258 [INFO] trade_bot:   LTCUSDT      score=0.636 pred=-0.0022 conf=0.23
+2026-11-26 03:12:24,258 [INFO] trade_bot: STOCKS | market closed | next open in ~1008 min
+2026-11-26 03:16:24,326 [INFO] trade_bot: Poll #240 | prices=170360 | crypto acc=44.3% (n=7160) | stock acc=46.4% (n=1340)
+2026-11-26 03:17:24,437 [INFO] trade_bot: Stock market closed. Next open in ~1003 min.
+2026-11-26 03:17:24,437 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: correlation -0.3357<-0.1000; top_decile_edge -0.00216<-0.00100; classifier gated: balanced_acc 0.322<0.330; directional_acc 0.370<0.470
+2026-11-26 03:17:24,437 [INFO] trade_bot:   NEARUSDT     score=0.794 pred=-0.0044 conf=0.28
+2026-11-26 03:17:24,437 [INFO] trade_bot:   SOLUSDT      score=0.747 pred=-0.0014 conf=0.21
+2026-11-26 03:17:24,437 [INFO] trade_bot:   LTCUSDT      score=0.664 pred=-0.0022 conf=0.23
+2026-11-26 03:17:24,437 [INFO] trade_bot: STOCKS | market closed | next open in ~1003 min
+2026-11-26 03:22:24,392 [INFO] trade_bot: Stock market closed. Next open in ~998 min.
+2026-11-26 03:22:24,392 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: correlation -0.3357<-0.1000; top_decile_edge -0.00216<-0.00100; classifier gated: balanced_acc 0.322<0.330; directional_acc 0.370<0.470
+2026-11-26 03:22:24,392 [INFO] trade_bot:   NEARUSDT     score=0.716 pred=-0.0046 conf=0.28
+2026-11-26 03:22:24,392 [INFO] trade_bot:   LTCUSDT      score=0.680 pred=-0.0025 conf=0.23
+2026-11-26 03:22:24,392 [INFO] trade_bot:   UNIUSDT      score=0.650 pred=-0.0026 conf=0.24
+2026-11-26 03:22:24,392 [INFO] trade_bot: STOCKS | market closed | next open in ~998 min
+2026-11-26 03:26:24,264 [INFO] trade_bot: Poll #250 | prices=170560 | crypto acc=44.3% (n=7160) | stock acc=46.4% (n=1340)
+2026-11-26 03:27:24,253 [INFO] trade_bot: Stock market closed. Next open in ~993 min.
+2026-11-26 03:27:24,253 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: correlation -0.3357<-0.1000; top_decile_edge -0.00216<-0.00100; classifier gated: balanced_acc 0.322<0.330; directional_acc 0.370<0.470
+2026-11-26 03:27:24,253 [INFO] trade_bot:   NEARUSDT     score=0.725 pred=-0.0047 conf=0.28
+2026-11-26 03:27:24,253 [INFO] trade_bot:   LTCUSDT      score=0.670 pred=-0.0024 conf=0.23
+2026-11-26 03:27:24,253 [INFO] trade_bot:   UNIUSDT      score=0.649 pred=-0.0024 conf=0.23
+2026-11-26 03:27:24,253 [INFO] trade_bot: STOCKS | market closed | next open in ~993 min
+2026-11-26 03:32:24,213 [INFO] trade_bot: Stock market closed. Next open in ~988 min.
+2026-11-26 03:32:24,214 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: correlation -0.3357<-0.1000; top_decile_edge -0.00216<-0.00100; classifier gated: balanced_acc 0.322<0.330; directional_acc 0.370<0.470
+2026-11-26 03:32:24,214 [INFO] trade_bot:   LTCUSDT      score=0.754 pred=-0.0022 conf=0.23
+2026-11-26 03:32:24,214 [INFO] trade_bot:   NEARUSDT     score=0.742 pred=-0.0049 conf=0.29
+2026-11-26 03:32:24,214 [INFO] trade_bot:   LINKUSDT     score=0.650 pred=-0.0015 conf=0.21
+2026-11-26 03:32:24,214 [INFO] trade_bot: STOCKS | market closed | next open in ~988 min
+2026-11-26 03:36:24,438 [INFO] trade_bot: Poll #260 | prices=170760 | crypto acc=44.3% (n=7160) | stock acc=46.4% (n=1340)
+2026-11-26 03:37:24,287 [INFO] trade_bot: Stock market closed. Next open in ~983 min.
+2026-11-26 03:37:24,287 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: correlation -0.3357<-0.1000; top_decile_edge -0.00216<-0.00100; classifier gated: balanced_acc 0.322<0.330; directional_acc 0.370<0.470
+2026-11-26 03:37:24,287 [INFO] trade_bot:   NEARUSDT     score=0.768 pred=-0.0051 conf=0.29
+2026-11-26 03:37:24,287 [INFO] trade_bot:   LTCUSDT      score=0.755 pred=-0.0021 conf=0.23
+2026-11-26 03:37:24,287 [INFO] trade_bot:   LINKUSDT     score=0.666 pred=-0.0016 conf=0.21
+2026-11-26 03:37:24,287 [INFO] trade_bot: STOCKS | market closed | next open in ~983 min
+2026-11-26 03:42:24,298 [INFO] trade_bot: Stock market closed. Next open in ~978 min.
+2026-11-26 03:42:24,298 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: correlation -0.3357<-0.1000; top_decile_edge -0.00216<-0.00100; classifier gated: balanced_acc 0.322<0.330; directional_acc 0.370<0.470
+2026-11-26 03:42:24,298 [INFO] trade_bot:   NEARUSDT     score=0.807 pred=-0.0051 conf=0.29
+2026-11-26 03:42:24,298 [INFO] trade_bot:   LINKUSDT     score=0.677 pred=-0.0012 conf=0.20
+2026-11-26 03:42:24,298 [INFO] trade_bot:   UNIUSDT      score=0.610 pred=-0.0025 conf=0.23
+2026-11-26 03:42:24,298 [INFO] trade_bot: STOCKS | market closed | next open in ~978 min
+2026-11-26 03:46:24,288 [INFO] trade_bot: Poll #270 | prices=170960 | crypto acc=44.3% (n=7160) | stock acc=46.4% (n=1340)
+2026-11-26 03:47:24,459 [INFO] trade_bot: Stock market closed. Next open in ~973 min.
+2026-11-26 03:47:24,459 [INFO] trade_bot: CRYPTO | regime=balanced model=False | rank gated: correlation -0.3108<-0.1000; top_decile_edge -0.00219<-0.00100; classifier gated: balanced_acc 0.326<0.330; directional_acc 0.374<0.470
+2026-11-26 03:47:24,459 [INFO] trade_bot:   NEARUSDT     score=0.766 pred=-0.0050 conf=0.29
+2026-11-26 03:47:24,459 [INFO] trade_bot:   DOGEUSDT     score=0.682 pred=-0.0013 conf=0.21
+2026-11-26 03:47:24,459 [INFO] trade_bot:   LINKUSDT     score=0.664 pred=-0.0013 conf=0.21
+2026-11-26 03:47:24,459 [INFO] trade_bot: STOCKS | market closed | next open in ~973 min
+2026-11-26 03:52:24,246 [INFO] trade_bot: Stock market closed. Next open in ~968 min.
+2026-11-26 03:52:24,247 [INFO] trade_bot: CRYPTO | regime=balanced model=False | rank gated: correlation -0.3108<-0.1000; top_decile_edge -0.00219<-0.00100; classifier gated: balanced_acc 0.326<0.330; directional_acc 0.374<0.470
+2026-11-26 03:52:24,247 [INFO] trade_bot:   NEARUSDT     score=0.771 pred=-0.0046 conf=0.28
+2026-11-26 03:52:24,247 [INFO] trade_bot:   LINKUSDT     score=0.701 pred=-0.0013 conf=0.21
+2026-11-26 03:52:24,247 [INFO] trade_bot:   DOGEUSDT     score=0.651 pred=-0.0013 conf=0.21
+2026-11-26 03:52:24,247 [INFO] trade_bot: STOCKS | market closed | next open in ~968 min
+2026-11-26 03:56:24,230 [INFO] trade_bot: Poll #280 | prices=171160 | crypto acc=44.3% (n=7160) | stock acc=46.4% (n=1340)
+2026-11-26 03:57:24,312 [INFO] trade_bot: Stock market closed. Next open in ~963 min.
+2026-11-26 03:57:24,312 [INFO] trade_bot: CRYPTO | regime=balanced model=False | rank gated: correlation -0.3108<-0.1000; top_decile_edge -0.00219<-0.00100; classifier gated: balanced_acc 0.326<0.330; directional_acc 0.374<0.470
+2026-11-26 03:57:24,312 [INFO] trade_bot:   NEARUSDT     score=0.757 pred=-0.0043 conf=0.28
+2026-11-26 03:57:24,312 [INFO] trade_bot:   LINKUSDT     score=0.687 pred=-0.0010 conf=0.20
+2026-11-26 03:57:24,312 [INFO] trade_bot:   LTCUSDT      score=0.668 pred=-0.0014 conf=0.21
+2026-11-26 03:57:24,312 [INFO] trade_bot: STOCKS | market closed | next open in ~963 min
+2026-11-26 04:02:24,311 [INFO] trade_bot: Stock market closed. Next open in ~958 min.
+2026-11-26 04:02:24,311 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: correlation -0.3108<-0.1000; top_decile_edge -0.00219<-0.00100; classifier gated: balanced_acc 0.326<0.330; directional_acc 0.374<0.470
+2026-11-26 04:02:24,311 [INFO] trade_bot:   NEARUSDT     score=0.797 pred=-0.0042 conf=0.27
+2026-11-26 04:02:24,311 [INFO] trade_bot:   LTCUSDT      score=0.748 pred=-0.0012 conf=0.20
+2026-11-26 04:02:24,311 [INFO] trade_bot:   LINKUSDT     score=0.628 pred=-0.0009 conf=0.20
+2026-11-26 04:02:24,311 [INFO] trade_bot: STOCKS | market closed | next open in ~958 min
+2026-11-26 04:06:24,269 [INFO] trade_bot: Poll #290 | prices=171360 | crypto acc=44.3% (n=7160) | stock acc=46.4% (n=1340)
+2026-11-26 04:07:24,255 [INFO] trade_bot: Stock market closed. Next open in ~953 min.
+2026-11-26 04:07:24,255 [INFO] trade_bot: CRYPTO | regime=balanced model=False | rank gated: correlation -0.3108<-0.1000; top_decile_edge -0.00219<-0.00100; classifier gated: balanced_acc 0.326<0.330; directional_acc 0.374<0.470
+2026-11-26 04:07:24,255 [INFO] trade_bot:   NEARUSDT     score=0.760 pred=-0.0042 conf=0.27
+2026-11-26 04:07:24,255 [INFO] trade_bot:   LTCUSDT      score=0.685 pred=-0.0015 conf=0.21
+2026-11-26 04:07:24,255 [INFO] trade_bot:   LINKUSDT     score=0.603 pred=-0.0010 conf=0.20
+2026-11-26 04:07:24,255 [INFO] trade_bot: STOCKS | market closed | next open in ~953 min
+2026-11-26 04:12:24,240 [INFO] trade_bot: Stock market closed. Next open in ~948 min.
+2026-11-26 04:12:24,240 [INFO] trade_bot: CRYPTO | regime=balanced model=False | rank gated: correlation -0.3108<-0.1000; top_decile_edge -0.00219<-0.00100; classifier gated: balanced_acc 0.326<0.330; directional_acc 0.374<0.470
+2026-11-26 04:12:24,240 [INFO] trade_bot:   NEARUSDT     score=0.749 pred=-0.0043 conf=0.28
+2026-11-26 04:12:24,240 [INFO] trade_bot:   LTCUSDT      score=0.665 pred=-0.0014 conf=0.21
+2026-11-26 04:12:24,240 [INFO] trade_bot: STOCKS | market closed | next open in ~948 min
+2026-11-26 04:16:24,219 [INFO] trade_bot: Poll #300 | prices=171560 | crypto acc=44.3% (n=7160) | stock acc=46.4% (n=1340)
+2026-11-26 04:17:24,484 [INFO] trade_bot: Stock market closed. Next open in ~943 min.
+2026-11-26 04:17:24,484 [INFO] trade_bot: CRYPTO | regime=balanced model=False | rank gated: correlation -0.2820<-0.1000; top_decile_edge -0.00207<-0.00100; classifier gated: directional_acc 0.391<0.470
+2026-11-26 04:17:24,484 [INFO] trade_bot:   NEARUSDT     score=0.754 pred=-0.0037 conf=0.26
+2026-11-26 04:17:24,484 [INFO] trade_bot:   LTCUSDT      score=0.698 pred=-0.0014 conf=0.21
+2026-11-26 04:17:24,484 [INFO] trade_bot: STOCKS | market closed | next open in ~943 min
+2026-11-26 04:22:24,274 [INFO] trade_bot: Stock market closed. Next open in ~938 min.
+2026-11-26 04:22:24,274 [INFO] trade_bot: CRYPTO | regime=balanced model=False | rank gated: correlation -0.2820<-0.1000; top_decile_edge -0.00207<-0.00100; classifier gated: directional_acc 0.391<0.470
+2026-11-26 04:22:24,274 [INFO] trade_bot:   NEARUSDT     score=0.748 pred=-0.0042 conf=0.27
+2026-11-26 04:22:24,274 [INFO] trade_bot:   LTCUSDT      score=0.721 pred=-0.0013 conf=0.21
+2026-11-26 04:22:24,274 [INFO] trade_bot: STOCKS | market closed | next open in ~938 min
+2026-11-26 04:26:24,287 [INFO] trade_bot: Poll #310 | prices=171760 | crypto acc=44.3% (n=7160) | stock acc=46.4% (n=1340)
+2026-11-26 04:27:26,426 [INFO] trade_bot: Stock market closed. Next open in ~933 min.
+2026-11-26 04:27:26,426 [INFO] trade_bot: CRYPTO | regime=balanced model=False | rank gated: correlation -0.2820<-0.1000; top_decile_edge -0.00207<-0.00100; classifier gated: directional_acc 0.391<0.470
+2026-11-26 04:27:26,426 [INFO] trade_bot:   NEARUSDT     score=0.743 pred=-0.0039 conf=0.27
+2026-11-26 04:27:26,426 [INFO] trade_bot:   LTCUSDT      score=0.705 pred=-0.0014 conf=0.21
+2026-11-26 04:27:26,426 [INFO] trade_bot:   SOLUSDT      score=0.645 pred=-0.0009 conf=0.20
+2026-11-26 04:27:26,426 [INFO] trade_bot: STOCKS | market closed | next open in ~933 min
+2026-11-26 04:32:25,203 [INFO] trade_bot: Stock market closed. Next open in ~928 min.
+2026-11-26 04:32:25,203 [INFO] trade_bot: CRYPTO | regime=balanced model=False | rank gated: correlation -0.2820<-0.1000; top_decile_edge -0.00207<-0.00100; classifier gated: directional_acc 0.391<0.470
+2026-11-26 04:32:25,203 [INFO] trade_bot:   NEARUSDT     score=0.754 pred=-0.0029 conf=0.24
+2026-11-26 04:32:25,204 [INFO] trade_bot:   LTCUSDT      score=0.663 pred=-0.0012 conf=0.20
+2026-11-26 04:32:25,204 [INFO] trade_bot: STOCKS | market closed | next open in ~928 min
+2026-11-26 04:36:24,671 [INFO] trade_bot: Poll #320 | prices=171960 | crypto acc=44.3% (n=7160) | stock acc=46.4% (n=1340)
+2026-11-26 04:37:24,478 [INFO] trade_bot: Stock market closed. Next open in ~923 min.
+2026-11-26 04:37:24,479 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: correlation -0.2820<-0.1000; top_decile_edge -0.00207<-0.00100; classifier gated: directional_acc 0.391<0.470
+2026-11-26 04:37:24,479 [INFO] trade_bot:   NEARUSDT     score=0.743 pred=-0.0030 conf=0.25
+2026-11-26 04:37:24,479 [INFO] trade_bot:   LTCUSDT      score=0.661 pred=-0.0015 conf=0.21
+2026-11-26 04:37:24,479 [INFO] trade_bot: STOCKS | market closed | next open in ~923 min
+2026-11-26 04:42:24,423 [INFO] trade_bot: Stock market closed. Next open in ~918 min.
+2026-11-26 04:42:24,424 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: correlation -0.2820<-0.1000; top_decile_edge -0.00207<-0.00100; classifier gated: directional_acc 0.391<0.470
+2026-11-26 04:42:24,424 [INFO] trade_bot:   NEARUSDT     score=0.736 pred=-0.0030 conf=0.25
+2026-11-26 04:42:24,424 [INFO] trade_bot:   SOLUSDT      score=0.684 pred=-0.0011 conf=0.20
+2026-11-26 04:42:24,424 [INFO] trade_bot:   XLMUSDT      score=0.624 pred=-0.0011 conf=0.20
+2026-11-26 04:42:24,424 [INFO] trade_bot: STOCKS | market closed | next open in ~918 min
+2026-11-26 04:46:24,960 [INFO] trade_bot: Poll #330 | prices=172160 | crypto acc=44.3% (n=7160) | stock acc=46.4% (n=1340)
+2026-11-26 04:47:24,679 [INFO] trade_bot: Stock market closed. Next open in ~913 min.
+2026-11-26 04:47:24,679 [INFO] trade_bot: CRYPTO | regime=defensive model=False | rank gated: correlation -0.2589<-0.1000; top_decile_edge -0.00183<-0.00100; classifier gated: directional_acc 0.408<0.470
+2026-11-26 04:47:24,679 [INFO] trade_bot:   NEARUSDT     score=0.708 pred=-0.0028 conf=0.24
+2026-11-26 04:47:24,679 [INFO] trade_bot:   LTCUSDT      score=0.614 pred=-0.0016 conf=0.21
+2026-11-26 04:47:24,679 [INFO] trade_bot:   XLMUSDT      score=0.577 pred=-0.0012 conf=0.20
+2026-11-26 04:47:24,679 [INFO] trade_bot: STOCKS | market closed | next open in ~913 min
+2026-11-26 04:52:24,448 [INFO] trade_bot: Stock market closed. Next open in ~908 min.
+2026-11-26 04:52:24,449 [INFO] trade_bot: CRYPTO | regime=defensive model=False | rank gated: correlation -0.2589<-0.1000; top_decile_edge -0.00183<-0.00100; classifier gated: directional_acc 0.408<0.470
+2026-11-26 04:52:24,449 [INFO] trade_bot:   NEARUSDT     score=0.707 pred=-0.0022 conf=0.23
+2026-11-26 04:52:24,449 [INFO] trade_bot:   LTCUSDT      score=0.620 pred=-0.0014 conf=0.21
+2026-11-26 04:52:24,449 [INFO] trade_bot: STOCKS | market closed | next open in ~908 min
+2026-11-26 04:56:24,287 [INFO] trade_bot: Poll #340 | prices=172360 | crypto acc=44.3% (n=7160) | stock acc=46.4% (n=1340)
+2026-11-26 04:57:24,406 [INFO] trade_bot: Stock market closed. Next open in ~903 min.
+2026-11-26 04:57:24,406 [INFO] trade_bot: CRYPTO | regime=defensive model=False | rank gated: correlation -0.2589<-0.1000; top_decile_edge -0.00183<-0.00100; classifier gated: directional_acc 0.408<0.470
+2026-11-26 04:57:24,406 [INFO] trade_bot:   LTCUSDT      score=0.575 pred=-0.0014 conf=0.21
+2026-11-26 04:57:24,406 [INFO] trade_bot: STOCKS | market closed | next open in ~903 min
+2026-11-26 05:02:24,321 [INFO] trade_bot: Stock market closed. Next open in ~898 min.
+2026-11-26 05:02:24,321 [INFO] trade_bot: CRYPTO | regime=defensive model=False | rank gated: correlation -0.2589<-0.1000; top_decile_edge -0.00183<-0.00100; classifier gated: directional_acc 0.408<0.470
+2026-11-26 05:02:24,321 [INFO] trade_bot:   NEARUSDT     score=0.705 pred=-0.0027 conf=0.24
+2026-11-26 05:02:24,321 [INFO] trade_bot:   LTCUSDT      score=0.611 pred=-0.0016 conf=0.22
+2026-11-26 05:02:24,321 [INFO] trade_bot: STOCKS | market closed | next open in ~898 min
+2026-11-26 05:06:24,344 [INFO] trade_bot: Poll #350 | prices=172560 | crypto acc=44.3% (n=7160) | stock acc=46.4% (n=1340)
+2026-11-26 05:07:24,469 [INFO] trade_bot: Stock market closed. Next open in ~893 min.
+2026-11-26 05:07:24,469 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: correlation -0.2589<-0.1000; top_decile_edge -0.00183<-0.00100; classifier gated: directional_acc 0.408<0.470
+2026-11-26 05:07:24,469 [INFO] trade_bot:   NEARUSDT     score=0.729 pred=-0.0026 conf=0.24
+2026-11-26 05:07:24,469 [INFO] trade_bot:   LTCUSDT      score=0.575 pred=-0.0015 conf=0.21
+2026-11-26 05:07:24,469 [INFO] trade_bot: STOCKS | market closed | next open in ~893 min
+2026-11-26 05:12:24,362 [INFO] trade_bot: Stock market closed. Next open in ~888 min.
+2026-11-26 05:12:24,362 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: correlation -0.2589<-0.1000; top_decile_edge -0.00183<-0.00100; classifier gated: directional_acc 0.408<0.470
+2026-11-26 05:12:24,362 [INFO] trade_bot:   NEARUSDT     score=0.733 pred=-0.0024 conf=0.23
+2026-11-26 05:12:24,362 [INFO] trade_bot:   LTCUSDT      score=0.649 pred=-0.0014 conf=0.21
+2026-11-26 05:12:24,362 [INFO] trade_bot: STOCKS | market closed | next open in ~888 min
+2026-11-26 05:16:24,337 [INFO] trade_bot: Poll #360 | prices=172760 | crypto acc=44.3% (n=7160) | stock acc=46.4% (n=1340)
+2026-11-26 05:17:24,493 [INFO] trade_bot: Stock market closed. Next open in ~883 min.
+2026-11-26 05:17:24,493 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: correlation -0.2565<-0.1000; top_decile_edge -0.00181<-0.00100; classifier gated: directional_acc 0.418<0.470
+2026-11-26 05:17:24,493 [INFO] trade_bot:   NEARUSDT     score=0.732 pred=-0.0020 conf=0.22
+2026-11-26 05:17:24,493 [INFO] trade_bot:   LTCUSDT      score=0.679 pred=-0.0015 conf=0.21
+2026-11-26 05:17:24,493 [INFO] trade_bot: STOCKS | market closed | next open in ~883 min
+2026-11-26 05:20:48,882 [INFO] trade_bot: === trade-bot starting === mode=both
+2026-11-26 05:20:48,882 [INFO] trade_bot: DB: data/trade_bot.sqlite3 | Crypto: True | Stocks: True
+2026-11-26 05:20:48,883 [INFO] trade_bot: Crypto: 20 symbols | Stocks: 20 tickers
+2026-11-26 05:20:48,883 [INFO] trade_bot: Crypto prefetch: up to 3000 bars × 20 symbols (1m)...
+2026-11-26 05:20:48,889 [INFO] trade_bot: Stock prefetch: 60d × 5m history for 20 tickers...
+2026-11-26 05:20:48,896 [INFO] trade_bot: Entering main polling loop (mode=both). Ctrl+C to stop.
+2026-11-26 05:20:51,252 [INFO] trade_bot: Stock market closed. Next open in ~880 min.
+2026-11-26 05:20:51,252 [INFO] trade_bot: CRYPTO | regime=balanced model=True | rank+directional gates passed
+2026-11-26 05:20:51,252 [INFO] trade_bot:   NEARUSDT     score=0.726 pred=-0.0026 conf=0.22
+2026-11-26 05:20:51,252 [INFO] trade_bot:   LTCUSDT      score=0.656 pred=-0.0029 conf=0.22
+2026-11-26 05:20:51,252 [INFO] trade_bot:   XLMUSDT      score=0.597 pred=-0.0021 conf=0.21
+2026-11-26 05:20:51,252 [INFO] trade_bot: STOCKS | market closed | next open in ~880 min
+2026-11-26 05:25:49,460 [INFO] trade_bot: Stock market closed. Next open in ~875 min.
+2026-11-26 05:25:49,460 [INFO] trade_bot: CRYPTO | regime=balanced model=True | rank+directional gates passed
+2026-11-26 05:25:49,460 [INFO] trade_bot:   NEARUSDT     score=0.732 pred=-0.0028 conf=0.23
+2026-11-26 05:25:49,460 [INFO] trade_bot:   LTCUSDT      score=0.689 pred=-0.0027 conf=0.22
+2026-11-26 05:25:49,460 [INFO] trade_bot: STOCKS | market closed | next open in ~875 min
+2026-11-26 05:29:49,453 [INFO] trade_bot: Poll #10 | prices=173040 | crypto acc=44.3% (n=7160) | stock acc=46.4% (n=1340)
+2026-11-26 05:30:49,458 [INFO] trade_bot: Stock market closed. Next open in ~870 min.
+2026-11-26 05:30:49,458 [INFO] trade_bot: CRYPTO | regime=balanced model=True | rank+directional gates passed
+2026-11-26 05:30:49,458 [INFO] trade_bot:   NEARUSDT     score=0.775 pred=-0.0023 conf=0.22
+2026-11-26 05:30:49,458 [INFO] trade_bot:   LTCUSDT      score=0.666 pred=-0.0029 conf=0.22
+2026-11-26 05:30:49,458 [INFO] trade_bot:   XLMUSDT      score=0.577 pred=-0.0024 conf=0.21
+2026-11-26 05:30:49,458 [INFO] trade_bot: STOCKS | market closed | next open in ~870 min
+2026-11-26 05:35:49,409 [INFO] trade_bot: Stock market closed. Next open in ~865 min.
+2026-11-26 05:35:49,414 [INFO] trade_bot: CRYPTO | regime=balanced model=True | rank+directional gates passed
+2026-11-26 05:35:49,415 [INFO] trade_bot:   NEARUSDT     score=0.727 pred=-0.0025 conf=0.23
+2026-11-26 05:35:49,415 [INFO] trade_bot:   LTCUSDT      score=0.659 pred=-0.0028 conf=0.22
+2026-11-26 05:35:49,415 [INFO] trade_bot:   XLMUSDT      score=0.629 pred=-0.0021 conf=0.21
+2026-11-26 05:35:49,415 [INFO] trade_bot: STOCKS | market closed | next open in ~865 min
+2026-11-26 05:39:49,391 [INFO] trade_bot: Poll #20 | prices=173240 | crypto acc=44.3% (n=7160) | stock acc=46.4% (n=1340)
+2026-11-26 05:40:49,385 [INFO] trade_bot: Stock market closed. Next open in ~860 min.
+2026-11-26 05:40:49,386 [INFO] trade_bot: CRYPTO | regime=balanced model=True | rank+directional gates passed
+2026-11-26 05:40:49,386 [INFO] trade_bot:   NEARUSDT     score=0.757 pred=-0.0017 conf=0.21
+2026-11-26 05:40:49,386 [INFO] trade_bot:   LTCUSDT      score=0.655 pred=-0.0026 conf=0.22
+2026-11-26 05:40:49,386 [INFO] trade_bot:   XLMUSDT      score=0.607 pred=-0.0018 conf=0.20
+2026-11-26 05:40:49,386 [INFO] trade_bot: STOCKS | market closed | next open in ~860 min
+2026-11-26 05:45:49,615 [INFO] trade_bot: Stock market closed. Next open in ~855 min.
+2026-11-26 05:45:49,615 [INFO] trade_bot: CRYPTO | regime=risk_on model=True | rank+directional gates passed
+2026-11-26 05:45:49,615 [INFO] trade_bot:   NEARUSDT     score=0.674 pred=-0.0028 conf=0.23
+2026-11-26 05:45:49,615 [INFO] trade_bot:   XLMUSDT      score=0.670 pred=-0.0015 conf=0.20
+2026-11-26 05:45:49,615 [INFO] trade_bot:   LTCUSDT      score=0.621 pred=-0.0028 conf=0.22
+2026-11-26 05:45:49,615 [INFO] trade_bot: STOCKS | market closed | next open in ~855 min
