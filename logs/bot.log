@@ -841,3 +841,1016 @@
 2026-11-26 05:50:49,629 [INFO] trade_bot:   NEARUSDT     score=0.600 pred=-0.0022 conf=0.23
 2026-11-26 05:50:49,629 [INFO] trade_bot:   DOGEUSDT     score=0.546 pred=-0.0003 conf=0.18
 2026-11-26 05:50:49,629 [INFO] trade_bot: STOCKS | market closed | next open in ~850 min
+2026-11-26 05:55:49,466 [INFO] trade_bot: Stock market closed. Next open in ~845 min.
+2026-11-26 05:55:49,466 [INFO] trade_bot: CRYPTO | regime=balanced model=True | rank gate passed; classifier gated: balanced_acc 0.327<0.330
+2026-11-26 05:55:49,466 [INFO] trade_bot:   XLMUSDT      score=0.604 pred=-0.0006 conf=0.19
+2026-11-26 05:55:49,466 [INFO] trade_bot:   NEARUSDT     score=0.571 pred=-0.0039 conf=0.27
+2026-11-26 05:55:49,466 [INFO] trade_bot:   DOGEUSDT     score=0.534 pred=-0.0004 conf=0.18
+2026-11-26 05:55:49,466 [INFO] trade_bot: STOCKS | market closed | next open in ~845 min
+2026-11-26 05:59:49,450 [INFO] trade_bot: Poll #40 | prices=173640 | crypto acc=44.3% (n=7160) | stock acc=46.4% (n=1340)
+2026-11-26 06:00:49,604 [INFO] trade_bot: Stock market closed. Next open in ~840 min.
+2026-11-26 06:00:49,605 [INFO] trade_bot: CRYPTO | regime=risk_on model=True | rank gate passed; classifier gated: balanced_acc 0.327<0.330
+2026-11-26 06:00:49,605 [INFO] trade_bot:   DOGEUSDT     score=0.626 pred=-0.0004 conf=0.19
+2026-11-26 06:00:49,605 [INFO] trade_bot:   XLMUSDT      score=0.585 pred=-0.0011 conf=0.20
+2026-11-26 06:00:49,605 [INFO] trade_bot:   NEARUSDT     score=0.600 pred=-0.0028 conf=0.24
+2026-11-26 06:00:49,605 [INFO] trade_bot: STOCKS | market closed | next open in ~840 min
+2026-11-26 06:05:49,376 [INFO] trade_bot: Stock market closed. Next open in ~835 min.
+2026-11-26 06:05:49,376 [INFO] trade_bot: CRYPTO | regime=balanced model=True | rank gate passed; classifier gated: balanced_acc 0.327<0.330
+2026-11-26 06:05:49,376 [INFO] trade_bot:   DOGEUSDT     score=0.643 pred=-0.0013 conf=0.21
+2026-11-26 06:05:49,376 [INFO] trade_bot:   NEARUSDT     score=0.612 pred=-0.0037 conf=0.26
+2026-11-26 06:05:49,376 [INFO] trade_bot:   LTCUSDT      score=0.577 pred=-0.0025 conf=0.24
+2026-11-26 06:05:49,376 [INFO] trade_bot: STOCKS | market closed | next open in ~835 min
+2026-11-26 06:09:49,387 [INFO] trade_bot: Poll #50 | prices=173840 | crypto acc=44.3% (n=7160) | stock acc=46.4% (n=1340)
+2026-11-26 06:10:49,470 [INFO] trade_bot: Stock market closed. Next open in ~830 min.
+2026-11-26 06:10:49,471 [INFO] trade_bot: CRYPTO | regime=risk_on model=True | rank gate passed; classifier gated: balanced_acc 0.327<0.330
+2026-11-26 06:10:49,471 [INFO] trade_bot:   LTCUSDT      score=0.633 pred=-0.0022 conf=0.23
+2026-11-26 06:10:49,471 [INFO] trade_bot:   NEARUSDT     score=0.607 pred=-0.0045 conf=0.28
+2026-11-26 06:10:49,471 [INFO] trade_bot:   DOGEUSDT     score=0.594 pred=-0.0014 conf=0.21
+2026-11-26 06:10:49,471 [INFO] trade_bot: STOCKS | market closed | next open in ~830 min
+2026-11-26 06:15:49,539 [INFO] trade_bot: Stock market closed. Next open in ~825 min.
+2026-11-26 06:15:49,539 [INFO] trade_bot: CRYPTO | regime=balanced model=True | rank gate passed; classifier gated: balanced_acc 0.327<0.330
+2026-11-26 06:15:49,539 [INFO] trade_bot:   LTCUSDT      score=0.678 pred=-0.0025 conf=0.24
+2026-11-26 06:15:49,539 [INFO] trade_bot:   NEARUSDT     score=0.610 pred=-0.0055 conf=0.30
+2026-11-26 06:15:49,539 [INFO] trade_bot:   DOGEUSDT     score=0.597 pred=-0.0023 conf=0.23
+2026-11-26 06:15:49,539 [INFO] trade_bot: STOCKS | market closed | next open in ~825 min
+2026-11-26 06:19:49,395 [INFO] trade_bot: Poll #60 | prices=174040 | crypto acc=44.3% (n=7160) | stock acc=46.4% (n=1340)
+2026-11-26 06:20:49,588 [INFO] trade_bot: Stock market closed. Next open in ~820 min.
+2026-11-26 06:20:49,588 [INFO] trade_bot: CRYPTO | regime=balanced model=False | rank gated: top_decile_edge -0.00223<-0.00200; classifier gated: balanced_acc 0.309<0.330
+2026-11-26 06:20:49,588 [INFO] trade_bot:   NEARUSDT     score=0.737 pred=-0.0057 conf=0.31
+2026-11-26 06:20:49,588 [INFO] trade_bot:   LTCUSDT      score=0.723 pred=-0.0027 conf=0.24
+2026-11-26 06:20:49,588 [INFO] trade_bot:   DOGEUSDT     score=0.599 pred=-0.0033 conf=0.26
+2026-11-26 06:20:49,588 [INFO] trade_bot: STOCKS | market closed | next open in ~820 min
+2026-11-26 06:25:49,557 [INFO] trade_bot: Stock market closed. Next open in ~815 min.
+2026-11-26 06:25:49,557 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: top_decile_edge -0.00223<-0.00200; classifier gated: balanced_acc 0.309<0.330
+2026-11-26 06:25:49,557 [INFO] trade_bot:   LTCUSDT      score=0.726 pred=-0.0028 conf=0.24
+2026-11-26 06:25:49,557 [INFO] trade_bot:   NEARUSDT     score=0.697 pred=-0.0061 conf=0.32
+2026-11-26 06:25:49,557 [INFO] trade_bot:   DOGEUSDT     score=0.610 pred=-0.0035 conf=0.26
+2026-11-26 06:25:49,557 [INFO] trade_bot: STOCKS | market closed | next open in ~815 min
+2026-11-26 06:29:49,646 [INFO] trade_bot: Poll #70 | prices=174240 | crypto acc=43.6% (n=7360) | stock acc=46.4% (n=1340)
+2026-11-26 06:30:49,539 [INFO] trade_bot: Stock market closed. Next open in ~810 min.
+2026-11-26 06:30:49,539 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: top_decile_edge -0.00223<-0.00200; classifier gated: balanced_acc 0.309<0.330
+2026-11-26 06:30:49,539 [INFO] trade_bot:   NEARUSDT     score=0.737 pred=-0.0052 conf=0.30
+2026-11-26 06:30:49,539 [INFO] trade_bot:   LTCUSDT      score=0.720 pred=-0.0024 conf=0.23
+2026-11-26 06:30:49,539 [INFO] trade_bot: STOCKS | market closed | next open in ~810 min
+2026-11-26 06:35:49,438 [INFO] trade_bot: Stock market closed. Next open in ~805 min.
+2026-11-26 06:35:49,438 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: top_decile_edge -0.00223<-0.00200; classifier gated: balanced_acc 0.309<0.330
+2026-11-26 06:35:49,438 [INFO] trade_bot:   NEARUSDT     score=0.717 pred=-0.0038 conf=0.27
+2026-11-26 06:35:49,438 [INFO] trade_bot:   LTCUSDT      score=0.696 pred=-0.0024 conf=0.23
+2026-11-26 06:35:49,438 [INFO] trade_bot:   DOGEUSDT     score=0.564 pred=-0.0029 conf=0.25
+2026-11-26 06:35:49,438 [INFO] trade_bot: STOCKS | market closed | next open in ~805 min
+2026-11-26 06:39:49,431 [INFO] trade_bot: Poll #80 | prices=174440 | crypto acc=42.9% (n=7560) | stock acc=46.4% (n=1340)
+2026-11-26 06:40:49,398 [INFO] trade_bot: Stock market closed. Next open in ~800 min.
+2026-11-26 06:40:49,399 [INFO] trade_bot: CRYPTO | regime=balanced model=False | rank gated: top_decile_edge -0.00223<-0.00200; classifier gated: balanced_acc 0.309<0.330
+2026-11-26 06:40:49,399 [INFO] trade_bot:   NEARUSDT     score=0.780 pred=-0.0040 conf=0.27
+2026-11-26 06:40:49,399 [INFO] trade_bot:   LTCUSDT      score=0.704 pred=-0.0024 conf=0.24
+2026-11-26 06:40:49,399 [INFO] trade_bot:   DOGEUSDT     score=0.619 pred=-0.0031 conf=0.25
+2026-11-26 06:40:49,399 [INFO] trade_bot: STOCKS | market closed | next open in ~800 min
+2026-11-26 06:45:49,395 [INFO] trade_bot: Stock market closed. Next open in ~795 min.
+2026-11-26 06:45:49,395 [INFO] trade_bot: CRYPTO | regime=balanced model=False | rank gated: top_decile_edge -0.00223<-0.00200; classifier gated: balanced_acc 0.309<0.330
+2026-11-26 06:45:49,395 [INFO] trade_bot:   NEARUSDT     score=0.762 pred=-0.0039 conf=0.27
+2026-11-26 06:45:49,395 [INFO] trade_bot:   LTCUSDT      score=0.724 pred=-0.0026 conf=0.24
+2026-11-26 06:45:49,395 [INFO] trade_bot:   DOGEUSDT     score=0.608 pred=-0.0033 conf=0.26
+2026-11-26 06:45:49,395 [INFO] trade_bot: STOCKS | market closed | next open in ~795 min
+2026-11-26 06:49:49,472 [INFO] trade_bot: Poll #90 | prices=174640 | crypto acc=43.4% (n=7760) | stock acc=46.4% (n=1340)
+2026-11-26 06:50:49,651 [INFO] trade_bot: Stock market closed. Next open in ~790 min.
+2026-11-26 06:50:49,651 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00235<-0.00200; classifier gated: balanced_acc 0.309<0.330; directional_acc 0.398<0.400
+2026-11-26 06:50:49,651 [INFO] trade_bot:   NEARUSDT     score=0.806 pred=-0.0041 conf=0.28
+2026-11-26 06:50:49,651 [INFO] trade_bot:   LTCUSDT      score=0.750 pred=-0.0027 conf=0.24
+2026-11-26 06:50:49,652 [INFO] trade_bot:   DOGEUSDT     score=0.619 pred=-0.0028 conf=0.24
+2026-11-26 06:50:49,652 [INFO] trade_bot: STOCKS | market closed | next open in ~790 min
+2026-11-26 06:55:49,409 [INFO] trade_bot: Stock market closed. Next open in ~785 min.
+2026-11-26 06:55:49,409 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00235<-0.00200; classifier gated: balanced_acc 0.309<0.330; directional_acc 0.398<0.400
+2026-11-26 06:55:49,409 [INFO] trade_bot:   NEARUSDT     score=0.777 pred=-0.0046 conf=0.29
+2026-11-26 06:55:49,409 [INFO] trade_bot:   LTCUSDT      score=0.751 pred=-0.0027 conf=0.24
+2026-11-26 06:55:49,409 [INFO] trade_bot:   DOGEUSDT     score=0.628 pred=-0.0026 conf=0.24
+2026-11-26 06:55:49,409 [INFO] trade_bot: STOCKS | market closed | next open in ~785 min
+2026-11-26 06:59:49,395 [INFO] trade_bot: Poll #100 | prices=174840 | crypto acc=43.7% (n=7960) | stock acc=46.4% (n=1340)
+2026-11-26 07:00:49,389 [INFO] trade_bot: Stock market closed. Next open in ~780 min.
+2026-11-26 07:00:49,389 [INFO] trade_bot: CRYPTO | regime=balanced model=False | rank gated: top_decile_edge -0.00235<-0.00200; classifier gated: balanced_acc 0.309<0.330; directional_acc 0.398<0.400
+2026-11-26 07:00:49,389 [INFO] trade_bot:   NEARUSDT     score=0.759 pred=-0.0048 conf=0.29
+2026-11-26 07:00:49,389 [INFO] trade_bot:   LTCUSDT      score=0.701 pred=-0.0027 conf=0.24
+2026-11-26 07:00:49,389 [INFO] trade_bot:   DOGEUSDT     score=0.633 pred=-0.0024 conf=0.24
+2026-11-26 07:00:49,389 [INFO] trade_bot: STOCKS | market closed | next open in ~780 min
+2026-11-26 07:05:49,480 [INFO] trade_bot: Stock market closed. Next open in ~775 min.
+2026-11-26 07:05:49,480 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00235<-0.00200; classifier gated: balanced_acc 0.309<0.330; directional_acc 0.398<0.400
+2026-11-26 07:05:49,480 [INFO] trade_bot:   NEARUSDT     score=0.777 pred=-0.0055 conf=0.31
+2026-11-26 07:05:49,480 [INFO] trade_bot:   LTCUSDT      score=0.751 pred=-0.0028 conf=0.25
+2026-11-26 07:05:49,480 [INFO] trade_bot:   DOGEUSDT     score=0.626 pred=-0.0027 conf=0.24
+2026-11-26 07:05:49,480 [INFO] trade_bot: STOCKS | market closed | next open in ~775 min
+2026-11-26 07:09:49,467 [INFO] trade_bot: Poll #110 | prices=175040 | crypto acc=43.6% (n=8160) | stock acc=46.4% (n=1340)
+2026-11-26 07:10:49,442 [INFO] trade_bot: Stock market closed. Next open in ~770 min.
+2026-11-26 07:10:49,442 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00235<-0.00200; classifier gated: balanced_acc 0.309<0.330; directional_acc 0.398<0.400
+2026-11-26 07:10:49,442 [INFO] trade_bot:   NEARUSDT     score=0.770 pred=-0.0058 conf=0.31
+2026-11-26 07:10:49,442 [INFO] trade_bot:   LTCUSDT      score=0.746 pred=-0.0026 conf=0.24
+2026-11-26 07:10:49,442 [INFO] trade_bot:   LINKUSDT     score=0.653 pred=-0.0023 conf=0.23
+2026-11-26 07:10:49,442 [INFO] trade_bot: STOCKS | market closed | next open in ~770 min
+2026-11-26 07:15:49,411 [INFO] trade_bot: Stock market closed. Next open in ~765 min.
+2026-11-26 07:15:49,411 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00235<-0.00200; classifier gated: balanced_acc 0.309<0.330; directional_acc 0.398<0.400
+2026-11-26 07:15:49,411 [INFO] trade_bot:   LTCUSDT      score=0.773 pred=-0.0024 conf=0.24
+2026-11-26 07:15:49,411 [INFO] trade_bot:   NEARUSDT     score=0.753 pred=-0.0054 conf=0.30
+2026-11-26 07:15:49,411 [INFO] trade_bot:   LINKUSDT     score=0.652 pred=-0.0019 conf=0.22
+2026-11-26 07:15:49,411 [INFO] trade_bot: STOCKS | market closed | next open in ~765 min
+2026-11-26 07:19:49,404 [INFO] trade_bot: Poll #120 | prices=175240 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 07:20:49,673 [INFO] trade_bot: Stock market closed. Next open in ~760 min.
+2026-11-26 07:20:49,674 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00240<-0.00200; classifier gated: balanced_acc 0.299<0.330; directional_acc 0.390<0.400
+2026-11-26 07:20:49,674 [INFO] trade_bot:   NEARUSDT     score=0.744 pred=-0.0048 conf=0.29
+2026-11-26 07:20:49,674 [INFO] trade_bot:   LTCUSDT      score=0.723 pred=-0.0022 conf=0.23
+2026-11-26 07:20:49,674 [INFO] trade_bot:   LINKUSDT     score=0.666 pred=-0.0016 conf=0.22
+2026-11-26 07:20:49,674 [INFO] trade_bot: STOCKS | market closed | next open in ~760 min
+2026-11-26 07:25:49,625 [INFO] trade_bot: Stock market closed. Next open in ~755 min.
+2026-11-26 07:25:49,626 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00240<-0.00200; classifier gated: balanced_acc 0.299<0.330; directional_acc 0.390<0.400
+2026-11-26 07:25:49,626 [INFO] trade_bot:   NEARUSDT     score=0.784 pred=-0.0048 conf=0.29
+2026-11-26 07:25:49,626 [INFO] trade_bot:   LTCUSDT      score=0.740 pred=-0.0024 conf=0.23
+2026-11-26 07:25:49,626 [INFO] trade_bot:   LINKUSDT     score=0.684 pred=-0.0020 conf=0.23
+2026-11-26 07:25:49,626 [INFO] trade_bot: STOCKS | market closed | next open in ~755 min
+2026-11-26 07:29:49,506 [INFO] trade_bot: Poll #130 | prices=175440 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 07:30:49,421 [INFO] trade_bot: Stock market closed. Next open in ~750 min.
+2026-11-26 07:30:49,421 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00240<-0.00200; classifier gated: balanced_acc 0.299<0.330; directional_acc 0.390<0.400
+2026-11-26 07:30:49,421 [INFO] trade_bot:   LTCUSDT      score=0.785 pred=-0.0024 conf=0.24
+2026-11-26 07:30:49,421 [INFO] trade_bot:   NEARUSDT     score=0.683 pred=-0.0044 conf=0.28
+2026-11-26 07:30:49,421 [INFO] trade_bot:   LINKUSDT     score=0.634 pred=-0.0018 conf=0.22
+2026-11-26 07:30:49,421 [INFO] trade_bot: STOCKS | market closed | next open in ~750 min
+2026-11-26 07:35:49,504 [INFO] trade_bot: Stock market closed. Next open in ~745 min.
+2026-11-26 07:35:49,504 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00240<-0.00200; classifier gated: balanced_acc 0.299<0.330; directional_acc 0.390<0.400
+2026-11-26 07:35:49,504 [INFO] trade_bot:   LTCUSDT      score=0.767 pred=-0.0023 conf=0.23
+2026-11-26 07:35:49,504 [INFO] trade_bot:   NEARUSDT     score=0.722 pred=-0.0042 conf=0.28
+2026-11-26 07:35:49,504 [INFO] trade_bot:   LINKUSDT     score=0.673 pred=-0.0016 conf=0.22
+2026-11-26 07:35:49,504 [INFO] trade_bot: STOCKS | market closed | next open in ~745 min
+2026-11-26 07:39:49,463 [INFO] trade_bot: Poll #140 | prices=175640 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 07:40:49,440 [INFO] trade_bot: Stock market closed. Next open in ~740 min.
+2026-11-26 07:40:49,440 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00240<-0.00200; classifier gated: balanced_acc 0.299<0.330; directional_acc 0.390<0.400
+2026-11-26 07:40:49,440 [INFO] trade_bot:   LTCUSDT      score=0.754 pred=-0.0021 conf=0.23
+2026-11-26 07:40:49,440 [INFO] trade_bot:   NEARUSDT     score=0.721 pred=-0.0040 conf=0.27
+2026-11-26 07:40:49,440 [INFO] trade_bot:   LINKUSDT     score=0.702 pred=-0.0019 conf=0.22
+2026-11-26 07:40:49,440 [INFO] trade_bot: STOCKS | market closed | next open in ~740 min
+2026-11-26 07:45:49,550 [INFO] trade_bot: Stock market closed. Next open in ~735 min.
+2026-11-26 07:45:49,550 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00240<-0.00200; classifier gated: balanced_acc 0.299<0.330; directional_acc 0.390<0.400
+2026-11-26 07:45:49,550 [INFO] trade_bot:   LTCUSDT      score=0.773 pred=-0.0025 conf=0.24
+2026-11-26 07:45:49,550 [INFO] trade_bot:   ADAUSDT      score=0.674 pred=-0.0016 conf=0.22
+2026-11-26 07:45:49,550 [INFO] trade_bot:   NEARUSDT     score=0.663 pred=-0.0039 conf=0.27
+2026-11-26 07:45:49,550 [INFO] trade_bot: STOCKS | market closed | next open in ~735 min
+2026-11-26 07:49:49,666 [INFO] trade_bot: Poll #150 | prices=175840 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 07:50:49,838 [INFO] trade_bot: Stock market closed. Next open in ~730 min.
+2026-11-26 07:50:49,838 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00270<-0.00200; classifier gated: balanced_acc 0.286<0.330; directional_acc 0.387<0.400
+2026-11-26 07:50:49,838 [INFO] trade_bot:   NEARUSDT     score=0.735 pred=-0.0041 conf=0.27
+2026-11-26 07:50:49,838 [INFO] trade_bot:   LTCUSDT      score=0.701 pred=-0.0027 conf=0.24
+2026-11-26 07:50:49,838 [INFO] trade_bot:   ADAUSDT      score=0.682 pred=-0.0019 conf=0.22
+2026-11-26 07:50:49,838 [INFO] trade_bot: STOCKS | market closed | next open in ~730 min
+2026-11-26 07:55:49,626 [INFO] trade_bot: Stock market closed. Next open in ~725 min.
+2026-11-26 07:55:49,626 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00270<-0.00200; classifier gated: balanced_acc 0.286<0.330; directional_acc 0.387<0.400
+2026-11-26 07:55:49,626 [INFO] trade_bot:   LTCUSDT      score=0.713 pred=-0.0029 conf=0.25
+2026-11-26 07:55:49,626 [INFO] trade_bot:   NEARUSDT     score=0.693 pred=-0.0044 conf=0.28
+2026-11-26 07:55:49,626 [INFO] trade_bot:   ADAUSDT      score=0.669 pred=-0.0020 conf=0.23
+2026-11-26 07:55:49,626 [INFO] trade_bot: STOCKS | market closed | next open in ~725 min
+2026-11-26 07:59:49,604 [INFO] trade_bot: Poll #160 | prices=176040 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 08:00:49,571 [INFO] trade_bot: Stock market closed. Next open in ~720 min.
+2026-11-26 08:00:49,571 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00270<-0.00200; classifier gated: balanced_acc 0.286<0.330; directional_acc 0.387<0.400
+2026-11-26 08:00:49,571 [INFO] trade_bot:   LTCUSDT      score=0.718 pred=-0.0031 conf=0.25
+2026-11-26 08:00:49,571 [INFO] trade_bot:   NEARUSDT     score=0.678 pred=-0.0031 conf=0.25
+2026-11-26 08:00:49,571 [INFO] trade_bot:   ADAUSDT      score=0.649 pred=-0.0020 conf=0.22
+2026-11-26 08:00:49,571 [INFO] trade_bot: STOCKS | market closed | next open in ~720 min
+2026-11-26 08:05:49,533 [INFO] trade_bot: Stock market closed. Next open in ~715 min.
+2026-11-26 08:05:49,533 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00270<-0.00200; classifier gated: balanced_acc 0.286<0.330; directional_acc 0.387<0.400
+2026-11-26 08:05:49,533 [INFO] trade_bot:   LTCUSDT      score=0.740 pred=-0.0034 conf=0.26
+2026-11-26 08:05:49,533 [INFO] trade_bot:   XRPUSDT      score=0.645 pred=-0.0023 conf=0.23
+2026-11-26 08:05:49,533 [INFO] trade_bot:   NEARUSDT     score=0.643 pred=-0.0041 conf=0.27
+2026-11-26 08:05:49,533 [INFO] trade_bot: STOCKS | market closed | next open in ~715 min
+2026-11-26 08:09:49,483 [INFO] trade_bot: Poll #170 | prices=176240 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 08:10:49,457 [INFO] trade_bot: Stock market closed. Next open in ~710 min.
+2026-11-26 08:10:49,457 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00270<-0.00200; classifier gated: balanced_acc 0.286<0.330; directional_acc 0.387<0.400
+2026-11-26 08:10:49,457 [INFO] trade_bot:   LTCUSDT      score=0.732 pred=-0.0031 conf=0.25
+2026-11-26 08:10:49,457 [INFO] trade_bot:   XRPUSDT      score=0.663 pred=-0.0020 conf=0.23
+2026-11-26 08:10:49,457 [INFO] trade_bot:   ADAUSDT      score=0.622 pred=-0.0025 conf=0.24
+2026-11-26 08:10:49,457 [INFO] trade_bot: STOCKS | market closed | next open in ~710 min
+2026-11-26 08:15:49,441 [INFO] trade_bot: Stock market closed. Next open in ~705 min.
+2026-11-26 08:15:49,441 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00270<-0.00200; classifier gated: balanced_acc 0.286<0.330; directional_acc 0.387<0.400
+2026-11-26 08:15:49,441 [INFO] trade_bot:   LTCUSDT      score=0.703 pred=-0.0033 conf=0.26
+2026-11-26 08:15:49,441 [INFO] trade_bot:   XRPUSDT      score=0.660 pred=-0.0022 conf=0.23
+2026-11-26 08:15:49,441 [INFO] trade_bot:   NEARUSDT     score=0.645 pred=-0.0037 conf=0.27
+2026-11-26 08:15:49,441 [INFO] trade_bot: STOCKS | market closed | next open in ~705 min
+2026-11-26 08:19:49,459 [INFO] trade_bot: Poll #180 | prices=176440 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 08:20:49,632 [INFO] trade_bot: Stock market closed. Next open in ~700 min.
+2026-11-26 08:20:49,633 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00287<-0.00200; classifier gated: balanced_acc 0.278<0.330; directional_acc 0.368<0.400
+2026-11-26 08:20:49,633 [INFO] trade_bot:   LTCUSDT      score=0.694 pred=-0.0032 conf=0.25
+2026-11-26 08:20:49,633 [INFO] trade_bot:   XRPUSDT      score=0.652 pred=-0.0024 conf=0.24
+2026-11-26 08:20:49,633 [INFO] trade_bot:   NEARUSDT     score=0.626 pred=-0.0032 conf=0.25
+2026-11-26 08:20:49,633 [INFO] trade_bot: STOCKS | market closed | next open in ~700 min
+2026-11-26 08:25:49,405 [INFO] trade_bot: Stock market closed. Next open in ~695 min.
+2026-11-26 08:25:49,405 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00287<-0.00200; classifier gated: balanced_acc 0.278<0.330; directional_acc 0.368<0.400
+2026-11-26 08:25:49,405 [INFO] trade_bot:   LTCUSDT      score=0.687 pred=-0.0030 conf=0.25
+2026-11-26 08:25:49,405 [INFO] trade_bot:   XRPUSDT      score=0.663 pred=-0.0025 conf=0.24
+2026-11-26 08:25:49,405 [INFO] trade_bot:   ADAUSDT      score=0.581 pred=-0.0025 conf=0.24
+2026-11-26 08:25:49,405 [INFO] trade_bot: STOCKS | market closed | next open in ~695 min
+2026-11-26 08:29:49,667 [INFO] trade_bot: Poll #190 | prices=176640 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 08:30:49,651 [INFO] trade_bot: Stock market closed. Next open in ~690 min.
+2026-11-26 08:30:49,651 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00287<-0.00200; classifier gated: balanced_acc 0.278<0.330; directional_acc 0.368<0.400
+2026-11-26 08:30:49,651 [INFO] trade_bot:   XRPUSDT      score=0.703 pred=-0.0029 conf=0.25
+2026-11-26 08:30:49,651 [INFO] trade_bot:   LTCUSDT      score=0.673 pred=-0.0029 conf=0.25
+2026-11-26 08:30:49,651 [INFO] trade_bot:   ADAUSDT      score=0.602 pred=-0.0028 conf=0.25
+2026-11-26 08:30:49,651 [INFO] trade_bot: STOCKS | market closed | next open in ~690 min
+2026-11-26 08:35:49,454 [INFO] trade_bot: Stock market closed. Next open in ~685 min.
+2026-11-26 08:35:49,454 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00287<-0.00200; classifier gated: balanced_acc 0.278<0.330; directional_acc 0.368<0.400
+2026-11-26 08:35:49,454 [INFO] trade_bot:   XRPUSDT      score=0.727 pred=-0.0027 conf=0.24
+2026-11-26 08:35:49,455 [INFO] trade_bot:   LTCUSDT      score=0.693 pred=-0.0025 conf=0.24
+2026-11-26 08:35:49,455 [INFO] trade_bot:   ADAUSDT      score=0.620 pred=-0.0025 conf=0.24
+2026-11-26 08:35:49,455 [INFO] trade_bot: STOCKS | market closed | next open in ~685 min
+2026-11-26 08:39:49,446 [INFO] trade_bot: Poll #200 | prices=176840 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 08:40:49,435 [INFO] trade_bot: Stock market closed. Next open in ~680 min.
+2026-11-26 08:40:49,435 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00287<-0.00200; classifier gated: balanced_acc 0.278<0.330; directional_acc 0.368<0.400
+2026-11-26 08:40:49,435 [INFO] trade_bot:   XRPUSDT      score=0.717 pred=-0.0026 conf=0.24
+2026-11-26 08:40:49,435 [INFO] trade_bot:   LTCUSDT      score=0.681 pred=-0.0021 conf=0.23
+2026-11-26 08:40:49,435 [INFO] trade_bot:   ADAUSDT      score=0.635 pred=-0.0020 conf=0.23
+2026-11-26 08:40:49,436 [INFO] trade_bot: STOCKS | market closed | next open in ~680 min
+2026-11-26 08:45:49,439 [INFO] trade_bot: Stock market closed. Next open in ~675 min.
+2026-11-26 08:45:49,439 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00287<-0.00200; classifier gated: balanced_acc 0.278<0.330; directional_acc 0.368<0.400
+2026-11-26 08:45:49,440 [INFO] trade_bot:   XRPUSDT      score=0.735 pred=-0.0027 conf=0.24
+2026-11-26 08:45:49,440 [INFO] trade_bot:   LTCUSDT      score=0.678 pred=-0.0021 conf=0.23
+2026-11-26 08:45:49,440 [INFO] trade_bot:   ADAUSDT      score=0.612 pred=-0.0023 conf=0.23
+2026-11-26 08:45:49,440 [INFO] trade_bot: STOCKS | market closed | next open in ~675 min
+2026-11-26 08:49:49,512 [INFO] trade_bot: Poll #210 | prices=177040 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 08:50:49,678 [INFO] trade_bot: Stock market closed. Next open in ~670 min.
+2026-11-26 08:50:49,679 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00305<-0.00200; classifier gated: balanced_acc 0.267<0.330; directional_acc 0.371<0.400
+2026-11-26 08:50:49,679 [INFO] trade_bot:   XRPUSDT      score=0.742 pred=-0.0024 conf=0.24
+2026-11-26 08:50:49,679 [INFO] trade_bot:   LTCUSDT      score=0.682 pred=-0.0022 conf=0.23
+2026-11-26 08:50:49,679 [INFO] trade_bot:   ADAUSDT      score=0.633 pred=-0.0020 conf=0.23
+2026-11-26 08:50:49,679 [INFO] trade_bot: STOCKS | market closed | next open in ~670 min
+2026-11-26 08:55:49,570 [INFO] trade_bot: Stock market closed. Next open in ~665 min.
+2026-11-26 08:55:49,570 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00305<-0.00200; classifier gated: balanced_acc 0.267<0.330; directional_acc 0.371<0.400
+2026-11-26 08:55:49,570 [INFO] trade_bot:   LTCUSDT      score=0.734 pred=-0.0021 conf=0.23
+2026-11-26 08:55:49,570 [INFO] trade_bot:   XRPUSDT      score=0.697 pred=-0.0023 conf=0.24
+2026-11-26 08:55:49,570 [INFO] trade_bot:   ADAUSDT      score=0.654 pred=-0.0021 conf=0.23
+2026-11-26 08:55:49,570 [INFO] trade_bot: STOCKS | market closed | next open in ~665 min
+2026-11-26 08:59:49,705 [INFO] trade_bot: Poll #220 | prices=177240 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 09:00:49,617 [INFO] trade_bot: Stock market closed. Next open in ~660 min.
+2026-11-26 09:00:49,617 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00305<-0.00200; classifier gated: balanced_acc 0.267<0.330; directional_acc 0.371<0.400
+2026-11-26 09:00:49,617 [INFO] trade_bot:   XRPUSDT      score=0.741 pred=-0.0023 conf=0.24
+2026-11-26 09:00:49,617 [INFO] trade_bot:   LTCUSDT      score=0.712 pred=-0.0021 conf=0.23
+2026-11-26 09:00:49,617 [INFO] trade_bot:   ADAUSDT      score=0.662 pred=-0.0019 conf=0.22
+2026-11-26 09:00:49,617 [INFO] trade_bot: STOCKS | market closed | next open in ~660 min
+2026-11-26 09:05:49,667 [INFO] trade_bot: Stock market closed. Next open in ~655 min.
+2026-11-26 09:05:49,668 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00305<-0.00200; classifier gated: balanced_acc 0.267<0.330; directional_acc 0.371<0.400
+2026-11-26 09:05:49,668 [INFO] trade_bot:   LTCUSDT      score=0.752 pred=-0.0023 conf=0.23
+2026-11-26 09:05:49,668 [INFO] trade_bot:   ADAUSDT      score=0.636 pred=-0.0020 conf=0.23
+2026-11-26 09:05:49,668 [INFO] trade_bot:   XRPUSDT      score=0.624 pred=-0.0022 conf=0.23
+2026-11-26 09:05:49,668 [INFO] trade_bot: STOCKS | market closed | next open in ~655 min
+2026-11-26 09:09:49,640 [INFO] trade_bot: Poll #230 | prices=177440 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 09:10:49,649 [INFO] trade_bot: Stock market closed. Next open in ~650 min.
+2026-11-26 09:10:49,649 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00305<-0.00200; classifier gated: balanced_acc 0.267<0.330; directional_acc 0.371<0.400
+2026-11-26 09:10:49,649 [INFO] trade_bot:   LTCUSDT      score=0.736 pred=-0.0020 conf=0.23
+2026-11-26 09:10:49,649 [INFO] trade_bot:   ADAUSDT      score=0.660 pred=-0.0020 conf=0.23
+2026-11-26 09:10:49,650 [INFO] trade_bot:   XRPUSDT      score=0.624 pred=-0.0021 conf=0.23
+2026-11-26 09:10:49,650 [INFO] trade_bot: STOCKS | market closed | next open in ~650 min
+2026-11-26 09:15:49,675 [INFO] trade_bot: Stock market closed. Next open in ~645 min.
+2026-11-26 09:15:49,675 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00305<-0.00200; classifier gated: balanced_acc 0.267<0.330; directional_acc 0.371<0.400
+2026-11-26 09:15:49,675 [INFO] trade_bot:   LTCUSDT      score=0.805 pred=-0.0025 conf=0.24
+2026-11-26 09:15:49,675 [INFO] trade_bot:   ADAUSDT      score=0.682 pred=-0.0023 conf=0.23
+2026-11-26 09:15:49,675 [INFO] trade_bot:   XRPUSDT      score=0.662 pred=-0.0021 conf=0.23
+2026-11-26 09:15:49,675 [INFO] trade_bot: STOCKS | market closed | next open in ~645 min
+2026-11-26 09:19:49,493 [INFO] trade_bot: Poll #240 | prices=177640 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 09:20:49,660 [INFO] trade_bot: Stock market closed. Next open in ~640 min.
+2026-11-26 09:20:49,660 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00311<-0.00200; classifier gated: balanced_acc 0.279<0.330; directional_acc 0.381<0.400
+2026-11-26 09:20:49,661 [INFO] trade_bot:   LTCUSDT      score=0.763 pred=-0.0025 conf=0.24
+2026-11-26 09:20:49,661 [INFO] trade_bot:   XRPUSDT      score=0.708 pred=-0.0018 conf=0.22
+2026-11-26 09:20:49,661 [INFO] trade_bot:   DOGEUSDT     score=0.625 pred=-0.0016 conf=0.22
+2026-11-26 09:20:49,661 [INFO] trade_bot: STOCKS | market closed | next open in ~640 min
+2026-11-26 09:25:49,422 [INFO] trade_bot: Stock market closed. Next open in ~635 min.
+2026-11-26 09:25:49,422 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00311<-0.00200; classifier gated: balanced_acc 0.279<0.330; directional_acc 0.381<0.400
+2026-11-26 09:25:49,422 [INFO] trade_bot:   LTCUSDT      score=0.736 pred=-0.0020 conf=0.23
+2026-11-26 09:25:49,422 [INFO] trade_bot:   XRPUSDT      score=0.713 pred=-0.0016 conf=0.22
+2026-11-26 09:25:49,422 [INFO] trade_bot:   ADAUSDT      score=0.648 pred=-0.0021 conf=0.23
+2026-11-26 09:25:49,422 [INFO] trade_bot: STOCKS | market closed | next open in ~635 min
+2026-11-26 09:29:49,661 [INFO] trade_bot: Poll #250 | prices=177840 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 09:30:49,489 [INFO] trade_bot: Stock market closed. Next open in ~630 min.
+2026-11-26 09:30:49,489 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00311<-0.00200; classifier gated: balanced_acc 0.279<0.330; directional_acc 0.381<0.400
+2026-11-26 09:30:49,489 [INFO] trade_bot:   LTCUSDT      score=0.770 pred=-0.0027 conf=0.24
+2026-11-26 09:30:49,489 [INFO] trade_bot:   XRPUSDT      score=0.703 pred=-0.0018 conf=0.22
+2026-11-26 09:30:49,489 [INFO] trade_bot:   DOGEUSDT     score=0.630 pred=-0.0013 conf=0.21
+2026-11-26 09:30:49,489 [INFO] trade_bot: STOCKS | market closed | next open in ~630 min
+2026-11-26 09:35:49,447 [INFO] trade_bot: Stock market closed. Next open in ~625 min.
+2026-11-26 09:35:49,447 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00311<-0.00200; classifier gated: balanced_acc 0.279<0.330; directional_acc 0.381<0.400
+2026-11-26 09:35:49,447 [INFO] trade_bot:   LTCUSDT      score=0.792 pred=-0.0024 conf=0.24
+2026-11-26 09:35:49,447 [INFO] trade_bot:   XRPUSDT      score=0.757 pred=-0.0020 conf=0.23
+2026-11-26 09:35:49,447 [INFO] trade_bot:   DOGEUSDT     score=0.698 pred=-0.0013 conf=0.21
+2026-11-26 09:35:49,447 [INFO] trade_bot: STOCKS | market closed | next open in ~625 min
+2026-11-26 09:39:49,442 [INFO] trade_bot: Poll #260 | prices=178040 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 09:40:49,423 [INFO] trade_bot: Stock market closed. Next open in ~620 min.
+2026-11-26 09:40:49,423 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00311<-0.00200; classifier gated: balanced_acc 0.279<0.330; directional_acc 0.381<0.400
+2026-11-26 09:40:49,423 [INFO] trade_bot:   LTCUSDT      score=0.801 pred=-0.0021 conf=0.23
+2026-11-26 09:40:49,423 [INFO] trade_bot:   XRPUSDT      score=0.697 pred=-0.0014 conf=0.21
+2026-11-26 09:40:49,423 [INFO] trade_bot:   LINKUSDT     score=0.679 pred=-0.0012 conf=0.21
+2026-11-26 09:40:49,423 [INFO] trade_bot: STOCKS | market closed | next open in ~620 min
+2026-11-26 09:45:49,499 [INFO] trade_bot: Stock market closed. Next open in ~615 min.
+2026-11-26 09:45:49,499 [INFO] trade_bot: CRYPTO | regime=balanced model=False | rank gated: top_decile_edge -0.00311<-0.00200; classifier gated: balanced_acc 0.279<0.330; directional_acc 0.381<0.400
+2026-11-26 09:45:49,499 [INFO] trade_bot:   XRPUSDT      score=0.783 pred=-0.0018 conf=0.22
+2026-11-26 09:45:49,499 [INFO] trade_bot:   LTCUSDT      score=0.715 pred=-0.0022 conf=0.23
+2026-11-26 09:45:49,499 [INFO] trade_bot:   LINKUSDT     score=0.628 pred=-0.0013 conf=0.21
+2026-11-26 09:45:49,499 [INFO] trade_bot: STOCKS | market closed | next open in ~615 min
+2026-11-26 09:49:49,505 [INFO] trade_bot: Poll #270 | prices=178240 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 09:50:49,677 [INFO] trade_bot: Stock market closed. Next open in ~610 min.
+2026-11-26 09:50:49,677 [INFO] trade_bot: CRYPTO | regime=balanced model=False | rank gated: top_decile_edge -0.00297<-0.00200; classifier gated: balanced_acc 0.273<0.330; directional_acc 0.372<0.400
+2026-11-26 09:50:49,677 [INFO] trade_bot:   LTCUSDT      score=0.744 pred=-0.0025 conf=0.24
+2026-11-26 09:50:49,677 [INFO] trade_bot:   XRPUSDT      score=0.702 pred=-0.0021 conf=0.23
+2026-11-26 09:50:49,677 [INFO] trade_bot:   LINKUSDT     score=0.656 pred=-0.0016 conf=0.22
+2026-11-26 09:50:49,677 [INFO] trade_bot: STOCKS | market closed | next open in ~610 min
+2026-11-26 09:55:49,434 [INFO] trade_bot: Stock market closed. Next open in ~605 min.
+2026-11-26 09:55:49,434 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00297<-0.00200; classifier gated: balanced_acc 0.273<0.330; directional_acc 0.372<0.400
+2026-11-26 09:55:49,434 [INFO] trade_bot:   LTCUSDT      score=0.805 pred=-0.0024 conf=0.24
+2026-11-26 09:55:49,434 [INFO] trade_bot:   ADAUSDT      score=0.688 pred=-0.0019 conf=0.23
+2026-11-26 09:55:49,434 [INFO] trade_bot:   LINKUSDT     score=0.666 pred=-0.0014 conf=0.21
+2026-11-26 09:55:49,434 [INFO] trade_bot: STOCKS | market closed | next open in ~605 min
+2026-11-26 09:59:49,435 [INFO] trade_bot: Poll #280 | prices=178440 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 10:00:49,472 [INFO] trade_bot: Stock market closed. Next open in ~600 min.
+2026-11-26 10:00:49,472 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00297<-0.00200; classifier gated: balanced_acc 0.273<0.330; directional_acc 0.372<0.400
+2026-11-26 10:00:49,473 [INFO] trade_bot:   LTCUSDT      score=0.789 pred=-0.0021 conf=0.23
+2026-11-26 10:00:49,473 [INFO] trade_bot:   ADAUSDT      score=0.697 pred=-0.0015 conf=0.22
+2026-11-26 10:00:49,473 [INFO] trade_bot:   LINKUSDT     score=0.682 pred=-0.0013 conf=0.21
+2026-11-26 10:00:49,473 [INFO] trade_bot: STOCKS | market closed | next open in ~600 min
+2026-11-26 10:05:49,522 [INFO] trade_bot: Stock market closed. Next open in ~595 min.
+2026-11-26 10:05:49,522 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00297<-0.00200; classifier gated: balanced_acc 0.273<0.330; directional_acc 0.372<0.400
+2026-11-26 10:05:49,522 [INFO] trade_bot:   LTCUSDT      score=0.777 pred=-0.0023 conf=0.24
+2026-11-26 10:05:49,522 [INFO] trade_bot:   ADAUSDT      score=0.746 pred=-0.0019 conf=0.23
+2026-11-26 10:05:49,522 [INFO] trade_bot:   LINKUSDT     score=0.697 pred=-0.0015 conf=0.22
+2026-11-26 10:05:49,522 [INFO] trade_bot: STOCKS | market closed | next open in ~595 min
+2026-11-26 10:09:49,530 [INFO] trade_bot: Poll #290 | prices=178640 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 10:10:49,510 [INFO] trade_bot: Stock market closed. Next open in ~590 min.
+2026-11-26 10:10:49,510 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00297<-0.00200; classifier gated: balanced_acc 0.273<0.330; directional_acc 0.372<0.400
+2026-11-26 10:10:49,510 [INFO] trade_bot:   LTCUSDT      score=0.743 pred=-0.0019 conf=0.23
+2026-11-26 10:10:49,510 [INFO] trade_bot:   LINKUSDT     score=0.717 pred=-0.0014 conf=0.21
+2026-11-26 10:10:49,510 [INFO] trade_bot:   ADAUSDT      score=0.692 pred=-0.0015 conf=0.22
+2026-11-26 10:10:49,510 [INFO] trade_bot: STOCKS | market closed | next open in ~590 min
+2026-11-26 10:15:49,470 [INFO] trade_bot: Stock market closed. Next open in ~585 min.
+2026-11-26 10:15:49,470 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00297<-0.00200; classifier gated: balanced_acc 0.273<0.330; directional_acc 0.372<0.400
+2026-11-26 10:15:49,470 [INFO] trade_bot:   LTCUSDT      score=0.811 pred=-0.0019 conf=0.23
+2026-11-26 10:15:49,470 [INFO] trade_bot:   LINKUSDT     score=0.695 pred=-0.0015 conf=0.22
+2026-11-26 10:15:49,470 [INFO] trade_bot:   XRPUSDT      score=0.668 pred=-0.0014 conf=0.21
+2026-11-26 10:15:49,470 [INFO] trade_bot: STOCKS | market closed | next open in ~585 min
+2026-11-26 10:19:49,519 [INFO] trade_bot: Poll #300 | prices=178840 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 10:20:49,689 [INFO] trade_bot: Stock market closed. Next open in ~580 min.
+2026-11-26 10:20:49,689 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00292<-0.00200; classifier gated: balanced_acc 0.273<0.330; directional_acc 0.373<0.400
+2026-11-26 10:20:49,689 [INFO] trade_bot:   LTCUSDT      score=0.775 pred=-0.0020 conf=0.23
+2026-11-26 10:20:49,689 [INFO] trade_bot:   LINKUSDT     score=0.709 pred=-0.0019 conf=0.22
+2026-11-26 10:20:49,689 [INFO] trade_bot:   XRPUSDT      score=0.694 pred=-0.0016 conf=0.22
+2026-11-26 10:20:49,689 [INFO] trade_bot: STOCKS | market closed | next open in ~580 min
+2026-11-26 10:25:49,433 [INFO] trade_bot: Stock market closed. Next open in ~575 min.
+2026-11-26 10:25:49,433 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00292<-0.00200; classifier gated: balanced_acc 0.273<0.330; directional_acc 0.373<0.400
+2026-11-26 10:25:49,433 [INFO] trade_bot:   XRPUSDT      score=0.730 pred=-0.0016 conf=0.22
+2026-11-26 10:25:49,433 [INFO] trade_bot:   LTCUSDT      score=0.718 pred=-0.0016 conf=0.22
+2026-11-26 10:25:49,433 [INFO] trade_bot:   LINKUSDT     score=0.703 pred=-0.0018 conf=0.22
+2026-11-26 10:25:49,433 [INFO] trade_bot: STOCKS | market closed | next open in ~575 min
+2026-11-26 10:29:49,446 [INFO] trade_bot: Poll #310 | prices=179040 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 10:31:03,397 [INFO] trade_bot: Stock market closed. Next open in ~569 min.
+2026-11-26 10:31:03,397 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00292<-0.00200; classifier gated: balanced_acc 0.273<0.330; directional_acc 0.373<0.400
+2026-11-26 10:31:03,398 [INFO] trade_bot:   LINKUSDT     score=0.748 pred=-0.0017 conf=0.22
+2026-11-26 10:31:03,398 [INFO] trade_bot:   LTCUSDT      score=0.720 pred=-0.0021 conf=0.23
+2026-11-26 10:31:03,398 [INFO] trade_bot:   XRPUSDT      score=0.723 pred=-0.0013 conf=0.21
+2026-11-26 10:31:03,398 [INFO] trade_bot: STOCKS | market closed | next open in ~569 min
+2026-11-26 10:35:49,488 [INFO] trade_bot: Stock market closed. Next open in ~565 min.
+2026-11-26 10:35:49,488 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00292<-0.00200; classifier gated: balanced_acc 0.273<0.330; directional_acc 0.373<0.400
+2026-11-26 10:35:49,488 [INFO] trade_bot:   XRPUSDT      score=0.782 pred=-0.0012 conf=0.21
+2026-11-26 10:35:49,488 [INFO] trade_bot:   LTCUSDT      score=0.766 pred=-0.0016 conf=0.22
+2026-11-26 10:35:49,488 [INFO] trade_bot:   LINKUSDT     score=0.686 pred=-0.0014 conf=0.21
+2026-11-26 10:35:49,488 [INFO] trade_bot: STOCKS | market closed | next open in ~565 min
+2026-11-26 10:39:49,468 [INFO] trade_bot: Poll #320 | prices=179240 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 10:40:49,449 [INFO] trade_bot: Stock market closed. Next open in ~560 min.
+2026-11-26 10:40:49,449 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00292<-0.00200; classifier gated: balanced_acc 0.273<0.330; directional_acc 0.373<0.400
+2026-11-26 10:40:49,449 [INFO] trade_bot:   LTCUSDT      score=0.762 pred=-0.0011 conf=0.21
+2026-11-26 10:40:49,449 [INFO] trade_bot:   XRPUSDT      score=0.747 pred=-0.0013 conf=0.21
+2026-11-26 10:40:49,449 [INFO] trade_bot:   LINKUSDT     score=0.721 pred=-0.0012 conf=0.21
+2026-11-26 10:40:49,449 [INFO] trade_bot: STOCKS | market closed | next open in ~560 min
+2026-11-26 10:45:49,540 [INFO] trade_bot: Stock market closed. Next open in ~555 min.
+2026-11-26 10:45:49,540 [INFO] trade_bot: CRYPTO | regime=balanced model=False | rank gated: top_decile_edge -0.00292<-0.00200; classifier gated: balanced_acc 0.273<0.330; directional_acc 0.373<0.400
+2026-11-26 10:45:49,540 [INFO] trade_bot:   XRPUSDT      score=0.763 pred=-0.0013 conf=0.21
+2026-11-26 10:45:49,540 [INFO] trade_bot:   LTCUSDT      score=0.720 pred=-0.0016 conf=0.22
+2026-11-26 10:45:49,540 [INFO] trade_bot:   LINKUSDT     score=0.684 pred=-0.0013 conf=0.21
+2026-11-26 10:45:49,540 [INFO] trade_bot: STOCKS | market closed | next open in ~555 min
+2026-11-26 10:49:49,503 [INFO] trade_bot: Poll #330 | prices=179440 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 10:50:49,677 [INFO] trade_bot: Stock market closed. Next open in ~550 min.
+2026-11-26 10:50:49,677 [INFO] trade_bot: CRYPTO | regime=balanced model=False | rank gated: top_decile_edge -0.00284<-0.00200; classifier gated: balanced_acc 0.281<0.330; directional_acc 0.375<0.400
+2026-11-26 10:50:49,677 [INFO] trade_bot:   XRPUSDT      score=0.766 pred=-0.0016 conf=0.22
+2026-11-26 10:50:49,678 [INFO] trade_bot:   LINKUSDT     score=0.706 pred=-0.0013 conf=0.21
+2026-11-26 10:50:49,678 [INFO] trade_bot:   LTCUSDT      score=0.669 pred=-0.0016 conf=0.22
+2026-11-26 10:50:49,678 [INFO] trade_bot: STOCKS | market closed | next open in ~550 min
+2026-11-26 10:55:49,477 [INFO] trade_bot: Stock market closed. Next open in ~545 min.
+2026-11-26 10:55:49,477 [INFO] trade_bot: CRYPTO | regime=balanced model=False | rank gated: top_decile_edge -0.00284<-0.00200; classifier gated: balanced_acc 0.281<0.330; directional_acc 0.375<0.400
+2026-11-26 10:55:49,477 [INFO] trade_bot:   XRPUSDT      score=0.764 pred=-0.0014 conf=0.21
+2026-11-26 10:55:49,477 [INFO] trade_bot:   LINKUSDT     score=0.693 pred=-0.0010 conf=0.20
+2026-11-26 10:55:49,477 [INFO] trade_bot:   ADAUSDT      score=0.661 pred=-0.0012 conf=0.21
+2026-11-26 10:55:49,477 [INFO] trade_bot: STOCKS | market closed | next open in ~545 min
+2026-11-26 10:59:49,473 [INFO] trade_bot: Poll #340 | prices=179640 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 11:00:49,524 [INFO] trade_bot: Stock market closed. Next open in ~540 min.
+2026-11-26 11:00:49,524 [INFO] trade_bot: CRYPTO | regime=balanced model=False | rank gated: top_decile_edge -0.00284<-0.00200; classifier gated: balanced_acc 0.281<0.330; directional_acc 0.375<0.400
+2026-11-26 11:00:49,524 [INFO] trade_bot:   XRPUSDT      score=0.771 pred=-0.0014 conf=0.21
+2026-11-26 11:00:49,524 [INFO] trade_bot:   LINKUSDT     score=0.677 pred=-0.0009 conf=0.20
+2026-11-26 11:00:49,524 [INFO] trade_bot:   ADAUSDT      score=0.661 pred=-0.0013 conf=0.21
+2026-11-26 11:00:49,524 [INFO] trade_bot: STOCKS | market closed | next open in ~540 min
+2026-11-26 11:05:49,505 [INFO] trade_bot: Stock market closed. Next open in ~535 min.
+2026-11-26 11:05:49,505 [INFO] trade_bot: CRYPTO | regime=risk_on model=False | rank gated: top_decile_edge -0.00284<-0.00200; classifier gated: balanced_acc 0.281<0.330; directional_acc 0.375<0.400
+2026-11-26 11:05:49,505 [INFO] trade_bot:   XRPUSDT      score=0.816 pred=-0.0018 conf=0.23
+2026-11-26 11:05:49,505 [INFO] trade_bot:   ADAUSDT      score=0.752 pred=-0.0015 conf=0.22
+2026-11-26 11:05:49,505 [INFO] trade_bot:   LINKUSDT     score=0.721 pred=-0.0012 conf=0.21
+2026-11-26 11:05:49,505 [INFO] trade_bot: STOCKS | market closed | next open in ~535 min
+2026-11-26 11:09:49,661 [INFO] trade_bot: Poll #350 | prices=179840 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 11:10:49,774 [INFO] trade_bot: Stock market closed. Next open in ~530 min.
+2026-11-26 11:10:49,774 [INFO] trade_bot: CRYPTO | regime=balanced model=False | rank gated: top_decile_edge -0.00284<-0.00200; classifier gated: balanced_acc 0.281<0.330; directional_acc 0.375<0.400
+2026-11-26 11:10:49,774 [INFO] trade_bot:   XRPUSDT      score=0.752 pred=-0.0015 conf=0.22
+2026-11-26 11:10:49,774 [INFO] trade_bot:   LINKUSDT     score=0.699 pred=-0.0013 conf=0.21
+2026-11-26 11:10:49,774 [INFO] trade_bot:   ADAUSDT      score=0.687 pred=-0.0013 conf=0.21
+2026-11-26 11:10:49,774 [INFO] trade_bot: STOCKS | market closed | next open in ~530 min
+2026-11-26 11:15:49,633 [INFO] trade_bot: Stock market closed. Next open in ~525 min.
+2026-11-26 11:15:49,633 [INFO] trade_bot: CRYPTO | regime=balanced model=False | rank gated: top_decile_edge -0.00284<-0.00200; classifier gated: balanced_acc 0.281<0.330; directional_acc 0.375<0.400
+2026-11-26 11:15:49,633 [INFO] trade_bot:   XRPUSDT      score=0.749 pred=-0.0013 conf=0.21
+2026-11-26 11:15:49,633 [INFO] trade_bot:   LINKUSDT     score=0.700 pred=-0.0009 conf=0.20
+2026-11-26 11:15:49,633 [INFO] trade_bot:   ADAUSDT      score=0.649 pred=-0.0013 conf=0.21
+2026-11-26 11:15:49,633 [INFO] trade_bot: STOCKS | market closed | next open in ~525 min
+2026-11-26 11:19:49,718 [INFO] trade_bot: Poll #360 | prices=180040 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 11:20:49,903 [INFO] trade_bot: Stock market closed. Next open in ~520 min.
+2026-11-26 11:20:49,903 [INFO] trade_bot: CRYPTO | regime=balanced model=False | rank gated: top_decile_edge -0.00307<-0.00200; classifier gated: balanced_acc 0.306<0.330; directional_acc 0.384<0.400
+2026-11-26 11:20:49,903 [INFO] trade_bot:   XRPUSDT      score=0.739 pred=-0.0017 conf=0.22
+2026-11-26 11:20:49,903 [INFO] trade_bot:   LINKUSDT     score=0.712 pred=-0.0015 conf=0.22
+2026-11-26 11:20:49,903 [INFO] trade_bot:   ADAUSDT      score=0.680 pred=-0.0019 conf=0.23
+2026-11-26 11:20:49,903 [INFO] trade_bot: STOCKS | market closed | next open in ~520 min
+2026-11-26 11:25:49,804 [INFO] trade_bot: Stock market closed. Next open in ~515 min.
+2026-11-26 11:25:49,804 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: top_decile_edge -0.00307<-0.00200; classifier gated: balanced_acc 0.306<0.330; directional_acc 0.384<0.400
+2026-11-26 11:25:49,804 [INFO] trade_bot:   XRPUSDT      score=0.748 pred=-0.0016 conf=0.22
+2026-11-26 11:25:49,804 [INFO] trade_bot:   ADAUSDT      score=0.652 pred=-0.0018 conf=0.22
+2026-11-26 11:25:49,804 [INFO] trade_bot:   LINKUSDT     score=0.639 pred=-0.0014 conf=0.21
+2026-11-26 11:25:49,804 [INFO] trade_bot: STOCKS | market closed | next open in ~515 min
+2026-11-26 11:29:49,659 [INFO] trade_bot: Poll #370 | prices=180240 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 11:30:49,640 [INFO] trade_bot: Stock market closed. Next open in ~510 min.
+2026-11-26 11:30:49,640 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: top_decile_edge -0.00307<-0.00200; classifier gated: balanced_acc 0.306<0.330; directional_acc 0.384<0.400
+2026-11-26 11:30:49,640 [INFO] trade_bot:   XRPUSDT      score=0.737 pred=-0.0015 conf=0.22
+2026-11-26 11:30:49,640 [INFO] trade_bot:   LINKUSDT     score=0.691 pred=-0.0011 conf=0.21
+2026-11-26 11:30:49,640 [INFO] trade_bot:   ADAUSDT      score=0.651 pred=-0.0018 conf=0.23
+2026-11-26 11:30:49,640 [INFO] trade_bot: STOCKS | market closed | next open in ~510 min
+2026-11-26 11:35:49,908 [INFO] trade_bot: Stock market closed. Next open in ~505 min.
+2026-11-26 11:35:49,908 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: top_decile_edge -0.00307<-0.00200; classifier gated: balanced_acc 0.306<0.330; directional_acc 0.384<0.400
+2026-11-26 11:35:49,908 [INFO] trade_bot:   XRPUSDT      score=0.721 pred=-0.0013 conf=0.21
+2026-11-26 11:35:49,908 [INFO] trade_bot:   ADAUSDT      score=0.659 pred=-0.0017 conf=0.22
+2026-11-26 11:35:49,908 [INFO] trade_bot:   LINKUSDT     score=0.592 pred=-0.0012 conf=0.21
+2026-11-26 11:35:49,908 [INFO] trade_bot: STOCKS | market closed | next open in ~505 min
+2026-11-26 11:39:49,837 [INFO] trade_bot: Poll #380 | prices=180440 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 11:40:49,631 [INFO] trade_bot: Stock market closed. Next open in ~500 min.
+2026-11-26 11:40:49,631 [INFO] trade_bot: CRYPTO | regime=defensive model=False | rank gated: top_decile_edge -0.00307<-0.00200; classifier gated: balanced_acc 0.306<0.330; directional_acc 0.384<0.400
+2026-11-26 11:40:49,631 [INFO] trade_bot:   XRPUSDT      score=0.747 pred=-0.0011 conf=0.21
+2026-11-26 11:40:49,631 [INFO] trade_bot:   LINKUSDT     score=0.635 pred=-0.0011 conf=0.20
+2026-11-26 11:40:49,631 [INFO] trade_bot: STOCKS | market closed | next open in ~500 min
+2026-11-26 11:45:49,697 [INFO] trade_bot: Stock market closed. Next open in ~495 min.
+2026-11-26 11:45:49,697 [INFO] trade_bot: CRYPTO | regime=defensive model=False | rank gated: top_decile_edge -0.00307<-0.00200; classifier gated: balanced_acc 0.306<0.330; directional_acc 0.384<0.400
+2026-11-26 11:45:49,697 [INFO] trade_bot:   LTCUSDT      score=0.543 pred=-0.0013 conf=0.21
+2026-11-26 11:45:49,697 [INFO] trade_bot: STOCKS | market closed | next open in ~495 min
+2026-11-26 11:49:49,667 [INFO] trade_bot: Poll #390 | prices=180640 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 11:50:49,841 [INFO] trade_bot: Stock market closed. Next open in ~490 min.
+2026-11-26 11:50:49,841 [INFO] trade_bot: CRYPTO | regime=defensive model=False | rank gated: rank_ic -0.1022<-0.1000; top_decile_edge -0.00312<-0.00200; classifier gated: directional_acc 0.396<0.400
+2026-11-26 11:50:49,841 [INFO] trade_bot:   LTCUSDT      score=0.656 pred=-0.0012 conf=0.21
+2026-11-26 11:50:49,841 [INFO] trade_bot: STOCKS | market closed | next open in ~490 min
+2026-11-26 11:55:49,617 [INFO] trade_bot: Stock market closed. Next open in ~485 min.
+2026-11-26 11:55:49,618 [INFO] trade_bot: CRYPTO | regime=defensive model=False | rank gated: rank_ic -0.1022<-0.1000; top_decile_edge -0.00312<-0.00200; classifier gated: directional_acc 0.396<0.400
+2026-11-26 11:55:49,618 [INFO] trade_bot:   LTCUSDT      score=0.630 pred=-0.0011 conf=0.21
+2026-11-26 11:55:49,618 [INFO] trade_bot:   LINKUSDT     score=0.616 pred=-0.0010 conf=0.20
+2026-11-26 11:55:49,618 [INFO] trade_bot: STOCKS | market closed | next open in ~485 min
+2026-11-26 11:59:49,807 [INFO] trade_bot: Poll #400 | prices=180840 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 12:00:49,683 [INFO] trade_bot: Stock market closed. Next open in ~480 min.
+2026-11-26 12:00:49,683 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: rank_ic -0.1022<-0.1000; top_decile_edge -0.00312<-0.00200; classifier gated: directional_acc 0.396<0.400
+2026-11-26 12:00:49,683 [INFO] trade_bot:   LTCUSDT      score=0.702 pred=-0.0008 conf=0.20
+2026-11-26 12:00:49,683 [INFO] trade_bot:   LINKUSDT     score=0.657 pred=-0.0007 conf=0.20
+2026-11-26 12:00:49,683 [INFO] trade_bot:   NEARUSDT     score=0.596 pred=-0.0013 conf=0.21
+2026-11-26 12:00:49,683 [INFO] trade_bot: STOCKS | market closed | next open in ~480 min
+2026-11-26 12:05:49,434 [INFO] trade_bot: Stock market closed. Next open in ~475 min.
+2026-11-26 12:05:49,434 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: rank_ic -0.1022<-0.1000; top_decile_edge -0.00312<-0.00200; classifier gated: directional_acc 0.396<0.400
+2026-11-26 12:05:49,434 [INFO] trade_bot:   LINKUSDT     score=0.662 pred=-0.0004 conf=0.19
+2026-11-26 12:05:49,434 [INFO] trade_bot:   LTCUSDT      score=0.628 pred=-0.0011 conf=0.21
+2026-11-26 12:05:49,434 [INFO] trade_bot:   NEARUSDT     score=0.607 pred=-0.0008 conf=0.20
+2026-11-26 12:05:49,434 [INFO] trade_bot: STOCKS | market closed | next open in ~475 min
+2026-11-26 12:09:49,537 [INFO] trade_bot: Poll #410 | prices=181040 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 12:10:49,495 [INFO] trade_bot: Stock market closed. Next open in ~470 min.
+2026-11-26 12:10:49,495 [INFO] trade_bot: CRYPTO | regime=defensive model=False | rank gated: rank_ic -0.1022<-0.1000; top_decile_edge -0.00312<-0.00200; classifier gated: directional_acc 0.396<0.400
+2026-11-26 12:10:49,495 [INFO] trade_bot:   NEARUSDT     score=0.641 pred=-0.0013 conf=0.21
+2026-11-26 12:10:49,495 [INFO] trade_bot:   LTCUSDT      score=0.622 pred=-0.0010 conf=0.20
+2026-11-26 12:10:49,495 [INFO] trade_bot: STOCKS | market closed | next open in ~470 min
+2026-11-26 12:15:49,493 [INFO] trade_bot: Stock market closed. Next open in ~465 min.
+2026-11-26 12:15:49,493 [INFO] trade_bot: CRYPTO | regime=defensive model=False | rank gated: rank_ic -0.1022<-0.1000; top_decile_edge -0.00312<-0.00200; classifier gated: directional_acc 0.396<0.400
+2026-11-26 12:15:49,493 [INFO] trade_bot:   LTCUSDT      score=0.637 pred=-0.0013 conf=0.21
+2026-11-26 12:15:49,493 [INFO] trade_bot:   NEARUSDT     score=0.577 pred=-0.0016 conf=0.22
+2026-11-26 12:15:49,493 [INFO] trade_bot: STOCKS | market closed | next open in ~465 min
+2026-11-26 12:19:49,443 [INFO] trade_bot: Poll #420 | prices=181240 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 12:20:49,678 [INFO] trade_bot: Stock market closed. Next open in ~460 min.
+2026-11-26 12:20:49,678 [INFO] trade_bot: CRYPTO | regime=defensive model=False | rank gated: top_decile_edge -0.00296<-0.00200; classifier passed
+2026-11-26 12:20:49,678 [INFO] trade_bot: STOCKS | market closed | next open in ~460 min
+2026-11-26 12:25:49,498 [INFO] trade_bot: Stock market closed. Next open in ~455 min.
+2026-11-26 12:25:49,498 [INFO] trade_bot: CRYPTO | regime=defensive model=False | rank gated: top_decile_edge -0.00296<-0.00200; classifier passed
+2026-11-26 12:25:49,498 [INFO] trade_bot: STOCKS | market closed | next open in ~455 min
+2026-11-26 12:29:49,474 [INFO] trade_bot: Poll #430 | prices=181440 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 12:30:49,430 [INFO] trade_bot: Stock market closed. Next open in ~450 min.
+2026-11-26 12:30:49,430 [INFO] trade_bot: CRYPTO | regime=defensive model=False | rank gated: top_decile_edge -0.00296<-0.00200; classifier passed
+2026-11-26 12:30:49,430 [INFO] trade_bot: STOCKS | market closed | next open in ~450 min
+2026-11-26 12:35:49,714 [INFO] trade_bot: Stock market closed. Next open in ~445 min.
+2026-11-26 12:35:49,715 [INFO] trade_bot: CRYPTO | regime=defensive model=False | rank gated: top_decile_edge -0.00296<-0.00200; classifier passed
+2026-11-26 12:35:49,715 [INFO] trade_bot:   NEARUSDT     score=0.677 pred=-0.0007 conf=0.17
+2026-11-26 12:35:49,715 [INFO] trade_bot: STOCKS | market closed | next open in ~445 min
+2026-11-26 12:39:49,590 [INFO] trade_bot: Poll #440 | prices=181640 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 12:40:49,517 [INFO] trade_bot: Stock market closed. Next open in ~440 min.
+2026-11-26 12:40:49,517 [INFO] trade_bot: CRYPTO | regime=defensive model=False | rank gated: top_decile_edge -0.00296<-0.00200; classifier passed
+2026-11-26 12:40:49,517 [INFO] trade_bot:   NEARUSDT     score=0.715 pred=-0.0003 conf=0.16
+2026-11-26 12:40:49,517 [INFO] trade_bot: STOCKS | market closed | next open in ~440 min
+2026-11-26 12:45:49,485 [INFO] trade_bot: Stock market closed. Next open in ~435 min.
+2026-11-26 12:45:49,485 [INFO] trade_bot: CRYPTO | regime=defensive model=False | rank gated: top_decile_edge -0.00296<-0.00200; classifier passed
+2026-11-26 12:45:49,485 [INFO] trade_bot:   NEARUSDT     score=0.674 pred=-0.0003 conf=0.16
+2026-11-26 12:45:49,485 [INFO] trade_bot: STOCKS | market closed | next open in ~435 min
+2026-11-26 12:49:49,471 [INFO] trade_bot: Poll #450 | prices=181840 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 12:50:49,694 [INFO] trade_bot: Stock market closed. Next open in ~430 min.
+2026-11-26 12:50:49,694 [INFO] trade_bot: CRYPTO | regime=defensive model=False | rank gated: top_decile_edge -0.00293<-0.00200; classifier passed
+2026-11-26 12:50:49,694 [INFO] trade_bot:   NEARUSDT     score=0.663 pred=-0.0004 conf=0.16
+2026-11-26 12:50:49,694 [INFO] trade_bot: STOCKS | market closed | next open in ~430 min
+2026-11-26 12:55:49,521 [INFO] trade_bot: Stock market closed. Next open in ~425 min.
+2026-11-26 12:55:49,522 [INFO] trade_bot: CRYPTO | regime=defensive model=False | rank gated: top_decile_edge -0.00293<-0.00200; classifier passed
+2026-11-26 12:55:49,522 [INFO] trade_bot:   NEARUSDT     score=0.707 pred=+0.0000 conf=0.15
+2026-11-26 12:55:49,522 [INFO] trade_bot: STOCKS | market closed | next open in ~425 min
+2026-11-26 12:59:49,670 [INFO] trade_bot: Poll #460 | prices=182040 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 13:00:49,498 [INFO] trade_bot: Stock market closed. Next open in ~420 min.
+2026-11-26 13:00:49,498 [INFO] trade_bot: CRYPTO | regime=defensive model=False | rank gated: top_decile_edge -0.00293<-0.00200; classifier passed
+2026-11-26 13:00:49,498 [INFO] trade_bot: STOCKS | market closed | next open in ~420 min
+2026-11-26 13:05:49,461 [INFO] trade_bot: Stock market closed. Next open in ~415 min.
+2026-11-26 13:05:49,461 [INFO] trade_bot: CRYPTO | regime=defensive model=False | rank gated: top_decile_edge -0.00293<-0.00200; classifier passed
+2026-11-26 13:05:49,461 [INFO] trade_bot: STOCKS | market closed | next open in ~415 min
+2026-11-26 13:09:49,554 [INFO] trade_bot: Poll #470 | prices=182240 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 13:10:49,532 [INFO] trade_bot: Stock market closed. Next open in ~410 min.
+2026-11-26 13:10:49,532 [INFO] trade_bot: CRYPTO | regime=defensive model=False | rank gated: top_decile_edge -0.00293<-0.00200; classifier passed
+2026-11-26 13:10:49,532 [INFO] trade_bot:   LTCUSDT      score=0.510 pred=-0.0002 conf=0.16
+2026-11-26 13:10:49,532 [INFO] trade_bot: STOCKS | market closed | next open in ~410 min
+2026-11-26 13:15:49,461 [INFO] trade_bot: Stock market closed. Next open in ~405 min.
+2026-11-26 13:15:49,461 [INFO] trade_bot: CRYPTO | regime=defensive model=False | rank gated: top_decile_edge -0.00293<-0.00200; classifier passed
+2026-11-26 13:15:49,461 [INFO] trade_bot:   NEARUSDT     score=0.722 pred=+0.0003 conf=0.16
+2026-11-26 13:15:49,461 [INFO] trade_bot: STOCKS | market closed | next open in ~405 min
+2026-11-26 13:19:49,551 [INFO] trade_bot: Poll #480 | prices=182440 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 13:20:49,777 [INFO] trade_bot: Stock market closed. Next open in ~400 min.
+2026-11-26 13:20:49,777 [INFO] trade_bot: CRYPTO | regime=defensive model=False | rank gated: top_decile_edge -0.00256<-0.00200; classifier passed
+2026-11-26 13:20:49,777 [INFO] trade_bot:   NEARUSDT     score=0.668 pred=-0.0003 conf=0.16
+2026-11-26 13:20:49,777 [INFO] trade_bot: STOCKS | market closed | next open in ~400 min
+2026-11-26 13:25:49,514 [INFO] trade_bot: Stock market closed. Next open in ~395 min.
+2026-11-26 13:25:49,514 [INFO] trade_bot: CRYPTO | regime=defensive model=False | rank gated: top_decile_edge -0.00256<-0.00200; classifier passed
+2026-11-26 13:25:49,515 [INFO] trade_bot: STOCKS | market closed | next open in ~395 min
+2026-11-26 13:29:49,496 [INFO] trade_bot: Poll #490 | prices=182640 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 13:30:49,477 [INFO] trade_bot: Stock market closed. Next open in ~390 min.
+2026-11-26 13:30:49,477 [INFO] trade_bot: CRYPTO | regime=defensive model=False | rank gated: top_decile_edge -0.00256<-0.00200; classifier passed
+2026-11-26 13:30:49,477 [INFO] trade_bot: STOCKS | market closed | next open in ~390 min
+2026-11-26 13:35:49,543 [INFO] trade_bot: Stock market closed. Next open in ~385 min.
+2026-11-26 13:35:49,543 [INFO] trade_bot: CRYPTO | regime=defensive model=False | rank gated: top_decile_edge -0.00256<-0.00200; classifier passed
+2026-11-26 13:35:49,543 [INFO] trade_bot:   NEARUSDT     score=0.682 pred=-0.0002 conf=0.16
+2026-11-26 13:35:49,543 [INFO] trade_bot: STOCKS | market closed | next open in ~385 min
+2026-11-26 13:39:49,974 [INFO] trade_bot: Poll #500 | prices=182840 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 13:40:49,564 [INFO] trade_bot: Stock market closed. Next open in ~380 min.
+2026-11-26 13:40:49,564 [INFO] trade_bot: CRYPTO | regime=defensive model=False | rank gated: top_decile_edge -0.00256<-0.00200; classifier passed
+2026-11-26 13:40:49,565 [INFO] trade_bot: STOCKS | market closed | next open in ~380 min
+2026-11-26 13:45:49,489 [INFO] trade_bot: Stock market closed. Next open in ~375 min.
+2026-11-26 13:45:49,489 [INFO] trade_bot: CRYPTO | regime=defensive model=False | rank gated: top_decile_edge -0.00256<-0.00200; classifier passed
+2026-11-26 13:45:49,489 [INFO] trade_bot: STOCKS | market closed | next open in ~375 min
+2026-11-26 13:49:49,514 [INFO] trade_bot: Poll #510 | prices=183040 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 13:50:49,836 [INFO] trade_bot: Stock market closed. Next open in ~370 min.
+2026-11-26 13:50:49,836 [INFO] trade_bot: CRYPTO | regime=defensive model=False | rank gated: top_decile_edge -0.00258<-0.00200; classifier passed
+2026-11-26 13:50:49,836 [INFO] trade_bot:   NEARUSDT     score=0.696 pred=+0.0001 conf=0.16
+2026-11-26 13:50:49,836 [INFO] trade_bot: STOCKS | market closed | next open in ~370 min
+2026-11-26 13:55:49,506 [INFO] trade_bot: Stock market closed. Next open in ~365 min.
+2026-11-26 13:55:49,506 [INFO] trade_bot: CRYPTO | regime=defensive model=False | rank gated: top_decile_edge -0.00258<-0.00200; classifier passed
+2026-11-26 13:55:49,506 [INFO] trade_bot:   NEARUSDT     score=0.613 pred=+0.0004 conf=0.16
+2026-11-26 13:55:49,506 [INFO] trade_bot: STOCKS | market closed | next open in ~365 min
+2026-11-26 14:00:55,630 [INFO] trade_bot: === trade-bot starting === mode=both
+2026-11-26 14:00:55,630 [INFO] trade_bot: DB: data/trade_bot.sqlite3 | Crypto: True | Stocks: True
+2026-11-26 14:00:55,631 [INFO] trade_bot: Crypto: 20 symbols | Stocks: 20 tickers
+2026-11-26 14:00:55,631 [INFO] trade_bot: Crypto prefetch: up to 3000 bars × 20 symbols (1m)...
+2026-11-26 14:00:55,638 [INFO] trade_bot: Stock prefetch: 60d × 5m history for 20 tickers...
+2026-11-26 14:00:55,645 [INFO] trade_bot: Entering main polling loop (mode=both). Ctrl+C to stop.
+2026-11-26 14:00:57,941 [INFO] trade_bot: Stock market closed. Next open in ~360 min.
+2026-11-26 14:00:57,941 [INFO] trade_bot: CRYPTO | regime=defensive model=True | rank gate passed; classifier gated: directional_acc 0.400<0.400
+2026-11-26 14:00:57,941 [INFO] trade_bot:   NEARUSDT     score=0.635 pred=-0.0005 conf=0.19
+2026-11-26 14:00:57,941 [INFO] trade_bot: STOCKS | market closed | next open in ~360 min
+2026-11-26 14:05:56,407 [INFO] trade_bot: Stock market closed. Next open in ~355 min.
+2026-11-26 14:05:56,407 [INFO] trade_bot: CRYPTO | regime=defensive model=True | rank gate passed; classifier gated: directional_acc 0.400<0.400
+2026-11-26 14:05:56,407 [INFO] trade_bot:   NEARUSDT     score=0.648 pred=-0.0005 conf=0.19
+2026-11-26 14:05:56,407 [INFO] trade_bot: STOCKS | market closed | next open in ~355 min
+2026-11-26 14:06:01,135 [INFO] trade_bot: === trade-bot starting === mode=both
+2026-11-26 14:06:01,135 [INFO] trade_bot: DB: data/trade_bot.sqlite3 | Crypto: True | Stocks: True
+2026-11-26 14:06:01,136 [INFO] trade_bot: Crypto: 20 symbols | Stocks: 20 tickers
+2026-11-26 14:06:01,136 [INFO] trade_bot: Crypto prefetch: up to 3000 bars × 20 symbols (1m)...
+2026-11-26 14:06:01,143 [INFO] trade_bot: Stock prefetch: 60d × 5m history for 20 tickers...
+2026-11-26 14:06:01,150 [INFO] trade_bot: Entering main polling loop (mode=both). Ctrl+C to stop.
+2026-11-26 14:06:04,816 [INFO] trade_bot: Stock market closed. Next open in ~354 min.
+2026-11-26 14:06:04,816 [INFO] trade_bot: CRYPTO | regime=defensive model=True | rank gate passed; classifier gated: directional_acc 0.396<0.400
+2026-11-26 14:06:04,816 [INFO] trade_bot:   NEARUSDT     score=0.624 pred=-0.0004 conf=0.19
+2026-11-26 14:06:04,816 [INFO] trade_bot: STOCKS | market closed | next open in ~354 min
+2026-11-26 14:11:01,732 [INFO] trade_bot: Stock market closed. Next open in ~349 min.
+2026-11-26 14:11:01,732 [INFO] trade_bot: CRYPTO | regime=defensive model=True | rank gate passed; classifier gated: directional_acc 0.396<0.400
+2026-11-26 14:11:01,732 [INFO] trade_bot:   NEARUSDT     score=0.659 pred=-0.0003 conf=0.18
+2026-11-26 14:11:01,732 [INFO] trade_bot: STOCKS | market closed | next open in ~349 min
+2026-11-26 14:15:01,766 [INFO] trade_bot: Poll #10 | prices=183540 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 14:16:01,720 [INFO] trade_bot: Stock market closed. Next open in ~344 min.
+2026-11-26 14:16:01,720 [INFO] trade_bot: CRYPTO | regime=defensive model=True | rank gate passed; classifier gated: directional_acc 0.396<0.400
+2026-11-26 14:16:01,720 [INFO] trade_bot: STOCKS | market closed | next open in ~344 min
+2026-11-26 14:21:01,676 [INFO] trade_bot: Stock market closed. Next open in ~339 min.
+2026-11-26 14:21:01,676 [INFO] trade_bot: CRYPTO | regime=risk_off model=True | rank gate passed; classifier gated: directional_acc 0.396<0.400
+2026-11-26 14:21:01,676 [INFO] trade_bot:   LINKUSDT     score=0.573 pred=-0.0002 conf=0.18
+2026-11-26 14:21:01,676 [INFO] trade_bot: STOCKS | market closed | next open in ~339 min
+2026-11-26 14:25:01,760 [INFO] trade_bot: Poll #20 | prices=183740 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 14:26:01,753 [INFO] trade_bot: Stock market closed. Next open in ~334 min.
+2026-11-26 14:26:01,753 [INFO] trade_bot: CRYPTO | regime=risk_off model=True | rank gate passed; classifier gated: directional_acc 0.396<0.400
+2026-11-26 14:26:01,753 [INFO] trade_bot: STOCKS | market closed | next open in ~334 min
+2026-11-26 14:31:01,710 [INFO] trade_bot: Stock market closed. Next open in ~329 min.
+2026-11-26 14:31:01,710 [INFO] trade_bot: CRYPTO | regime=defensive model=True | rank gate passed; classifier gated: directional_acc 0.396<0.400
+2026-11-26 14:31:01,710 [INFO] trade_bot: STOCKS | market closed | next open in ~329 min
+2026-11-26 14:35:01,698 [INFO] trade_bot: Poll #30 | prices=183940 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 14:36:01,929 [INFO] trade_bot: Stock market closed. Next open in ~324 min.
+2026-11-26 14:36:01,929 [INFO] trade_bot: CRYPTO | regime=risk_off model=True | rank gate passed; classifier gated: directional_acc 0.380<0.400
+2026-11-26 14:36:01,929 [INFO] trade_bot:   LINKUSDT     score=0.597 pred=-0.0003 conf=0.19
+2026-11-26 14:36:01,929 [INFO] trade_bot: STOCKS | market closed | next open in ~324 min
+2026-11-26 14:41:01,856 [INFO] trade_bot: Stock market closed. Next open in ~319 min.
+2026-11-26 14:41:01,856 [INFO] trade_bot: CRYPTO | regime=defensive model=True | rank gate passed; classifier gated: directional_acc 0.380<0.400
+2026-11-26 14:41:01,856 [INFO] trade_bot:   NEARUSDT     score=0.661 pred=-0.0001 conf=0.18
+2026-11-26 14:41:01,856 [INFO] trade_bot:   LINKUSDT     score=0.592 pred=-0.0005 conf=0.19
+2026-11-26 14:41:01,856 [INFO] trade_bot: STOCKS | market closed | next open in ~319 min
+2026-11-26 14:45:01,734 [INFO] trade_bot: Poll #40 | prices=184140 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 14:46:01,719 [INFO] trade_bot: Stock market closed. Next open in ~314 min.
+2026-11-26 14:46:01,719 [INFO] trade_bot: CRYPTO | regime=risk_off model=True | rank gate passed; classifier gated: directional_acc 0.380<0.400
+2026-11-26 14:46:01,720 [INFO] trade_bot:   NEARUSDT     score=0.638 pred=-0.0000 conf=0.18
+2026-11-26 14:46:01,720 [INFO] trade_bot:   LINKUSDT     score=0.578 pred=-0.0006 conf=0.19
+2026-11-26 14:46:01,720 [INFO] trade_bot: STOCKS | market closed | next open in ~314 min
+2026-11-26 14:51:01,692 [INFO] trade_bot: Stock market closed. Next open in ~309 min.
+2026-11-26 14:51:01,692 [INFO] trade_bot: CRYPTO | regime=defensive model=True | rank gate passed; classifier gated: directional_acc 0.380<0.400
+2026-11-26 14:51:01,692 [INFO] trade_bot:   LINKUSDT     score=0.611 pred=-0.0007 conf=0.20
+2026-11-26 14:51:01,692 [INFO] trade_bot:   LTCUSDT      score=0.531 pred=-0.0005 conf=0.19
+2026-11-26 14:51:01,692 [INFO] trade_bot: STOCKS | market closed | next open in ~309 min
+2026-11-26 14:55:01,848 [INFO] trade_bot: Poll #50 | prices=184340 | crypto acc=42.8% (n=8360) | stock acc=46.4% (n=1340)
+2026-11-26 14:56:02,239 [INFO] trade_bot: Stock market closed. Next open in ~304 min.
+2026-11-26 14:56:02,240 [INFO] trade_bot: CRYPTO | regime=defensive model=True | rank gate passed; classifier gated: directional_acc 0.380<0.400
+2026-11-26 14:56:02,240 [INFO] trade_bot:   LINKUSDT     score=0.566 pred=-0.0006 conf=0.20
+2026-11-26 14:56:02,240 [INFO] trade_bot:   LTCUSDT      score=0.551 pred=-0.0007 conf=0.20
+2026-11-26 14:56:02,240 [INFO] trade_bot: STOCKS | market closed | next open in ~304 min
+2026-11-26 14:57:15,502 [INFO] trade_bot: === trade-bot starting === mode=both
+2026-11-26 14:57:15,502 [INFO] trade_bot: DB: data/trade_bot.sqlite3 | Crypto: True | Stocks: True
+2026-11-26 14:57:15,503 [INFO] trade_bot: Crypto: 100 symbols | Stocks: 20 tickers
+2026-11-26 14:57:15,503 [INFO] trade_bot: Crypto prefetch: up to 3000 bars × 100 symbols (1m)...
+2026-11-26 14:57:17,575 [INFO] trade_bot: [18/100] BCHUSDT: 3000 bars (3 requests)
+2026-11-26 14:57:18,945 [INFO] trade_bot: [21/100] FILUSDT: 3000 bars (3 requests)
+2026-11-26 14:57:20,270 [INFO] trade_bot: [22/100] APTUSDT: 3000 bars (3 requests)
+2026-11-26 14:57:21,627 [INFO] trade_bot: [23/100] ARBUSDT: 3000 bars (3 requests)
+2026-11-26 14:57:22,977 [INFO] trade_bot: [24/100] OPUSDT: 3000 bars (3 requests)
+2026-11-26 14:57:24,314 [INFO] trade_bot: [25/100] INJUSDT: 3000 bars (3 requests)
+2026-11-26 14:57:25,646 [INFO] trade_bot: [26/100] SUIUSDT: 3000 bars (3 requests)
+2026-11-26 14:57:26,984 [INFO] trade_bot: [27/100] SEIUSDT: 3000 bars (3 requests)
+2026-11-26 14:57:28,337 [INFO] trade_bot: [28/100] TIAUSDT: 3000 bars (3 requests)
+2026-11-26 14:57:29,693 [INFO] trade_bot: [29/100] FETUSDT: 3000 bars (3 requests)
+2026-11-26 14:57:31,147 [INFO] trade_bot: [30/100] RENDERUSDT: 3000 bars (3 requests)
+2026-11-26 14:57:32,584 [INFO] trade_bot: [31/100] AAVEUSDT: 3000 bars (3 requests)
+2026-11-26 14:57:34,047 [INFO] trade_bot: [32/100] CRVUSDT: 3000 bars (3 requests)
+2026-11-26 14:57:35,342 [INFO] trade_bot: [33/100] LDOUSDT: 3000 bars (3 requests)
+2026-11-26 14:57:36,652 [INFO] trade_bot: [34/100] MKRUSDT: 3000 bars (3 requests)
+2026-11-26 14:57:38,023 [INFO] trade_bot: [35/100] SNXUSDT: 3000 bars (3 requests)
+2026-11-26 14:57:39,399 [INFO] trade_bot: [36/100] COMPUSDT: 3000 bars (3 requests)
+2026-11-26 14:57:40,867 [INFO] trade_bot: [37/100] SUSHIUSDT: 3000 bars (3 requests)
+2026-11-26 14:57:42,125 [INFO] trade_bot: [38/100] BALUSDT: 3000 bars (3 requests)
+2026-11-26 14:57:43,387 [INFO] trade_bot: [39/100] YFIUSDT: 3000 bars (3 requests)
+2026-11-26 14:57:44,773 [INFO] trade_bot: [40/100] CAKEUSDT: 3000 bars (3 requests)
+2026-11-26 14:57:46,218 [INFO] trade_bot: [41/100] SANDUSDT: 3000 bars (3 requests)
+2026-11-26 14:57:47,623 [INFO] trade_bot: [42/100] MANAUSDT: 3000 bars (3 requests)
+2026-11-26 14:57:48,950 [INFO] trade_bot: [43/100] AXSUSDT: 3000 bars (3 requests)
+2026-11-26 14:57:50,217 [INFO] trade_bot: [44/100] ENJUSDT: 3000 bars (3 requests)
+2026-11-26 14:57:51,655 [INFO] trade_bot: [45/100] GALAUSDT: 3000 bars (3 requests)
+2026-11-26 14:57:53,081 [INFO] trade_bot: [46/100] CHZUSDT: 3000 bars (3 requests)
+2026-11-26 14:57:54,454 [INFO] trade_bot: [47/100] FLOWUSDT: 3000 bars (3 requests)
+2026-11-26 14:57:55,807 [INFO] trade_bot: [48/100] IMXUSDT: 3000 bars (3 requests)
+2026-11-26 14:57:57,203 [INFO] trade_bot: [49/100] XTZUSDT: 3000 bars (3 requests)
+2026-11-26 14:57:58,560 [INFO] trade_bot: [50/100] WLDUSDT: 3000 bars (3 requests)
+2026-11-26 14:57:59,889 [INFO] trade_bot: [51/100] PEPEUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:01,217 [INFO] trade_bot: [52/100] SHIBUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:02,575 [INFO] trade_bot: [53/100] FLOKIUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:03,953 [INFO] trade_bot: [54/100] HYPEUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:05,364 [INFO] trade_bot: [55/100] TAOUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:06,720 [INFO] trade_bot: [56/100] ENAUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:08,174 [INFO] trade_bot: [57/100] ONDOUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:09,584 [INFO] trade_bot: [58/100] STXUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:11,071 [INFO] trade_bot: [59/100] ICPUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:12,475 [INFO] trade_bot: [60/100] RUNEUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:13,797 [INFO] trade_bot: [61/100] KAVAUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:15,050 [INFO] trade_bot: [62/100] BANDUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:16,382 [INFO] trade_bot: [63/100] ANKRUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:17,721 [INFO] trade_bot: [64/100] COTIUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:18,992 [INFO] trade_bot: [65/100] STORJUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:20,411 [INFO] trade_bot: [66/100] SKLUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:21,853 [INFO] trade_bot: [67/100] HBARUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:23,213 [INFO] trade_bot: [68/100] QNTUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:24,634 [INFO] trade_bot: [69/100] EGLDUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:26,081 [INFO] trade_bot: [70/100] ZILUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:27,517 [INFO] trade_bot: [71/100] IOSTUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:28,859 [INFO] trade_bot: [72/100] ONTUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:30,209 [INFO] trade_bot: [73/100] ZENUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:31,648 [INFO] trade_bot: [74/100] DCRUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:33,041 [INFO] trade_bot: [75/100] LRCUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:34,423 [INFO] trade_bot: [76/100] RAYUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:35,881 [INFO] trade_bot: [77/100] POLUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:37,327 [INFO] trade_bot: [78/100] STRKUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:38,759 [INFO] trade_bot: [79/100] BLURUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:40,217 [INFO] trade_bot: [80/100] CELOUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:41,534 [INFO] trade_bot: [81/100] LPTUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:42,924 [INFO] trade_bot: [82/100] NKNUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:44,222 [INFO] trade_bot: [83/100] XVGUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:45,623 [INFO] trade_bot: [84/100] BURGERUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:46,940 [INFO] trade_bot: [85/100] PONDUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:48,243 [INFO] trade_bot: [86/100] TLMUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:49,529 [INFO] trade_bot: [87/100] ALPHAUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:50,945 [INFO] trade_bot: [88/100] CTKUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:52,369 [INFO] trade_bot: [89/100] XVSUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:53,814 [INFO] trade_bot: [90/100] CELRUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:55,156 [INFO] trade_bot: [91/100] ZRXUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:56,508 [INFO] trade_bot: [92/100] MTLUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:57,833 [INFO] trade_bot: [93/100] MANTRAUSDT: 3000 bars (3 requests)
+2026-11-26 14:58:59,276 [INFO] trade_bot: [94/100] MOVEUSDT: 3000 bars (3 requests)
+2026-11-26 14:59:00,859 [INFO] trade_bot: [95/100] PENGUUSDT: 3000 bars (3 requests)
+2026-11-26 14:59:02,173 [INFO] trade_bot: [96/100] VIRTUALUSDT: 3000 bars (3 requests)
+2026-11-26 14:59:03,516 [INFO] trade_bot: [97/100] ORDIUSDT: 3000 bars (3 requests)
+2026-11-26 14:59:04,857 [INFO] trade_bot: [98/100] BONKUSDT: 3000 bars (3 requests)
+2026-11-26 14:59:06,300 [INFO] trade_bot: [99/100] TRUMPUSDT: 3000 bars (3 requests)
+2026-11-26 14:59:07,842 [INFO] trade_bot: [100/100] SSVUSDT: 3000 bars (3 requests)
+2026-11-26 14:59:07,963 [INFO] trade_bot: Stock prefetch: 60d × 5m history for 20 tickers...
+2026-11-26 14:59:07,967 [INFO] trade_bot: Entering main polling loop (mode=both). Ctrl+C to stop.
+2026-11-26 14:59:10,024 [INFO] trade_bot: Stock market closed. Next open in ~301 min.
+2026-11-26 14:59:10,024 [INFO] trade_bot: CRYPTO | regime=defensive model=False | rank gated: top_decile_edge -0.00240<0.00025; top_decile_net -0.00595<0.00025; classifier gated: balanced_acc 0.355<0.360
+2026-11-26 14:59:10,024 [INFO] trade_bot:   AAVEUSDT     score=0.775 pred=+0.0018 conf=0.20
+2026-11-26 14:59:10,024 [INFO] trade_bot:   QNTUSDT      score=0.727 pred=+0.0010 conf=0.19
+2026-11-26 14:59:10,024 [INFO] trade_bot:   INJUSDT      score=0.715 pred=+0.0021 conf=0.20
+2026-11-26 14:59:10,024 [INFO] trade_bot: STOCKS | market closed | next open in ~301 min
+2026-11-26 15:04:09,422 [INFO] trade_bot: Stock market closed. Next open in ~296 min.
+2026-11-26 15:04:09,423 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: top_decile_edge -0.00240<0.00025; top_decile_net -0.00595<0.00025; classifier gated: balanced_acc 0.355<0.360
+2026-11-26 15:04:09,423 [INFO] trade_bot:   AAVEUSDT     score=0.735 pred=+0.0014 conf=0.19
+2026-11-26 15:04:09,423 [INFO] trade_bot:   INJUSDT      score=0.707 pred=+0.0014 conf=0.19
+2026-11-26 15:04:09,423 [INFO] trade_bot:   LTCUSDT      score=0.693 pred=+0.0002 conf=0.18
+2026-11-26 15:04:09,423 [INFO] trade_bot: STOCKS | market closed | next open in ~296 min
+2026-11-26 15:08:09,136 [INFO] trade_bot: Poll #10 | prices=428380 | crypto acc=43.0% (n=8531) | stock acc=46.4% (n=1340)
+2026-11-26 15:09:09,131 [INFO] trade_bot: Stock market closed. Next open in ~291 min.
+2026-11-26 15:09:09,131 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: top_decile_edge -0.00240<0.00025; top_decile_net -0.00595<0.00025; classifier gated: balanced_acc 0.355<0.360
+2026-11-26 15:09:09,131 [INFO] trade_bot:   AAVEUSDT     score=0.752 pred=+0.0013 conf=0.19
+2026-11-26 15:09:09,131 [INFO] trade_bot:   INJUSDT      score=0.737 pred=+0.0012 conf=0.19
+2026-11-26 15:09:09,131 [INFO] trade_bot:   FETUSDT      score=0.703 pred=+0.0019 conf=0.20
+2026-11-26 15:09:09,131 [INFO] trade_bot: STOCKS | market closed | next open in ~291 min
+2026-11-26 15:14:09,412 [INFO] trade_bot: Stock market closed. Next open in ~286 min.
+2026-11-26 15:14:09,413 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: top_decile_edge -0.00240<0.00025; top_decile_net -0.00595<0.00025; classifier gated: balanced_acc 0.355<0.360
+2026-11-26 15:14:09,413 [INFO] trade_bot:   INJUSDT      score=0.741 pred=+0.0022 conf=0.20
+2026-11-26 15:14:09,413 [INFO] trade_bot:   AAVEUSDT     score=0.731 pred=+0.0016 conf=0.20
+2026-11-26 15:14:09,413 [INFO] trade_bot:   QNTUSDT      score=0.717 pred=+0.0000 conf=0.18
+2026-11-26 15:14:09,413 [INFO] trade_bot: STOCKS | market closed | next open in ~286 min
+2026-11-26 15:18:09,365 [INFO] trade_bot: Poll #20 | prices=429380 | crypto acc=43.5% (n=8721) | stock acc=46.4% (n=1340)
+2026-11-26 15:19:09,343 [INFO] trade_bot: Stock market closed. Next open in ~281 min.
+2026-11-26 15:19:09,344 [INFO] trade_bot: CRYPTO | regime=balanced model=False | rank gated: top_decile_edge -0.00240<0.00025; top_decile_net -0.00595<0.00025; classifier gated: balanced_acc 0.355<0.360
+2026-11-26 15:19:09,344 [INFO] trade_bot:   MOVEUSDT     score=0.745 pred=+0.0048 conf=0.24
+2026-11-26 15:19:09,344 [INFO] trade_bot:   INJUSDT      score=0.741 pred=+0.0029 conf=0.21
+2026-11-26 15:19:09,344 [INFO] trade_bot:   SSVUSDT      score=0.733 pred=+0.0052 conf=0.24
+2026-11-26 15:19:09,344 [INFO] trade_bot: STOCKS | market closed | next open in ~281 min
+2026-11-26 15:24:09,308 [INFO] trade_bot: Stock market closed. Next open in ~276 min.
+2026-11-26 15:24:09,308 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: top_decile_edge -0.00240<0.00025; top_decile_net -0.00595<0.00025; classifier gated: balanced_acc 0.355<0.360
+2026-11-26 15:24:09,308 [INFO] trade_bot:   INJUSDT      score=0.767 pred=+0.0021 conf=0.20
+2026-11-26 15:24:09,308 [INFO] trade_bot:   LTCUSDT      score=0.736 pred=+0.0007 conf=0.19
+2026-11-26 15:24:09,308 [INFO] trade_bot:   FETUSDT      score=0.730 pred=+0.0027 conf=0.21
+2026-11-26 15:24:09,308 [INFO] trade_bot: STOCKS | market closed | next open in ~276 min
+2026-11-26 15:28:09,321 [INFO] trade_bot: Poll #30 | prices=430380 | crypto acc=43.4% (n=8911) | stock acc=46.4% (n=1340)
+2026-11-26 15:29:09,793 [INFO] trade_bot: Stock market closed. Next open in ~271 min.
+2026-11-26 15:29:09,794 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: top_decile_edge -0.00264<0.00025; top_decile_net -0.00611<0.00025; classifier gated: balanced_acc 0.350<0.360
+2026-11-26 15:29:09,794 [INFO] trade_bot:   INJUSDT      score=0.770 pred=+0.0023 conf=0.21
+2026-11-26 15:29:09,794 [INFO] trade_bot:   LTCUSDT      score=0.756 pred=+0.0010 conf=0.19
+2026-11-26 15:29:09,794 [INFO] trade_bot:   LINKUSDT     score=0.728 pred=+0.0014 conf=0.19
+2026-11-26 15:29:09,794 [INFO] trade_bot: STOCKS | market closed | next open in ~271 min
+2026-11-26 15:34:09,329 [INFO] trade_bot: Stock market closed. Next open in ~266 min.
+2026-11-26 15:34:09,329 [INFO] trade_bot: CRYPTO | regime=balanced model=False | rank gated: top_decile_edge -0.00264<0.00025; top_decile_net -0.00611<0.00025; classifier gated: balanced_acc 0.350<0.360
+2026-11-26 15:34:09,329 [INFO] trade_bot:   INJUSDT      score=0.750 pred=+0.0025 conf=0.21
+2026-11-26 15:34:09,329 [INFO] trade_bot:   FETUSDT      score=0.729 pred=+0.0019 conf=0.20
+2026-11-26 15:34:09,329 [INFO] trade_bot:   LINKUSDT     score=0.705 pred=+0.0010 conf=0.19
+2026-11-26 15:34:09,329 [INFO] trade_bot: STOCKS | market closed | next open in ~266 min
+2026-11-26 15:38:09,145 [INFO] trade_bot: Poll #40 | prices=431380 | crypto acc=43.5% (n=9101) | stock acc=46.4% (n=1340)
+2026-11-26 15:39:09,165 [INFO] trade_bot: Stock market closed. Next open in ~261 min.
+2026-11-26 15:39:09,165 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: top_decile_edge -0.00264<0.00025; top_decile_net -0.00611<0.00025; classifier gated: balanced_acc 0.350<0.360
+2026-11-26 15:39:09,165 [INFO] trade_bot:   LINKUSDT     score=0.751 pred=+0.0013 conf=0.19
+2026-11-26 15:39:09,165 [INFO] trade_bot:   INJUSDT      score=0.744 pred=+0.0029 conf=0.21
+2026-11-26 15:39:09,165 [INFO] trade_bot:   FETUSDT      score=0.729 pred=+0.0023 conf=0.21
+2026-11-26 15:39:09,165 [INFO] trade_bot: STOCKS | market closed | next open in ~261 min
+2026-11-26 15:44:09,217 [INFO] trade_bot: Stock market closed. Next open in ~256 min.
+2026-11-26 15:44:09,217 [INFO] trade_bot: CRYPTO | regime=balanced model=False | rank gated: top_decile_edge -0.00264<0.00025; top_decile_net -0.00611<0.00025; classifier gated: balanced_acc 0.350<0.360
+2026-11-26 15:44:09,217 [INFO] trade_bot:   FETUSDT      score=0.747 pred=+0.0023 conf=0.21
+2026-11-26 15:44:09,217 [INFO] trade_bot:   MOVEUSDT     score=0.731 pred=+0.0059 conf=0.25
+2026-11-26 15:44:09,217 [INFO] trade_bot:   INJUSDT      score=0.720 pred=+0.0030 conf=0.21
+2026-11-26 15:44:09,217 [INFO] trade_bot: STOCKS | market closed | next open in ~256 min
+2026-11-26 15:48:09,456 [INFO] trade_bot: Poll #50 | prices=432380 | crypto acc=43.9% (n=9291) | stock acc=46.4% (n=1340)
+2026-11-26 15:49:09,349 [INFO] trade_bot: Stock market closed. Next open in ~251 min.
+2026-11-26 15:49:09,349 [INFO] trade_bot: CRYPTO | regime=balanced model=False | rank gated: top_decile_edge -0.00264<0.00025; top_decile_net -0.00611<0.00025; classifier gated: balanced_acc 0.350<0.360
+2026-11-26 15:49:09,349 [INFO] trade_bot:   FETUSDT      score=0.760 pred=+0.0022 conf=0.20
+2026-11-26 15:49:09,349 [INFO] trade_bot:   HBARUSDT     score=0.722 pred=+0.0003 conf=0.18
+2026-11-26 15:49:09,349 [INFO] trade_bot:   MOVEUSDT     score=0.720 pred=+0.0041 conf=0.23
+2026-11-26 15:49:09,349 [INFO] trade_bot: STOCKS | market closed | next open in ~251 min
+2026-11-26 15:54:09,432 [INFO] trade_bot: Stock market closed. Next open in ~246 min.
+2026-11-26 15:54:09,432 [INFO] trade_bot: CRYPTO | regime=balanced model=False | rank gated: top_decile_edge -0.00264<0.00025; top_decile_net -0.00611<0.00025; classifier gated: balanced_acc 0.350<0.360
+2026-11-26 15:54:09,432 [INFO] trade_bot:   INJUSDT      score=0.741 pred=+0.0018 conf=0.20
+2026-11-26 15:54:09,432 [INFO] trade_bot:   FETUSDT      score=0.732 pred=+0.0022 conf=0.20
+2026-11-26 15:54:09,432 [INFO] trade_bot:   SSVUSDT      score=0.729 pred=+0.0034 conf=0.22
+2026-11-26 15:54:09,432 [INFO] trade_bot: STOCKS | market closed | next open in ~246 min
+2026-11-26 15:58:09,370 [INFO] trade_bot: Poll #60 | prices=433380 | crypto acc=44.1% (n=9462) | stock acc=46.4% (n=1340)
+2026-11-26 15:59:14,326 [INFO] trade_bot: Stock market closed. Next open in ~241 min.
+2026-11-26 15:59:14,326 [INFO] trade_bot: CRYPTO | regime=balanced model=False | rank gated: top_decile_edge -0.00185<0.00025; top_decile_net -0.00528<0.00025; classifier gated: balanced_acc 0.348<0.360
+2026-11-26 15:59:14,326 [INFO] trade_bot:   FETUSDT      score=0.748 pred=+0.0011 conf=0.19
+2026-11-26 15:59:14,326 [INFO] trade_bot:   INJUSDT      score=0.704 pred=+0.0018 conf=0.20
+2026-11-26 15:59:14,326 [INFO] trade_bot:   HBARUSDT     score=0.693 pred=+0.0005 conf=0.18
+2026-11-26 15:59:14,326 [INFO] trade_bot: STOCKS | market closed | next open in ~241 min
+2026-11-26 16:04:09,206 [INFO] trade_bot: Stock market closed. Next open in ~236 min.
+2026-11-26 16:04:09,207 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: top_decile_edge -0.00185<0.00025; top_decile_net -0.00528<0.00025; classifier gated: balanced_acc 0.348<0.360
+2026-11-26 16:04:09,207 [INFO] trade_bot:   HBARUSDT     score=0.752 pred=-0.0000 conf=0.18
+2026-11-26 16:04:09,207 [INFO] trade_bot:   FETUSDT      score=0.730 pred=+0.0014 conf=0.19
+2026-11-26 16:04:09,207 [INFO] trade_bot:   INJUSDT      score=0.717 pred=+0.0018 conf=0.20
+2026-11-26 16:04:09,207 [INFO] trade_bot: STOCKS | market closed | next open in ~236 min
+2026-11-26 16:08:09,156 [INFO] trade_bot: Poll #70 | prices=434380 | crypto acc=44.1% (n=9462) | stock acc=46.4% (n=1340)
+2026-11-26 16:09:09,150 [INFO] trade_bot: Stock market closed. Next open in ~231 min.
+2026-11-26 16:09:09,150 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: top_decile_edge -0.00185<0.00025; top_decile_net -0.00528<0.00025; classifier gated: balanced_acc 0.348<0.360
+2026-11-26 16:09:09,150 [INFO] trade_bot:   HBARUSDT     score=0.752 pred=-0.0000 conf=0.18
+2026-11-26 16:09:09,150 [INFO] trade_bot:   FETUSDT      score=0.739 pred=+0.0013 conf=0.19
+2026-11-26 16:09:09,150 [INFO] trade_bot:   SSVUSDT      score=0.714 pred=+0.0014 conf=0.19
+2026-11-26 16:09:09,150 [INFO] trade_bot: STOCKS | market closed | next open in ~231 min
+2026-11-26 16:14:09,217 [INFO] trade_bot: Stock market closed. Next open in ~226 min.
+2026-11-26 16:14:09,217 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: top_decile_edge -0.00185<0.00025; top_decile_net -0.00528<0.00025; classifier gated: balanced_acc 0.348<0.360
+2026-11-26 16:14:09,217 [INFO] trade_bot:   HBARUSDT     score=0.762 pred=-0.0000 conf=0.18
+2026-11-26 16:14:09,217 [INFO] trade_bot:   FETUSDT      score=0.735 pred=+0.0010 conf=0.19
+2026-11-26 16:14:09,217 [INFO] trade_bot:   SSVUSDT      score=0.715 pred=+0.0015 conf=0.20
+2026-11-26 16:14:09,217 [INFO] trade_bot: STOCKS | market closed | next open in ~226 min
+2026-11-26 16:18:09,402 [INFO] trade_bot: Poll #80 | prices=435380 | crypto acc=44.1% (n=9462) | stock acc=46.4% (n=1340)
+2026-11-26 16:19:09,310 [INFO] trade_bot: Stock market closed. Next open in ~221 min.
+2026-11-26 16:19:09,310 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: top_decile_edge -0.00185<0.00025; top_decile_net -0.00528<0.00025; classifier gated: balanced_acc 0.348<0.360
+2026-11-26 16:19:09,310 [INFO] trade_bot:   HBARUSDT     score=0.766 pred=+0.0002 conf=0.18
+2026-11-26 16:19:09,310 [INFO] trade_bot:   FETUSDT      score=0.738 pred=+0.0013 conf=0.19
+2026-11-26 16:19:09,310 [INFO] trade_bot:   SSVUSDT      score=0.719 pred=+0.0004 conf=0.18
+2026-11-26 16:19:09,310 [INFO] trade_bot: STOCKS | market closed | next open in ~221 min
+2026-11-26 16:24:09,162 [INFO] trade_bot: Stock market closed. Next open in ~216 min.
+2026-11-26 16:24:09,162 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: top_decile_edge -0.00185<0.00025; top_decile_net -0.00528<0.00025; classifier gated: balanced_acc 0.348<0.360
+2026-11-26 16:24:09,162 [INFO] trade_bot:   HBARUSDT     score=0.755 pred=+0.0001 conf=0.18
+2026-11-26 16:24:09,162 [INFO] trade_bot:   FETUSDT      score=0.750 pred=+0.0012 conf=0.19
+2026-11-26 16:24:09,162 [INFO] trade_bot:   SSVUSDT      score=0.735 pred=+0.0019 conf=0.20
+2026-11-26 16:24:09,162 [INFO] trade_bot: STOCKS | market closed | next open in ~216 min
+2026-11-26 16:28:09,246 [INFO] trade_bot: Poll #90 | prices=436380 | crypto acc=44.1% (n=9462) | stock acc=46.4% (n=1340)
+2026-11-26 16:29:09,631 [INFO] trade_bot: Stock market closed. Next open in ~211 min.
+2026-11-26 16:29:09,631 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: top_decile_edge -0.00189<0.00025; top_decile_net -0.00550<0.00025; classifier gated: balanced_acc 0.341<0.360
+2026-11-26 16:29:09,632 [INFO] trade_bot:   HBARUSDT     score=0.753 pred=+0.0005 conf=0.18
+2026-11-26 16:29:09,632 [INFO] trade_bot:   FETUSDT      score=0.739 pred=+0.0013 conf=0.19
+2026-11-26 16:29:09,632 [INFO] trade_bot:   WLDUSDT      score=0.709 pred=+0.0010 conf=0.19
+2026-11-26 16:29:09,632 [INFO] trade_bot: STOCKS | market closed | next open in ~211 min
+2026-11-26 16:34:09,185 [INFO] trade_bot: Stock market closed. Next open in ~206 min.
+2026-11-26 16:34:09,185 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: top_decile_edge -0.00189<0.00025; top_decile_net -0.00550<0.00025; classifier gated: balanced_acc 0.341<0.360
+2026-11-26 16:34:09,185 [INFO] trade_bot:   HBARUSDT     score=0.749 pred=+0.0004 conf=0.18
+2026-11-26 16:34:09,185 [INFO] trade_bot:   FETUSDT      score=0.739 pred=+0.0014 conf=0.19
+2026-11-26 16:34:09,185 [INFO] trade_bot:   WLDUSDT      score=0.689 pred=+0.0012 conf=0.19
+2026-11-26 16:34:09,185 [INFO] trade_bot: STOCKS | market closed | next open in ~206 min
+2026-11-26 16:35:00,537 [INFO] trade_bot: === trade-bot starting === mode=both
+2026-11-26 16:35:00,537 [INFO] trade_bot: DB: data/trade_bot.sqlite3 | Crypto: True | Stocks: True
+2026-11-26 16:35:00,538 [INFO] trade_bot: Crypto: 100 symbols | Stocks: 20 tickers
+2026-11-26 16:35:00,538 [INFO] trade_bot: Crypto prefetch: up to 3000 bars × 100 symbols (1m)...
+2026-11-26 16:35:00,575 [INFO] trade_bot: Stock prefetch: 60d × 5m history for 20 tickers...
+2026-11-26 16:35:00,580 [INFO] trade_bot: Entering main polling loop (mode=both). Ctrl+C to stop.
+2026-11-26 16:35:05,978 [INFO] trade_bot: Stock market closed. Next open in ~205 min.
+2026-11-26 16:35:05,978 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: top_decile_edge -0.00160<0.00025; top_decile_net -0.00525<0.00025; classifier gated: balanced_acc 0.343<0.360
+2026-11-26 16:35:05,978 [INFO] trade_bot:   FETUSDT      score=0.742 pred=+0.0011 conf=0.19
+2026-11-26 16:35:05,978 [INFO] trade_bot:   HBARUSDT     score=0.741 pred=+0.0004 conf=0.18
+2026-11-26 16:35:05,978 [INFO] trade_bot:   WLDUSDT      score=0.691 pred=+0.0009 conf=0.19
+2026-11-26 16:35:05,978 [INFO] trade_bot: STOCKS | market closed | next open in ~205 min
+2026-11-26 16:40:01,722 [INFO] trade_bot: Stock market closed. Next open in ~200 min.
+2026-11-26 16:40:01,722 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: top_decile_edge -0.00160<0.00025; top_decile_net -0.00525<0.00025; classifier gated: balanced_acc 0.343<0.360
+2026-11-26 16:40:01,722 [INFO] trade_bot:   FETUSDT      score=0.738 pred=+0.0017 conf=0.20
+2026-11-26 16:40:01,722 [INFO] trade_bot:   WLDUSDT      score=0.708 pred=+0.0009 conf=0.19
+2026-11-26 16:40:01,722 [INFO] trade_bot:   SSVUSDT      score=0.630 pred=+0.0016 conf=0.20
+2026-11-26 16:40:01,722 [INFO] trade_bot: STOCKS | market closed | next open in ~200 min
+2026-11-26 16:44:01,947 [INFO] trade_bot: Poll #10 | prices=437980 | crypto acc=44.1% (n=9462) | stock acc=46.4% (n=1340)
+2026-11-26 16:45:01,910 [INFO] trade_bot: Stock market closed. Next open in ~195 min.
+2026-11-26 16:45:01,910 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: top_decile_edge -0.00160<0.00025; top_decile_net -0.00525<0.00025; classifier gated: balanced_acc 0.343<0.360
+2026-11-26 16:45:01,910 [INFO] trade_bot:   FETUSDT      score=0.741 pred=+0.0011 conf=0.19
+2026-11-26 16:45:01,910 [INFO] trade_bot:   INJUSDT      score=0.725 pred=-0.0002 conf=0.18
+2026-11-26 16:45:01,910 [INFO] trade_bot:   LINKUSDT     score=0.721 pred=+0.0001 conf=0.18
+2026-11-26 16:45:01,910 [INFO] trade_bot: STOCKS | market closed | next open in ~195 min
+2026-11-26 16:50:01,814 [INFO] trade_bot: Stock market closed. Next open in ~190 min.
+2026-11-26 16:50:01,814 [INFO] trade_bot: CRYPTO | regime=balanced model=False | rank gated: top_decile_edge -0.00160<0.00025; top_decile_net -0.00525<0.00025; classifier gated: balanced_acc 0.343<0.360
+2026-11-26 16:50:01,814 [INFO] trade_bot:   FETUSDT      score=0.736 pred=-0.0008 conf=0.19
+2026-11-26 16:50:01,814 [INFO] trade_bot:   INJUSDT      score=0.719 pred=-0.0000 conf=0.18
+2026-11-26 16:50:01,814 [INFO] trade_bot:   LINKUSDT     score=0.687 pred=-0.0002 conf=0.18
+2026-11-26 16:50:01,814 [INFO] trade_bot: STOCKS | market closed | next open in ~190 min
+2026-11-26 16:54:01,783 [INFO] trade_bot: Poll #20 | prices=438980 | crypto acc=44.1% (n=9462) | stock acc=46.4% (n=1340)
+2026-11-26 16:55:01,863 [INFO] trade_bot: Stock market closed. Next open in ~185 min.
+2026-11-26 16:55:01,863 [INFO] trade_bot: CRYPTO | regime=balanced model=False | rank gated: top_decile_edge -0.00160<0.00025; top_decile_net -0.00525<0.00025; classifier gated: balanced_acc 0.343<0.360
+2026-11-26 16:55:01,863 [INFO] trade_bot:   FETUSDT      score=0.732 pred=+0.0005 conf=0.18
+2026-11-26 16:55:01,863 [INFO] trade_bot:   INJUSDT      score=0.716 pred=+0.0006 conf=0.18
+2026-11-26 16:55:01,863 [INFO] trade_bot:   WLDUSDT      score=0.685 pred=+0.0007 conf=0.19
+2026-11-26 16:55:01,863 [INFO] trade_bot: STOCKS | market closed | next open in ~185 min
+2026-11-26 17:00:01,844 [INFO] trade_bot: Stock market closed. Next open in ~180 min.
+2026-11-26 17:00:01,844 [INFO] trade_bot: CRYPTO | regime=balanced model=False | rank gated: top_decile_edge -0.00160<0.00025; top_decile_net -0.00525<0.00025; classifier gated: balanced_acc 0.343<0.360
+2026-11-26 17:00:01,845 [INFO] trade_bot:   INJUSDT      score=0.735 pred=+0.0002 conf=0.18
+2026-11-26 17:00:01,845 [INFO] trade_bot:   FETUSDT      score=0.727 pred=+0.0010 conf=0.19
+2026-11-26 17:00:01,845 [INFO] trade_bot:   MOVEUSDT     score=0.716 pred=+0.0039 conf=0.23
+2026-11-26 17:00:01,845 [INFO] trade_bot: STOCKS | market closed | next open in ~180 min
+2026-11-26 17:04:01,829 [INFO] trade_bot: Poll #30 | prices=439980 | crypto acc=44.1% (n=9462) | stock acc=46.4% (n=1340)
+2026-11-26 17:05:02,147 [INFO] trade_bot: Stock market closed. Next open in ~175 min.
+2026-11-26 17:05:02,147 [INFO] trade_bot: CRYPTO | regime=balanced model=False | rank gated: top_decile_edge -0.00135<0.00025; top_decile_net -0.00540<0.00025; classifier gated: balanced_acc 0.346<0.360
+2026-11-26 17:05:02,147 [INFO] trade_bot:   FETUSDT      score=0.748 pred=+0.0011 conf=0.19
+2026-11-26 17:05:02,147 [INFO] trade_bot:   WLDUSDT      score=0.715 pred=+0.0006 conf=0.18
+2026-11-26 17:05:02,147 [INFO] trade_bot:   INJUSDT      score=0.702 pred=+0.0005 conf=0.18
+2026-11-26 17:05:02,147 [INFO] trade_bot: STOCKS | market closed | next open in ~175 min
+2026-11-26 17:10:01,817 [INFO] trade_bot: Stock market closed. Next open in ~170 min.
+2026-11-26 17:10:01,817 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: top_decile_edge -0.00135<0.00025; top_decile_net -0.00540<0.00025; classifier gated: balanced_acc 0.346<0.360
+2026-11-26 17:10:01,817 [INFO] trade_bot:   FETUSDT      score=0.729 pred=+0.0024 conf=0.21
+2026-11-26 17:10:01,817 [INFO] trade_bot:   WLDUSDT      score=0.716 pred=+0.0009 conf=0.19
+2026-11-26 17:10:01,817 [INFO] trade_bot:   MOVEUSDT     score=0.714 pred=-0.0014 conf=0.20
+2026-11-26 17:10:01,817 [INFO] trade_bot: STOCKS | market closed | next open in ~170 min
+2026-11-26 17:14:01,824 [INFO] trade_bot: Poll #40 | prices=440980 | crypto acc=44.1% (n=9462) | stock acc=46.4% (n=1340)
+2026-11-26 17:15:01,887 [INFO] trade_bot: Stock market closed. Next open in ~165 min.
+2026-11-26 17:15:01,888 [INFO] trade_bot: CRYPTO | regime=balanced model=False | rank gated: top_decile_edge -0.00135<0.00025; top_decile_net -0.00540<0.00025; classifier gated: balanced_acc 0.346<0.360
+2026-11-26 17:15:01,888 [INFO] trade_bot:   FETUSDT      score=0.733 pred=+0.0028 conf=0.22
+2026-11-26 17:15:01,888 [INFO] trade_bot:   MOVEUSDT     score=0.717 pred=-0.0019 conf=0.20
+2026-11-26 17:15:01,888 [INFO] trade_bot:   WLDUSDT      score=0.698 pred=+0.0017 conf=0.20
+2026-11-26 17:15:01,888 [INFO] trade_bot: STOCKS | market closed | next open in ~165 min
+2026-11-26 17:20:01,755 [INFO] trade_bot: Stock market closed. Next open in ~160 min.
+2026-11-26 17:20:01,755 [INFO] trade_bot: CRYPTO | regime=balanced model=False | rank gated: top_decile_edge -0.00135<0.00025; top_decile_net -0.00540<0.00025; classifier gated: balanced_acc 0.346<0.360
+2026-11-26 17:20:01,755 [INFO] trade_bot:   FETUSDT      score=0.734 pred=+0.0020 conf=0.20
+2026-11-26 17:20:01,755 [INFO] trade_bot:   WLDUSDT      score=0.712 pred=+0.0007 conf=0.19
+2026-11-26 17:20:01,755 [INFO] trade_bot:   INJUSDT      score=0.662 pred=+0.0014 conf=0.20
+2026-11-26 17:20:01,755 [INFO] trade_bot: STOCKS | market closed | next open in ~160 min
+2026-11-26 17:24:01,856 [INFO] trade_bot: Poll #50 | prices=441980 | crypto acc=44.1% (n=9462) | stock acc=46.4% (n=1340)
+2026-11-26 17:25:01,959 [INFO] trade_bot: Stock market closed. Next open in ~155 min.
+2026-11-26 17:25:01,959 [INFO] trade_bot: CRYPTO | regime=balanced model=False | rank gated: top_decile_edge -0.00135<0.00025; top_decile_net -0.00540<0.00025; classifier gated: balanced_acc 0.346<0.360
+2026-11-26 17:25:01,959 [INFO] trade_bot:   MOVEUSDT     score=0.736 pred=-0.0014 conf=0.20
+2026-11-26 17:25:01,959 [INFO] trade_bot:   FETUSDT      score=0.736 pred=+0.0019 conf=0.20
+2026-11-26 17:25:01,959 [INFO] trade_bot:   WLDUSDT      score=0.722 pred=+0.0009 conf=0.19
+2026-11-26 17:25:01,959 [INFO] trade_bot: STOCKS | market closed | next open in ~155 min
+2026-11-26 17:30:01,786 [INFO] trade_bot: Stock market closed. Next open in ~150 min.
+2026-11-26 17:30:01,786 [INFO] trade_bot: CRYPTO | regime=balanced model=False | rank gated: top_decile_edge -0.00135<0.00025; top_decile_net -0.00540<0.00025; classifier gated: balanced_acc 0.346<0.360
+2026-11-26 17:30:01,786 [INFO] trade_bot:   WLDUSDT      score=0.745 pred=+0.0009 conf=0.19
+2026-11-26 17:30:01,786 [INFO] trade_bot:   FETUSDT      score=0.737 pred=+0.0023 conf=0.21
+2026-11-26 17:30:01,786 [INFO] trade_bot:   SSVUSDT      score=0.725 pred=+0.0060 conf=0.26
+2026-11-26 17:30:01,786 [INFO] trade_bot: STOCKS | market closed | next open in ~150 min
+2026-11-26 17:34:02,536 [INFO] trade_bot: Poll #60 | prices=442980 | crypto acc=44.1% (n=9462) | stock acc=46.4% (n=1340)
+2026-11-26 17:35:02,165 [INFO] trade_bot: Stock market closed. Next open in ~145 min.
+2026-11-26 17:35:02,166 [INFO] trade_bot: CRYPTO | regime=balanced model=False | rank gated: top_decile_edge -0.00148<0.00025; top_decile_net -0.00580<0.00025; classifier gated: balanced_acc 0.355<0.360
+2026-11-26 17:35:02,166 [INFO] trade_bot:   SSVUSDT      score=0.734 pred=+0.0055 conf=0.26
+2026-11-26 17:35:02,166 [INFO] trade_bot:   WLDUSDT      score=0.718 pred=+0.0008 conf=0.19
+2026-11-26 17:35:02,166 [INFO] trade_bot:   QNTUSDT      score=0.679 pred=+0.0007 conf=0.19
+2026-11-26 17:35:02,166 [INFO] trade_bot: STOCKS | market closed | next open in ~145 min
+2026-11-26 17:40:01,968 [INFO] trade_bot: Stock market closed. Next open in ~140 min.
+2026-11-26 17:40:01,968 [INFO] trade_bot: CRYPTO | regime=balanced model=False | rank gated: top_decile_edge -0.00148<0.00025; top_decile_net -0.00580<0.00025; classifier gated: balanced_acc 0.355<0.360
+2026-11-26 17:40:01,968 [INFO] trade_bot:   SSVUSDT      score=0.742 pred=+0.0059 conf=0.27
+2026-11-26 17:40:01,968 [INFO] trade_bot:   QNTUSDT      score=0.704 pred=+0.0008 conf=0.19
+2026-11-26 17:40:01,968 [INFO] trade_bot:   FETUSDT      score=0.685 pred=+0.0021 conf=0.21
+2026-11-26 17:40:01,968 [INFO] trade_bot: STOCKS | market closed | next open in ~140 min
+2026-11-26 17:44:01,796 [INFO] trade_bot: Poll #70 | prices=443980 | crypto acc=44.1% (n=9462) | stock acc=46.4% (n=1340)
+2026-11-26 17:45:01,785 [INFO] trade_bot: Stock market closed. Next open in ~135 min.
+2026-11-26 17:45:01,786 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: top_decile_edge -0.00148<0.00025; top_decile_net -0.00580<0.00025; classifier gated: balanced_acc 0.355<0.360
+2026-11-26 17:45:01,786 [INFO] trade_bot:   SSVUSDT      score=0.752 pred=+0.0052 conf=0.26
+2026-11-26 17:45:01,786 [INFO] trade_bot:   LINKUSDT     score=0.751 pred=-0.0001 conf=0.18
+2026-11-26 17:45:01,786 [INFO] trade_bot:   QNTUSDT      score=0.743 pred=+0.0008 conf=0.19
+2026-11-26 17:45:01,786 [INFO] trade_bot: STOCKS | market closed | next open in ~135 min
+2026-11-26 17:50:01,749 [INFO] trade_bot: Stock market closed. Next open in ~130 min.
+2026-11-26 17:50:01,749 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: top_decile_edge -0.00148<0.00025; top_decile_net -0.00580<0.00025; classifier gated: balanced_acc 0.355<0.360
+2026-11-26 17:50:01,749 [INFO] trade_bot:   QNTUSDT      score=0.762 pred=+0.0014 conf=0.20
+2026-11-26 17:50:01,749 [INFO] trade_bot:   SSVUSDT      score=0.753 pred=+0.0077 conf=0.29
+2026-11-26 17:50:01,749 [INFO] trade_bot:   LINKUSDT     score=0.749 pred=-0.0001 conf=0.18
+2026-11-26 17:50:01,749 [INFO] trade_bot: STOCKS | market closed | next open in ~130 min
+2026-11-26 17:54:01,869 [INFO] trade_bot: Poll #80 | prices=444980 | crypto acc=44.1% (n=9462) | stock acc=46.4% (n=1340)
+2026-11-26 17:55:01,863 [INFO] trade_bot: Stock market closed. Next open in ~125 min.
+2026-11-26 17:55:01,863 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: top_decile_edge -0.00148<0.00025; top_decile_net -0.00580<0.00025; classifier gated: balanced_acc 0.355<0.360
+2026-11-26 17:55:01,863 [INFO] trade_bot:   QNTUSDT      score=0.763 pred=+0.0013 conf=0.20
+2026-11-26 17:55:01,863 [INFO] trade_bot:   SSVUSDT      score=0.742 pred=+0.0067 conf=0.28
+2026-11-26 17:55:01,863 [INFO] trade_bot:   LINKUSDT     score=0.712 pred=-0.0002 conf=0.18
+2026-11-26 17:55:01,863 [INFO] trade_bot: STOCKS | market closed | next open in ~125 min
+2026-11-26 18:00:01,824 [INFO] trade_bot: Stock market closed. Next open in ~120 min.
+2026-11-26 18:00:01,824 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: top_decile_edge -0.00148<0.00025; top_decile_net -0.00580<0.00025; classifier gated: balanced_acc 0.355<0.360
+2026-11-26 18:00:01,824 [INFO] trade_bot:   QNTUSDT      score=0.757 pred=+0.0009 conf=0.19
+2026-11-26 18:00:01,824 [INFO] trade_bot:   SSVUSDT      score=0.714 pred=+0.0017 conf=0.20
+2026-11-26 18:00:01,824 [INFO] trade_bot:   LINKUSDT     score=0.703 pred=+0.0004 conf=0.18
+2026-11-26 18:00:01,824 [INFO] trade_bot: STOCKS | market closed | next open in ~120 min
+2026-11-26 18:04:01,862 [INFO] trade_bot: Poll #90 | prices=445980 | crypto acc=44.1% (n=9462) | stock acc=46.4% (n=1340)
+2026-11-26 18:05:02,237 [INFO] trade_bot: Stock market closed. Next open in ~115 min.
+2026-11-26 18:05:02,237 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: top_decile_edge -0.00077<0.00025; top_decile_net -0.00534<0.00025; classifier gated: balanced_acc 0.353<0.360
+2026-11-26 18:05:02,237 [INFO] trade_bot:   QNTUSDT      score=0.744 pred=+0.0008 conf=0.19
+2026-11-26 18:05:02,237 [INFO] trade_bot:   SSVUSDT      score=0.740 pred=+0.0021 conf=0.21
+2026-11-26 18:05:02,237 [INFO] trade_bot:   FETUSDT      score=0.713 pred=+0.0020 conf=0.21
+2026-11-26 18:05:02,237 [INFO] trade_bot: STOCKS | market closed | next open in ~115 min
+2026-11-26 18:10:01,950 [INFO] trade_bot: Stock market closed. Next open in ~110 min.
+2026-11-26 18:10:01,950 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: top_decile_edge -0.00077<0.00025; top_decile_net -0.00534<0.00025; classifier gated: balanced_acc 0.353<0.360
+2026-11-26 18:10:01,950 [INFO] trade_bot:   SSVUSDT      score=0.730 pred=+0.0011 conf=0.19
+2026-11-26 18:10:01,950 [INFO] trade_bot:   FETUSDT      score=0.708 pred=+0.0016 conf=0.20
+2026-11-26 18:10:01,951 [INFO] trade_bot:   QNTUSDT      score=0.693 pred=-0.0006 conf=0.19
+2026-11-26 18:10:01,951 [INFO] trade_bot: STOCKS | market closed | next open in ~110 min
+2026-11-26 18:14:02,001 [INFO] trade_bot: Poll #100 | prices=446980 | crypto acc=44.1% (n=9462) | stock acc=46.4% (n=1340)
+2026-11-26 18:15:01,984 [INFO] trade_bot: Stock market closed. Next open in ~105 min.
+2026-11-26 18:15:01,984 [INFO] trade_bot: CRYPTO | regime=balanced model=False | rank gated: top_decile_edge -0.00077<0.00025; top_decile_net -0.00534<0.00025; classifier gated: balanced_acc 0.353<0.360
+2026-11-26 18:15:01,984 [INFO] trade_bot:   SSVUSDT      score=0.796 pred=+0.0013 conf=0.20
+2026-11-26 18:15:01,984 [INFO] trade_bot:   FETUSDT      score=0.736 pred=+0.0010 conf=0.19
+2026-11-26 18:15:01,985 [INFO] trade_bot:   QNTUSDT      score=0.712 pred=-0.0001 conf=0.18
+2026-11-26 18:15:01,985 [INFO] trade_bot: STOCKS | market closed | next open in ~105 min
+2026-11-26 18:20:02,061 [INFO] trade_bot: Stock market closed. Next open in ~100 min.
+2026-11-26 18:20:02,062 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: top_decile_edge -0.00077<0.00025; top_decile_net -0.00534<0.00025; classifier gated: balanced_acc 0.353<0.360
+2026-11-26 18:20:02,062 [INFO] trade_bot:   QNTUSDT      score=0.713 pred=+0.0008 conf=0.19
+2026-11-26 18:20:02,062 [INFO] trade_bot:   SSVUSDT      score=0.704 pred=+0.0022 conf=0.21
+2026-11-26 18:20:02,062 [INFO] trade_bot:   FETUSDT      score=0.701 pred=+0.0019 conf=0.21
+2026-11-26 18:20:02,062 [INFO] trade_bot: STOCKS | market closed | next open in ~100 min
+2026-11-26 18:24:02,069 [INFO] trade_bot: Poll #110 | prices=447980 | crypto acc=44.1% (n=9462) | stock acc=46.4% (n=1340)
+2026-11-26 18:25:01,942 [INFO] trade_bot: Stock market closed. Next open in ~95 min.
+2026-11-26 18:25:01,943 [INFO] trade_bot: CRYPTO | regime=risk_off model=False | rank gated: top_decile_edge -0.00077<0.00025; top_decile_net -0.00534<0.00025; classifier gated: balanced_acc 0.353<0.360
+2026-11-26 18:25:01,943 [INFO] trade_bot:   QNTUSDT      score=0.709 pred=+0.0018 conf=0.21
+2026-11-26 18:25:01,943 [INFO] trade_bot:   FETUSDT      score=0.708 pred=+0.0016 conf=0.20
+2026-11-26 18:25:01,943 [INFO] trade_bot:   ETHUSDT      score=0.677 pred=+0.0000 conf=0.18
+2026-11-26 18:25:01,943 [INFO] trade_bot: STOCKS | market closed | next open in ~95 min

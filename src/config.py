@@ -50,9 +50,20 @@ class Config:
     api_min_request_interval_seconds: float = _float("API_MIN_REQUEST_INTERVAL_SECONDS", 0.10)
 
     # Symbols — crypto (Binance USDT pairs)
+    # 100 liquid, well-known symbols — large enough for cross-sectional ML metrics
+    # (rank IC needs 50+ observations per timestamp to be statistically meaningful)
     watch_symbols: tuple[str, ...] = _csv("WATCH_SYMBOLS",
-        "BTCUSDT,ETHUSDT,BNBUSDT,SOLUSDT,ADAUSDT,XRPUSDT,DOGEUSDT,AVAXUSDT,DOTUSDT,MATICUSDT,"
-        "LINKUSDT,LTCUSDT,UNIUSDT,ATOMUSDT,ETCUSDT,XLMUSDT,TRXUSDT,NEARUSDT,ALGOUSDT,VETUSDT")
+        "BTCUSDT,ETHUSDT,BNBUSDT,SOLUSDT,XRPUSDT,ADAUSDT,DOGEUSDT,AVAXUSDT,TRXUSDT,DOTUSDT,"
+        "LINKUSDT,LTCUSDT,NEARUSDT,UNIUSDT,ATOMUSDT,XLMUSDT,ETCUSDT,BCHUSDT,ALGOUSDT,VETUSDT,"
+        "FILUSDT,APTUSDT,ARBUSDT,OPUSDT,INJUSDT,SUIUSDT,SEIUSDT,TIAUSDT,FETUSDT,RENDERUSDT,"
+        "AAVEUSDT,CRVUSDT,LDOUSDT,MKRUSDT,SNXUSDT,COMPUSDT,SUSHIUSDT,BALUSDT,YFIUSDT,CAKEUSDT,"
+        "SANDUSDT,MANAUSDT,AXSUSDT,ENJUSDT,GALAUSDT,CHZUSDT,FLOWUSDT,IMXUSDT,XTZUSDT,WLDUSDT,"
+        "PEPEUSDT,SHIBUSDT,FLOKIUSDT,HYPEUSDT,TAOUSDT,ENAUSDT,ONDOUSDT,STXUSDT,ICPUSDT,RUNEUSDT,"
+        "KAVAUSDT,BANDUSDT,ANKRUSDT,COTIUSDT,STORJUSDT,SKLUSDT,HBARUSDT,QNTUSDT,EGLDUSDT,ZILUSDT,"
+        "IOSTUSDT,ONTUSDT,ZENUSDT,DCRUSDT,LRCUSDT,RAYUSDT,POLUSDT,STRKUSDT,BLURUSDT,CELOUSDT,"
+        "LPTUSDT,NKNUSDT,XVGUSDT,BURGERUSDT,PONDUSDT,TLMUSDT,ALPHAUSDT,CTKUSDT,XVSUSDT,CELRUSDT,"
+        "ZRXUSDT,MTLUSDT,MANTRAUSDT,MOVEUSDT,PENGUUSDT,VIRTUALUSDT,ORDIUSDT,BONKUSDT,TRUMPUSDT,SSVUSDT"
+    )
     min_quote_volume: float = _float("MIN_QUOTE_VOLUME", 5_000_000.0)
     top_n: int = _int("TOP_N", 20)
     diagnostic_top_n: int = _int("DIAGNOSTIC_TOP_N", 50)
@@ -140,15 +151,16 @@ class Config:
     predictor_classifier_alpha: float = _float("PREDICTOR_CLASSIFIER_ALPHA", 6.0)
     predictor_validation_fraction: float = _float("PREDICTOR_VALIDATION_FRACTION", 0.25)
     predictor_purge_gap: int = _int("PREDICTOR_PURGE_GAP", 60)
-    # Gate thresholds — loosened for a 20-symbol universe where cross-sectional
-    # rank IC is noisy (each datapoint has only 20 observations). The regression
-    # signal can still be directionally useful even when rank IC is near zero.
-    predictor_min_directional_accuracy: float = _float("PREDICTOR_MIN_DIRECTIONAL_ACCURACY", 0.40)
-    predictor_min_correlation: float = _float("PREDICTOR_MIN_CORRELATION", -0.30)
-    predictor_min_rank_ic: float = _float("PREDICTOR_MIN_RANK_IC", -0.10)
-    predictor_min_balanced_accuracy: float = _float("PREDICTOR_MIN_BALANCED_ACCURACY", 0.33)
-    predictor_min_top_decile_edge: float = _float("PREDICTOR_MIN_TOP_DECILE_EDGE", -0.002)
-    predictor_min_top_decile_net_return: float = _float("PREDICTOR_MIN_TOP_DECILE_NET_RETURN", -0.006)
+    # Gate thresholds.
+    # With 100 symbols, cross-sectional metrics (rank_ic, top_decile_edge)
+    # have 100 observations per timestamp — statistically meaningful.
+    # These are now genuine quality gates, not noise filters.
+    predictor_min_directional_accuracy: float = _float("PREDICTOR_MIN_DIRECTIONAL_ACCURACY", 0.50)
+    predictor_min_correlation: float          = _float("PREDICTOR_MIN_CORRELATION",           0.01)
+    predictor_min_rank_ic: float              = _float("PREDICTOR_MIN_RANK_IC",               0.01)
+    predictor_min_balanced_accuracy: float    = _float("PREDICTOR_MIN_BALANCED_ACCURACY",     0.36)
+    predictor_min_top_decile_edge: float      = _float("PREDICTOR_MIN_TOP_DECILE_EDGE",       0.00025)
+    predictor_min_top_decile_net_return: float= _float("PREDICTOR_MIN_TOP_DECILE_NET_RETURN", 0.00025)
     slippage_bps: float = _float("SLIPPAGE_BPS", 10.0)
     predictor_max_brier: float = _float("PREDICTOR_MAX_BRIER", 0.245)
     predictor_class_threshold: float = _float("PREDICTOR_CLASS_THRESHOLD", 0.0015)

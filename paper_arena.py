@@ -106,10 +106,21 @@ def get_live_prices(db: BotDB, cfg: Config) -> dict[str, float]:
             pass
 
     # --- DB fallback for any symbol we failed to get ---
-    missing = [s for s in list(cfg.watch_symbols) + list(cfg.watch_stocks) if s not in prices]
+    # Also include any symbol a trader might hold that's not in the standard watch list
+    all_watched = list(cfg.watch_symbols) + list(cfg.watch_stocks)
+    missing = [s for s in all_watched if s not in prices]
     if missing:
         db_prices = db.latest_prices(missing)
         prices.update(db_prices)
+
+    # Final fallback: any symbol still missing gets pulled from DB regardless of watch list
+    # (handles symbols bought before watch list was changed)
+    all_held = [r["symbol"] for r in db._conn().execute(
+        "SELECT DISTINCT symbol FROM paper_wallets WHERE qty > 0"
+    ).fetchall()]
+    still_missing = [s for s in all_held if s not in prices]
+    if still_missing:
+        prices.update(db.latest_prices(still_missing))
 
     return prices
 

@@ -138,6 +138,14 @@ def _live_prices() -> dict[str, float]:
     if missing:
         prices.update(db.latest_prices(missing))
 
+    # Catch any held symbol not in the standard watch list
+    all_held = [r[0] for r in db._conn().execute(
+        "SELECT DISTINCT symbol FROM paper_wallets WHERE qty > 0"
+    ).fetchall()]
+    still_missing = [s for s in all_held if s not in prices]
+    if still_missing:
+        prices.update(db.latest_prices(still_missing))
+
     return prices
 
 

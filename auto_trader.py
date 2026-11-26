@@ -106,6 +106,12 @@ def get_live_prices(db: BotDB, cfg: Config) -> dict[str, float]:
     missing = [s for s in list(cfg.watch_symbols) + list(cfg.watch_stocks) if s not in prices]
     if missing:
         prices.update(db.latest_prices(missing))
+    all_held = [r["symbol"] for r in db._conn().execute(
+        "SELECT DISTINCT symbol FROM paper_wallets WHERE qty > 0"
+    ).fetchall()]
+    still_missing = [s for s in all_held if s not in prices]
+    if still_missing:
+        prices.update(db.latest_prices(still_missing))
     return prices
 
 
