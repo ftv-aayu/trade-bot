@@ -834,3 +834,10 @@
 2026-11-26 05:45:49,615 [INFO] trade_bot:   XLMUSDT      score=0.670 pred=-0.0015 conf=0.20
 2026-11-26 05:45:49,615 [INFO] trade_bot:   LTCUSDT      score=0.621 pred=-0.0028 conf=0.22
 2026-11-26 05:45:49,615 [INFO] trade_bot: STOCKS | market closed | next open in ~855 min
+2026-11-26 05:49:49,439 [INFO] trade_bot: Poll #30 | prices=173440 | crypto acc=44.3% (n=7160) | stock acc=46.4% (n=1340)
+2026-11-26 05:50:49,629 [INFO] trade_bot: Stock market closed. Next open in ~850 min.
+2026-11-26 05:50:49,629 [INFO] trade_bot: CRYPTO | regime=risk_on model=True | rank gate passed; classifier gated: balanced_acc 0.327<0.330
+2026-11-26 05:50:49,629 [INFO] trade_bot:   XLMUSDT      score=0.683 pred=-0.0005 conf=0.19
+2026-11-26 05:50:49,629 [INFO] trade_bot:   NEARUSDT     score=0.600 pred=-0.0022 conf=0.23
+2026-11-26 05:50:49,629 [INFO] trade_bot:   DOGEUSDT     score=0.546 pred=-0.0003 conf=0.18
+2026-11-26 05:50:49,629 [INFO] trade_bot: STOCKS | market closed | next open in ~850 min

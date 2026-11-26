@@ -471,4 +471,4 @@ curl -X POST http://localhost:8000/webhooks/edumind \
 
 ---
 
-*Last updated: 2026-11-26. Contact: Team Avengers — aayushkm26@iitk.ac.in*
+*Last updated: 2026-11-26. *
