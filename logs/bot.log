@@ -1886,3 +1886,4 @@
 2026-11-26 18:50:01,792 [INFO] trade_bot:   QNTUSDT      score=0.728 pred=+0.0021 conf=0.21
 2026-11-26 18:50:01,792 [INFO] trade_bot:   FETUSDT      score=0.704 pred=+0.0007 conf=0.19
 2026-11-26 18:50:01,792 [INFO] trade_bot: STOCKS | market closed | next open in ~70 min
+2026-11-26 18:54:01,891 [INFO] trade_bot: Poll #140 | prices=450980 | crypto acc=44.1% (n=9462) | stock acc=46.4% (n=1340)
